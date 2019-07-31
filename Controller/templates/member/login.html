@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>登入</title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="http://localhost/msg/Controller/javascript/tool.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Logo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">去購物</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="../member/register.php"><span class="glyphicon glyphicon-user"></span> 帳戶管理 </a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> 我的購物車 </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <p></p>
+        <div class="container">
+            <div class="col-md-5 col-md-offset-3">
+                <h2>登入</h2>
+                <hr>
+                    <div class="form-group">
+                        <label>帳號 : </label>
+                        <input type="text" class="form-control" name="account" id="account" placeholder="英數2碼以上12碼以下">
+                        <p id="msgAccount">帳號需介於2到12字且不可有空白等特殊字元</p>
+                    </div>
+                    <div class="form-group">
+                        <label>密碼 : </label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="英數2碼以上12碼以下">
+                        <p id="msgPassword">密碼需介於2到12字且不可有空白等特殊字元</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">電子郵箱 : </label>
+                        <input type="password" class="form-control" name="email" id="email" placeholder="example@mail.com">
+                        <p id="tipsEmail"></p>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary offset-sm-3" id="btnLogin" disabled="true">登入</button>
+                        <a href="index.php?page=1" class="btn btn-danger offset-sm-2" role="button">取消</a>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>
