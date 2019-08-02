@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2019-08-02 06:16:08
+  from 'C:\xampp\htdocs\Store\Controller\templates\member\register.html' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5d43b908e04785_74344760',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '41b924ebe7bd694ba9f7ac55889401f87c0e7822' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\member\\register.html',
+      1 => 1564719367,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5d43b908e04785_74344760 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html>
 
 <head>
@@ -6,10 +29,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>註冊</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="http://localhost/Store/Controller/javascript/tool.js"></script>
+    <?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
+>
 </head>
 <style>
     p {
@@ -45,4 +76,5 @@
     </div>
 </body>
 
-</html>
+</html><?php }
+}

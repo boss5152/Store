@@ -2,157 +2,207 @@
  *  前端檢查
  */
 $(document).ready(function(){
-    //暱稱
-    $("#nickName").keyup(function(){
-        var stringNickName = $("#nickName").val();
-        ((stringNickName.length > 5) || (stringNickName.length < 1) || (/[^A-Za-z0-9]/.test(stringNickName)))
-         ? errorNickName()
-         : $("#msgNickName").html("");
-        btnCanClick();
-    });
-    //帳號
+    // 帳號
+    var accountOk = "";
+    var passwordOk = "";
+    var emailOk = "";
+    var oldPasswordOk = "";
+    //因為這貨一開始有值，所以給TRUE
+    var editEmailOk = true;
+    var adminKeyOk = "";
+
     $("#account").keyup(function(){
         var stringAccount = $("#account").val();
-        ((stringAccount.length > 12) || (stringAccount.length < 2) || (/[^A-Za-z0-9]/.test(stringAccount)))
-         ? errorAccount()
-         : $("#msgAccount").html("");
-        btnCanClick();
+        ((stringAccount.length <= 12) && (stringAccount.length > 1) && !(/[^A-Za-z0-9]/.test(stringAccount)))
+         ? (accountOk = checkAccount(true))
+         : (accountOk = checkAccount(false));
+        checkMemberBtn(accountOk, passwordOk, emailOk);
     });
-    //密碼
+
+    // 密碼
     $("#password").keyup(function(){
         var stringPassword = $("#password").val();
-        ((stringPassword.length > 12) || (stringPassword.length < 2) || (/[^A-Za-z0-9]/.test(stringPassword)))
-         ? errorPassword()
-         : $("#msgPassword").html("");
-        btnCanClick();
+        ((stringPassword.length <= 12) && (stringPassword.length > 1) && !(/[^A-Za-z0-9]/.test(stringPassword)))
+        ? (passwordOk = checkPassword(true))
+        : (passwordOk = checkPassword(false));
+        checkMemberBtn(accountOk, passwordOk, emailOk);
     });
-    //標題
-    $("#title").keyup(function(){
-        var stringTitle = $("#title").val();
-        ((stringTitle.length > 10) || (stringTitle.length < 1) )
-            ? errorTitle()
-            : correctTitle();
-        btnCanClick();
+
+    // 信箱 長度上限25
+    $("#email").keyup(function(){
+        var stringEmail = $("#email").val();
+        ((stringEmail.length <= 25) && (/^([A-Za-z0-9])+\@([A-Za-z0-9])+\.(com)$/.test(stringEmail)))
+        ? (emailOk = checkEmail(true))
+        : (emailOk = checkEmail(false));
+        checkMemberBtn(accountOk, passwordOk, emailOk);
     });
-    //內容
-    $("#content").keyup(function(){
-        var stringContent = $("#content").val();
-        ((stringContent.length > 100) || (stringContent.length < 1) )
-            ? errorContent(stringContent.length)
-            : correctContent(stringContent.length);
-        btnCanClick();
+
+    // 舊密碼
+    $("#oldPassword").keyup(function(){
+        var stringOldPassword = $("#oldPassword").val();
+        ((stringOldPassword.length <= 12) && (stringOldPassword.length > 1) && !(/[^A-Za-z0-9]/.test(stringOldPassword)))
+        ? (oldPasswordOk = checkOldPassword(true))
+        : (oldPasswordOk = checkOldPassword(false));
+        checkEditMemberBtn(passwordOk, oldPasswordOk, editEmailOk);
     });
-    //留言內容
-    $("#msgContent").keyup(function(){
-        var stringMsgContent = $("#msgContent").val();
-        ((stringMsgContent.length > 15) || (stringMsgContent.length < 1) )
-            ? errorMsgContent(stringMsgContent.length)
-            : correctMsgContent(stringMsgContent.length);
+
+    // 編輯頁面的信箱欄位 長度上限25
+    $("#editEmail").keyup(function(){
+        var stringEditEmail = $("#editEmail").val();
+        ((stringEditEmail.length <= 25) && (/^([A-Za-z0-9])+\@([A-Za-z0-9])+\.(com)$/.test(stringEditEmail)))
+        ? (editEmailOk = checkEmail(true))
+        : (editEmailOk = checkEmail(false));
+        checkMemberBtn(passwordOk, oldPasswordOk, editEmailOk);
+    });
+
+    //管理者登入頁面的管理者金鑰
+    $("#adminKey").keyup(function(){
+        var stringAdminKey = $("#adminKey").val();
+        (stringAdminKey.length > 0)
+        ? (adminKeyOk = checkAdminKey(true))
+        : (adminKeyOk = checkAdminKey(false));
+        checkAdminLoginBtn(accountOk, passwordOk, adminKeyOk);
+    });
+
+    //管理者修改密碼頁面的管理者金鑰
+    $("#adminKey").keyup(function(){
+        var stringAdminKey = $("#adminKey").val();
+        (stringAdminKey.length > 0)
+        ? (adminKeyOk = checkAdminKey(true))
+        : (adminKeyOk = checkAdminKey(false));
+        checkAdminEditBtn(passwordOk, oldPasswordOk, adminKeyOk);
     });
 });
 
-//暱稱驗證
-//沒過
-function errorNickName(){
-    $("#msgNickName").html("暱稱需介於一到五字且不可有空白等特殊字元");
-    $("#btnRegister").attr('disabled', true);
+// 帳號驗證
+function checkAccount(bool){
+    if (bool === false) {
+        $("#tipsAccount").html("帳號需介於2到12字且不可有空白等特殊字元");
+        $("#btnRegister").attr('disabled', true);
+        $("#btnLogin").attr('disabled', true);
+        $("#btnEditUserInfo").attr('disabled', false);
+        return false;
+    } else {
+        $("#tipsAccount").html("");
+        return true;
+    }
 }
 
-//帳號驗證
-//沒過
-function errorAccount(){
-    $("#msgAccount").html("帳號需介於2到12字且不可有空白等特殊字元");
-    $("#btnRegister").attr('disabled', true);
-    $("#btnLogin").attr('disabled', true);
+// 密碼驗證
+function checkPassword(bool){
+    if (bool === false) {
+        $("#tipsPassword").html("密碼需介於2到12字且不可有空白等特殊字元");
+        $("#btnRegister").attr('disabled', true);
+        $("#btnLogin").attr('disabled', true);
+        $("#btnEditUserInfo").attr('disabled', false);
+        return false;
+    } else {
+        $("#tipsPassword").html("");
+        return true;
+    }
 }
 
-//密碼驗證
-//沒過
-function errorPassword(){
-    $("#msgPassword").html("密碼需介於2到12字且不可有空白等特殊字元");
-    $("#btnRegister").attr('disabled', true);
-    $("#btnLogin").attr('disabled', true);
+// email驗證
+function checkEmail(bool){
+    if (bool === false) {
+        $("#tipsEmail").html("email格式須為example@mail.com");
+        $("#btnRegister").attr('disabled', true);
+        $("#btnLogin").attr('disabled', true);
+        $("#btnEditUserInfo").attr('disabled', false);
+        return false;
+    } else {
+        $("#tipsEmail").html("");
+        return true;
+    }
 }
 
-//標題驗證
-//沒過
-function errorTitle(){
-    $("#msgTitle").html("標題需介於1到10字");
-    $("#btnAddArt").attr('disabled', true);
-    $("#btnUpdateArt").attr('disabled', true);
+// 舊密碼驗證
+function checkOldPassword(bool){
+    if (bool === false) {
+        $("#tipsOldPassword").html("舊密碼格式為2到12字且不可有空白等特殊字元");
+        $("#btnEditUserInfo").attr('disabled', true);
+        return false;
+    } else {
+        $("#tipsOldPassword").html("");
+        return true;
+    }
 }
 
-//內容驗證
-//沒過
-function errorContent(contentLength){
-    $("#msgContent").html("內容需介於1到100字，您現在長度為" + contentLength + "字");
-    $("#btnAddArt").attr('disabled', true);
-    $("#btnUpdateArt").attr('disabled', true);
-}
-//有過
-function correctContent(contentLength){
-    $("#msgContent").html("您現在長度為" + contentLength + "字");
-}
-
-//留言內容驗證
-//沒過
-function errorMsgContent(msgContentLength){
-    $("#msgContentTips").html("內容需介於1到15字，您現在長度為" + msgContentLength + "字");
-    $("#btnAddMsg").attr('disabled', true);
-    $("#btnUpdateMsg").attr('disabled', true);
-}
-//有過
-function correctMsgContent(msgContentLength){
-    $("#msgContentTips").html("您現在長度為" + msgContentLength + "字");
-    $("#btnAddMsg").attr('disabled', false);
-    $("#btnUpdateMsg").attr('disabled', false);
+// 管理者金鑰驗證
+function checkAdminKey(bool){
+    if (bool === false) {
+        $("#tipsAdminKey").html("此欄位必填");
+        $("#btnAdminLogin").attr('disabled', true);
+        return false;
+    } else {
+        $("#tipsAdminKey").html("");
+        return true;
+    }
 }
 
-function btnCanClick(){
-    var msgNickName = $("#msgNickName").html();
-    var msgAccount = $("#msgAccount").html();
-    var msgPassword = $("#msgPassword").html();
-    var stringTitle = $("#title").val();
-    var stringContent = $("#content").val();
-    if ((msgNickName === "") && (msgAccount === "") && (msgPassword === "")) {
+// 按鈕可不可以按
+function checkMemberBtn(accountOk, passwordOk, emailOk){
+    if ((accountOk === true) && (passwordOk === true) && (emailOk === true)) {
         $("#btnRegister").attr('disabled', false);
-    }
-    if ((msgAccount === "") && (msgPassword === "")) {
         $("#btnLogin").attr('disabled', false);
-    }
-    if ((stringContent.length <= 100) && (stringContent.length > 0) && (stringTitle.length <= 10) && (stringTitle.length > 0) ){
-        $("#btnAddArt").attr('disabled', false);
-        $("#btnUpdateArt").attr('disabled', false);
+    } else {
+        $("#btnRegister").attr('disabled', true);
+        $("#btnLogin").attr('disabled', true);
     }
 }
 
-//驗證結束-------------
+// 修改的按鈕可不可以按
+function checkEditMemberBtn(passwordOk, emailOk, oldPasswordOk){
+    if ((passwordOk === true) && (emailOk === true) && (oldPasswordOk === true)) {
+        $("#btnActionEditUserInfo").attr('disabled', false);
+    } else {
+        $("#btnActionEditUserInfo").attr('disabled', true);
+    }
+}
 
+//管理者登入的按鈕可不可以按
+function checkAdminLoginBtn(accountOk, passwordOk, adminKeyOk){
+    if ((accountOk === true) && (passwordOk === true) && (adminKeyOk === true)) {
+        $("#btnAdminLogin").attr('disabled', false);
+    } else {
+        $("#btnAdminLogin").attr('disabled', true);
+    }
+}
+
+//管理者修改密碼的按鈕可不可以按
+function checkAdminEditBtn(passwordOk, oldPasswordOk, adminKeyOk){
+    if ((passwordOk === true) && (oldPasswordOk === true) && (adminKeyOk === true)) {
+        $("#btnEditAdminInfo").attr('disabled', false);
+    } else {
+        $("#btnEditAdminInfo").attr('disabled', true);
+    }
+}
+
+// 驗證結束-------------
 
 /*
  *  註冊頁面
  */
 $(document).ready(function() {
     $("#btnRegister").click(function() {
-        var nickName = $("#nickName").val();
         var account = $("#account").val();
         var password = $("#password").val();
+        var email = $("#email").val();
         $.ajax({
-            type: "POST",
-            url: "http://localhost/msg/Controller/register.php",
+            type: "delete",
+            url: "http://localhost/Store/Controller/member/actionRegister.php",
             dataType: "json",
             data: {
-                'nickName' : nickName,
                 'account' : account, 
-                'password' : password 
+                'password' : password,
+                'email' : email
             },
             success: function(data) {
                 if (data.isRegister === true){
-                    alert(data.msg);
-                    self.location = "login.php";
+                    alert(data.tips);
+                    self.location = "showlogin.php";
                 } else {
-                    console.log(data.errorMsg);
-                    alert(data.errorMsg);
+                    alert(data.tips);
                 }
             },
             error: function() {
@@ -168,19 +218,21 @@ $(document).ready(function() {
 $(document).ready(function() {
     $("#btnLogin").click(function() {
         var account = $("#account").val();
-        var password = $("#password").val() ;
+        var password = $("#password").val();
+        var email = $("#email").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/msg/Controller/login.php",
+            url: "http://localhost/Store/Controller/member/actionLogin.php",
             dataType: "json",
             data: {
                 'account': account,
-                'password': password
+                'password': password,
+                'email': email 
             },
             success: function(data) {
                 if (data.isLogin === true){
                     alert(data.tips);
-                    self.location = "index.php";
+                    location = "http://localhost/Store/Controller/index/index.php";
                 } else {
                     alert(data.tips);
                 }
@@ -193,24 +245,26 @@ $(document).ready(function() {
 });
 
 /*
- *  新增文章
+ *  管理者登入頁面
  */
 $(document).ready(function() {
-    $("#btnAddArt").click(function() {
-        var title = $("#title").val();
-        var content = $("#content").val();
+    $("#btnAdminLogin").click(function() {
+        var account = $("#account").val();
+        var password = $("#password").val();
+        var adminKey = $("#adminKey").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/msg/Controller/add.php",
+            url: "http://localhost/Store/Controller/admin/actionAdminLogin.php",
             dataType: "json",
             data: {
-                'title': title,
-                'content': content
+                'account': account,
+                'password': password,
+                'adminKey': adminKey 
             },
             success: function(data) {
-                if (data.isAdd === true){
+                if (data.isAdminLogin === true){
                     alert(data.tips);
-                    self.location = "index.php";
+                    location = "http://localhost/Store/Controller/admin/adminHome.php";
                 } else {
                     alert(data.tips);
                 }
@@ -222,23 +276,21 @@ $(document).ready(function() {
     })        
 });
 
-/*
- *  刪除文章
+/**
+ * 顯示編輯資訊
  */
 $(document).ready(function() {
-    $("#btnDeleteArt").click(function() {
-        var articleId = $("#btnDeleteArt").val();
+    $("#btnShowEditUserInfo").click(function() {
+        var token =  $("#btnShowEditUserInfo").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/msg/Controller/delete.php",
-            dataType: "json",
+            url: "http://localhost/Store/Controller/home/showEditUserInfo.php",
             data: {
-                'articleId': articleId
+                'token' : token
             },
             success: function(data) {
-                if (data.isDelete === true){
-                    alert(data.tips);
-                    self.location = "index.php";
+                if (data){
+                    $("#mainDiv").html(data);//要刷新的div
                 } else {
                     alert(data.tips);
                 }
@@ -250,27 +302,27 @@ $(document).ready(function() {
     })        
 });
 
-/*
- *  編輯文章
+/**
+ * 編輯資訊
  */
 $(document).ready(function() {
-    $("#btnUpdateArt").click(function() {
-        var articleId = $("#btnUpdateArt").val();
-        var title = $("#title").val();
-        var content = $("#content").val();
+    $("#btnActionEditUserInfo").click(function() {
+        var password = $("#password").val();
+        var oldPassword = $("#oldPassword").val();
+        var email = $("#email").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/msg/Controller/update.php",
+            url: "http://localhost/Store/Controller/home/actionEditUserInfo.php",
             dataType: "json",
             data: {
-                'title': title,
-                'content': content,
-                'articleId': articleId
+                'password' : password,
+                'email' : email,
+                'oldPassword' : oldPassword
             },
             success: function(data) {
-                if (data.isUpdate === true){
+                if (data.isEdit === true){
                     alert(data.tips);
-                    self.location = "article.php?id=" + data.articleId;
+                    location = location;
                 } else {
                     alert(data.tips);
                 }
@@ -282,25 +334,21 @@ $(document).ready(function() {
     })        
 });
 
-/*
- *  新增留言
+/**
+ * 顯示管理者編輯資訊
  */
 $(document).ready(function() {
-    $("#btnAddMsg").click(function() {
-        var msgContent = $("#msgContent").val();
-        var articleId = $("#btnAddMsg").val();
+    $("#btnShowEditAdminInfo").click(function() {
+        var token =  $("#btnShowEditAdminInfo").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/msg/Controller/msg_add.php",
-            dataType: "json",
+            url: "http://localhost/Store/Controller/admin/showEditAdminInfo.php",
             data: {
-                'articleId' : articleId,
-                'msgContent' : msgContent
+                'token' : token
             },
             success: function(data) {
-                if (data.isAddMsg === true){
-                    alert(data.tips);
-                    self.location = "article.php?id=" + data.articleId;
+                if (data){
+                    $("#mainDiv").html(data);//要刷新的div
                 } else {
                     alert(data.tips);
                 }
@@ -312,53 +360,28 @@ $(document).ready(function() {
     })        
 });
 
-/*
- *  修改留言
+/**
+ * 編輯管理者資訊
  */
 $(document).ready(function() {
-    $("#btnUpdateMsg").click(function() {
-        var msgContent = $("#msgContent").val();
-        var msgId = $("#btnUpdateMsg").val();
+    $("#btnEditAdminInfo").click(function() {
+        var password = $("#password").val();
+        var oldPassword = $("#oldPassword").val();
+        var adminKey = $("#adminKey").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/msg/Controller/msg_update.php",
+            url: "http://localhost/Store/Controller/admin/actionEditAdminInfo.php",
             dataType: "json",
             data: {
-                'msgId' : msgId,
-                'msgContent' : msgContent
+                'password' : password,
+                'oldPassword' : oldPassword,
+                'adminKey' : adminKey
+                
             },
             success: function(data) {
-                if (data.isUpdateMsg === true){
+                if (data.isEdit === true){
                     alert(data.tips);
-                    self.location = "article.php?id=" + data.articleId;
-                } else {
-                    alert(data.tips);
-                }
-            },
-            error: function() {
-                alert("錯誤請求");
-            }
-        })
-    })        
-});
-
-/*
- *  刪除留言
- */
-$(document).ready(function() {
-    $("#btnDeleteMsg").click(function() {
-        var msgId = $("#btnDeleteMsg").val();
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/msg/Controller/msg_delete.php",
-            dataType: "json",
-            data: {
-                'msgId' : msgId,
-            },
-            success: function(data) {
-                if (data.isDeleteMsg === true){
-                    alert(data.tips);
-                    $("#" + data.msgId).remove();
+                    location = location;
                 } else {
                     alert(data.tips);
                 }

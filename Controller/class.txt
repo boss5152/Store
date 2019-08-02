@@ -4,3 +4,5 @@
 3. 會員管理
 4. 訂單管理
 5. 產品管理
+
+C:/xampp/htdocs/Store/Controller/

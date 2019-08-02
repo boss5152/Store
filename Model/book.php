@@ -2,7 +2,7 @@
 
 require_once("ConnectDb.php");
 
-class Article extends ConnectDb
+class Book extends ConnectDb
 {
     //新增
     public function insert($array)
@@ -47,13 +47,14 @@ class Article extends ConnectDb
         return ($result === true) ? true : false;
     }
 
-    //查詢
-    public function getAll($articleId)
+    /**
+     * 獲得全部
+     */
+    public function getAll()
     {
-        $sql = "SELECT * FROM Article WHERE articleId = $articleId";
+        $sql = "SELECT * FROM book";
         $result = $this->executeSql($sql);
-        $row_result = mysqli_fetch_assoc($result);
-        return $row_result;
+        return $result;
     }
 
     /**

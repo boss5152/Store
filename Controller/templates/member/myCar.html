@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+
+<head>
+    <title>購物車</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 菜單 -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Logo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/Store/Controller/index/index.php">去購物</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <form class="navbar-form" role="search">
+                        <div class="form-group input-group">
+                            <input type="text" class="form-control" placeholder="Search..">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-user"></span>
+                            帳戶管理
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">註冊</a></li>
+                            <li><a href="">登入</a></li>
+                        </ul>
+                    </li>
+                    <li>                        
+                        <a href="">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> 我的購物車 
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- 菜單 -->
+
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h1>My Portfolio</h1>
+            <p>Some text that represents "Me"...</p>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-3 text-center">
+        <h3>這裡放購物車</h3><br>
+        <div class="row">
+            <div class="col-sm-3">
+                <p>Some text..</p>
+                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+            <div class="col-sm-3">
+                <p>Some text..</p>
+                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+            <div class="col-sm-3">
+                <p>Some text..</p>
+                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+            <div class="col-sm-3">
+                <p>Some text..</p>
+                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+        </div>
+    </div><br>
+
+    <div class="container-fluid bg-3 text-center">
+        <div class="row">
+            <div class="col-sm-3">
+                <p>Some text..</p>
+                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+            <div class="col-sm-3">
+                <p>Some text..</p>
+                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+            <div class="col-sm-3">
+                <p>Some text..</p>
+                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+            <div class="col-sm-3">
+                <p>Some text..</p>
+                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+            </div>
+        </div>
+    </div><br><br>
+
+    <footer class="container-fluid text-center">
+        <p>Footer Text</p>
+    </footer>
+
+</body>
+
+</html>
