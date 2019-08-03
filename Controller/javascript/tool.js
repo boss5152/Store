@@ -189,7 +189,7 @@ $(document).ready(function() {
         var password = $("#password").val();
         var email = $("#email").val();
         $.ajax({
-            type: "delete",
+            type: "POST",
             url: "http://localhost/Store/Controller/member/actionRegister.php",
             dataType: "json",
             data: {

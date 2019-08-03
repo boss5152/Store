@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-02 11:48:12
+/* Smarty version 3.1.33, created on 2019-08-03 12:49:57
   from 'C:\xampp\htdocs\Store\Controller\templates\admin\book\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4406dc861ad3_17114163',
+  'unifunc' => 'content_5d4566d5f0d6c5_84798522',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14e8cfa9bf001808315caa680800a6e31c94c6da' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\book\\header.html',
-      1 => 1564739291,
+      1 => 1564829394,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4406dc861ad3_17114163 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4566d5f0d6c5_84798522 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <!-- <a class="navbar-brand" href="">Hello , <?php echo $_smarty_tpl->tpl_vars['account']->value;?>
-</a> -->
-        </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <form class="navbar-form" role="search">
@@ -43,6 +39,11 @@ function content_5d4406dc861ad3_17114163 (Smarty_Internal_Template $_smarty_tpl)
                 </form>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/Store/Controller/templates/member/myCar.html">
+                        <span class="glyphicon glyphicon-plus"></span> 新書上架
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <span class="glyphicon glyphicon-user"></span>

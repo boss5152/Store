@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-02 12:18:32
+/* Smarty version 3.1.33, created on 2019-08-03 12:27:16
   from 'C:\xampp\htdocs\Store\Controller\templates\admin\book\showBook.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d440df87826e9_99613505',
+  'unifunc' => 'content_5d4561841a8258_84889317',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7119757407507696795575bbbf027826780029b1' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\book\\showBook.html',
-      1 => 1564741107,
+      1 => 1564828034,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d440df87826e9_99613505 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4561841a8258_84889317 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -54,13 +54,13 @@ function content_5d440df87826e9_99613505 (Smarty_Internal_Template $_smarty_tpl)
         <table class="table">
             <thead style="background-color: #AAAAAA">
             <tr>
-                <th style="text-align: center">預覽圖</th>
-                <th>書名</th>
-                <th>作者</th>
-                <th>書本介紹</th>
-                <th style="text-align: center">價格</th>
-                <th style="text-align: center">修改</th>
-                <th style="text-align: center">刪除</th>
+                <th style="text-align: center" class="col-md-1">預覽圖</th>
+                <th class="col-md-1">書名</th>
+                <th class="col-md-1">作者</th>
+                <th class="col-md-6">書本介紹</th>
+                <th style="text-align: center" class="col-md-1">價格</th>
+                <th style="text-align: center" class="col-md-1">修改</th>
+                <th style="text-align: center" class="col-md-1">刪除</th>
             </tr>
             </thead>
             <tbody>

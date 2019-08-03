@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-02 11:13:47
+/* Smarty version 3.1.33, created on 2019-08-03 12:04:46
   from 'C:\xampp\htdocs\Store\Controller\templates\admin\home\adminHome.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d43fecb5582c7_41510282',
+  'unifunc' => 'content_5d455c3e71dd25_15906485',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '565dc7b6379e384b1cbe55b273ef2aa832213d6e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\home\\adminHome.html',
-      1 => 1564737225,
+      1 => 1564826657,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d43fecb5582c7_41510282 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d455c3e71dd25_15906485 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
@@ -35,11 +35,6 @@ function content_5d43fecb5582c7_41510282 (Smarty_Internal_Template $_smarty_tpl)
     <?php echo '<script'; ?>
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
-    <?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
->
-    <style>
-    </style>
 </head>
 
 <body>
@@ -169,7 +164,7 @@ function content_5d43fecb5582c7_41510282 (Smarty_Internal_Template $_smarty_tpl)
 ">潤飾您的資訊</button>
                 </div>
                 <div class="well">
-                    <a href="/Store/Controller/admin/book/showBook.php"><button class="btn btn-primary" type=button id="" name="">讓新書上架</button></a>
+                    <a href="/Store/Controller/admin/book/showBook.php" class="btn btn-primary" role="button">讓新書上架</a>
                 </div>
             </div>
         </div>
@@ -177,5 +172,10 @@ function content_5d43fecb5582c7_41510282 (Smarty_Internal_Template $_smarty_tpl)
 
 </body>
 
-</html><?php }
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
+>
+
+</html>
+<?php }
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-02 08:39:04
+/* Smarty version 3.1.33, created on 2019-08-03 11:18:11
   from 'C:\xampp\htdocs\Store\Controller\templates\admin\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d43da885a05a1_75768912',
+  'unifunc' => 'content_5d455153e69a54_20787043',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '81e0975feab15490796d4240b59433b7b6c38976' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\header.html',
-      1 => 1564727155,
+      1 => 1564823337,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d43da885a05a1_75768912 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d455153e69a54_20787043 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">

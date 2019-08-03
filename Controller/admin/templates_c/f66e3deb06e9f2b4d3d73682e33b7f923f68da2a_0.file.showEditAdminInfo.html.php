@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-02 10:15:43
+/* Smarty version 3.1.33, created on 2019-08-03 12:04:48
   from 'C:\xampp\htdocs\Store\Controller\templates\admin\home\showEditAdminInfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d43f12f279a66_08835379',
+  'unifunc' => 'content_5d455c405ab277_57106114',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f66e3deb06e9f2b4d3d73682e33b7f923f68da2a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\home\\showEditAdminInfo.html',
-      1 => 1564733739,
+      1 => 1564826674,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d43f12f279a66_08835379 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d455c405ab277_57106114 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
-<?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
->
 <html>
 <style>
     #tipsPassword,
@@ -68,6 +65,10 @@ function content_5d43f12f279a66_08835379 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </div>
 </body>
+
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
+>
 
 </html><?php }
 }
