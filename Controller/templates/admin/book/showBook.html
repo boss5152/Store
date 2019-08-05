@@ -9,58 +9,118 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="http://localhost/Store/Controller/javascript/tool.js"></script>
 </head>
 <style>
-    td{
+    td {
         background-color: #FDF5E6;
     }
 </style>
+
 <body>
     <!-- 菜單在header裡 -->
     <p></p>
-    <div>          
+    <div>
         <table class="table">
             <thead style="background-color: #AAAAAA">
-            <tr>
-                <th style="text-align: center" class="col-md-1">預覽圖</th>
-                <th class="col-md-1">書名</th>
-                <th class="col-md-1">作者</th>
-                <th class="col-md-6">書本介紹</th>
-                <th style="text-align: center" class="col-md-1">價格</th>
-                <th style="text-align: center" class="col-md-1">修改</th>
-                <th style="text-align: center" class="col-md-1">刪除</th>
-            </tr>
+                <tr>
+                    <th style="text-align: center" class="col-md-1">預覽圖</th>
+                    <th class="col-md-1">書名</th>
+                    <th class="col-md-1">作者</th>
+                    <th class="col-md-6">書本介紹</th>
+                    <th style="text-align: center" class="col-md-1">價格</th>
+                    <th style="text-align: center" class="col-md-1">修改</th>
+                    <th style="text-align: center" class="col-md-1">刪除</th>
+                </tr>
             </thead>
-            <tbody>
+            <tbody class="List">
                 {{foreach $bookObj as $bookArrays}}
-                    <tr>
-                        <td style="text-align: center">
-                            <img src="{{$bookArrays['bookImg']}}" class="img-circle" height="55" width="55" >
-                        </td>
-                        <td>
-                            {{$bookArrays['bookName']}}
-                        </td>
-                        <td>
-                            {{$bookArrays['bookAuthor']}}
-                        </td>
-                        <td>
-                            {{$bookArrays['bookInfo']}}
-                        </td>
-                        <td style="text-align: center">
-                            {{$bookArrays['bookPrice']}}
-                        </td>
-                        <td style="text-align: center">
-                            <a><button type="button" class="btn btn-default" value="">修改</button></a>
-                        </td>
-                        <td style="text-align: center">
-                            <a><button type="button" class="btn btn-default" value="">刪除</button></a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td style="text-align: center">
+                        <img src="/Store/Controller/image/{{$bookArrays['bookPhoto']}}" class="img-circle" height="55"
+                            width="55">
+                    </td>
+                    <td>
+                        {{$bookArrays['bookName']}}
+                    </td>
+                    <td>
+                        {{$bookArrays['bookAuthor']}}
+                    </td>
+                    <td>
+                        {{$bookArrays['bookInfo']}}
+                    </td>
+                    <td style="text-align: center">
+                        {{$bookArrays['bookPrice']}}
+                    </td>
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-default" value="{{$bookArrays['bookId']}}"
+                            name="btnShowUpdateBook" id="btnShowUpdateBook">修改
+                        </button>
+                    </td>
+                    <td style="text-align: center">
+                        <a><button type="button" class="btn btn-default" value="">刪除</button></a>
+                    </td>
+                </tr>
                 {{/foreach}}
             </tbody>
         </table>
     </div>
+    <!-- model -->
+    <div class="container">
+        <div class="modal fade" id="modelAddBook" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">新增商品</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formAddBook">
+                            <div class="form-group">
+                                <label>書名 : </label>
+                                <input type="text" class="form-control" name="bookName" id="bookName">
+                                <p id="tipsBookName"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>作者 : </label>
+                                <input type="text" class="form-control" name="bookAuthor" id="bookAuthor">
+                                <p id="tipsBookAuthor"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>書本介紹 : </label>
+                                <input type="text" class="form-control" name="bookInfo" id="bookInfo">
+                                <p id="tipsBookInfo"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>價格 : </label>
+                                <input type="text" class="form-control" name="bookPrice" id="bookPrice">
+                                <p id="tipsBookPrice"></p>
+                            </div>
+                            <div class="form-group">
+                                <label>書本預覽上傳 : </label>
+                                <label class="btn btn-info">
+                                    <input style="display:none;" type="file" name="bookPhoto" id="bookPhoto">
+                                    <span class="glyphicon glyphicon-picture"></span>
+                                    上傳圖片
+                                </label>
+                                <br>
+                                <img id="bookPhotoDemo">
+                                <p id="tipsbookPhoto"></p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd"
+                            disabled="true">新增</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
+
+<script src="http://localhost/Store/Controller/javascript/tool.js"></script>
+
 
 </html>

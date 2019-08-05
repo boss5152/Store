@@ -19,7 +19,7 @@ class Book extends ConnectDb
         $field = substr($field, 0, -1);
         $value = substr($value, 0, -1);
         //執行
-        $sql = "INSERT INTO Article ($field) VALUES ($value)";
+        $sql = "INSERT INTO Book ($field) VALUES ($value)";
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false ;
     }
@@ -47,14 +47,25 @@ class Book extends ConnectDb
         return ($result === true) ? true : false;
     }
 
-    /**
+    /*
      * 獲得全部
      */
-    public function getAll()
+    public function showAll()
     {
         $sql = "SELECT * FROM book";
         $result = $this->executeSql($sql);
         return $result;
+    }
+
+    /*
+     * 獲得全部
+     */
+    public function getAll($bookId)
+    {
+        $sql = "SELECT * FROM book WHERE bookId = '" . $bookId . "'";
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_fetch_assoc($result);
+        return $row_result;
     }
 
     /**
