@@ -126,26 +126,6 @@
                     </div>
                 </div>
                 <p>{{$newBookArray['bookPrice']}} NTD</p>
-                <!-- 加入購物車按鈕 -->
-                <!-- 已加入關掉不給按 -->
-                <!-- 沒登入就不顯示了 -->
-                {{if isset($cartListArray)}}
-                    {{foreach $cartListArray as $cartBookId}}
-                        {{if {{$newBookArray['bookId']}} === {{$cartBookId}} }}
-                            <button type="button" class="btn btn-success" disabled="true">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> 已納入購物車
-                            </button>
-                            {{break}}
-                        {{else}}
-                            <button type="button" class="btn btn-success" value="{{$newBookArray['bookId']}}" 
-                                    id="btnAddCart" name="btnAddCart">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> 加入購物車
-                            </button>
-                            {{break}}
-                        {{/if}}
-                    {{/foreach}}
-                {{/if}}
-                <!-- 加入購物車按鈕 -->
             </div>
             {{/foreach}}
         </div>

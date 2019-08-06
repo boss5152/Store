@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-03 11:16:55
+/* Smarty version 3.1.33, created on 2019-08-06 12:13:14
   from 'C:\xampp\htdocs\Store\Controller\templates\index\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d45510776b201_44982613',
+  'unifunc' => 'content_5d4952babdbf52_39174630',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4a7d91ca4a9d5b1da461cd5c0b982e62ac40a7b4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\index\\index.html',
-      1 => 1564823337,
+      1 => 1565086369,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d45510776b201_44982613 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4952babdbf52_39174630 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
 <head>
-    <title>小說購物網站</title>
+    <title>書</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -67,23 +67,41 @@ function content_5d45510776b201_44982613 (Smarty_Internal_Template $_smarty_tpl)
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
                     </ol>
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="https://placehold.it/800x400?text=IMAGE" alt="Image">
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <img src="/Store/Controller/image/book.png" alt="Image"
+                                    style="height: 375px; width: 500px;">
+                            </div>
                             <div class="carousel-caption">
-                                <h3>Sell $</h3>
-                                <p>Money Money.</p>
+                                <h3>暢銷冠軍</h3>
+                                <p>狂人日記</p>
+                            </div>
+                        </div>
+
+                        <div class="item ">
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <img src="/Store/Controller/image/a2fb6c26dd87ee5dee07a5784773.jpg" alt="Image"
+                                    style="height: 375px; width: 500px;">
+                            </div>
+                            <div class="carousel-caption">
+                                <h3>暢銷亞軍</h3>
+                                <p>像我這樣的一個女子</p>
                             </div>
                         </div>
 
                         <div class="item">
-                            <img src="https://placehold.it/800x400?text=Another Image Maybe" alt="Image">
+                            <div style="display: flex; align-items: center; justify-content: center;">
+                                <img src="/Store/Controller/image/user_default_150x150.png" alt="Image"
+                                    style="height: 375px; width: 500px;">
+                            </div>
                             <div class="carousel-caption">
-                                <h3>More Sell $</h3>
-                                <p>Lorem ipsum...</p>
+                                <h3>暢銷亞軍</h3>
+                                <p>像我這樣的一個女子</p>
                             </div>
                         </div>
                     </div>
@@ -101,13 +119,16 @@ function content_5d45510776b201_44982613 (Smarty_Internal_Template $_smarty_tpl)
             </div>
             <div class="col-sm-4">
                 <div class="well">
-                    <p>Some text..</p>
+                    <p>歡迎蒞臨綠水文坊</p>
                 </div>
                 <div class="well">
-                    <p>Upcoming Events..</p>
+                    <p>購買新書享有0%折扣</p>
                 </div>
                 <div class="well">
-                    <p>Visit Our Blog</p>
+                    <p>限時活動 : 買下整間店免運費</p>
+                </div>
+                <div class="well">
+                    <p>其他的優惠資訊</p>
                 </div>
             </div>
         </div>
@@ -115,39 +136,76 @@ function content_5d45510776b201_44982613 (Smarty_Internal_Template $_smarty_tpl)
     </div>
 
     <div class="container text-center">
-        <h3>What We Do</h3>
+        <h3>新書上榜</h3>
         <br>
         <div class="row">
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['newBookObj']->value, 'newBookArray');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['newBookArray']->value) {
+?>
             <div class="col-sm-3">
-                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                <p>Current Project</p>
-            </div>
-            <div class="col-sm-3">
-                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                <p>Project 2</p>
-            </div>
-            <div class="col-sm-3">
-                <div class="well">
-                    <p>Some text..</p>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <img src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['newBookArray']->value['bookPhoto'];?>
+"
+                        style="height: 200px; width: 200px; text-align: center;" class="img-responsive img-thumbnail"
+                        alt="Image">
                 </div>
-                <div class="well">
-                    <p>Some text..</p>
+                <h5><strong>《<?php echo $_smarty_tpl->tpl_vars['newBookArray']->value['bookName'];?>
+》</strong></h5>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <div class="well" style="height: 150px; width: 250px;">
+                        <p><?php echo $_smarty_tpl->tpl_vars['newBookArray']->value['bookInfo'];?>
+</p>
+                    </div>
                 </div>
+                <p><?php echo $_smarty_tpl->tpl_vars['newBookArray']->value['bookPrice'];?>
+ NTD</p>
+                <!-- 加入購物車按鈕 -->
+                <!-- 已加入關掉不給按 -->
+                <!-- 沒登入就不顯示了 -->
+                <?php if (isset($_smarty_tpl->tpl_vars['cartListArray']->value)) {?>
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['cartListArray']->value, 'cartBookId');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['cartBookId']->value) {
+?>
+                        <?php ob_start();
+echo $_smarty_tpl->tpl_vars['newBookArray']->value['bookId'];
+$_prefixVariable1 = ob_get_clean();
+ob_start();
+echo $_smarty_tpl->tpl_vars['cartBookId']->value;
+$_prefixVariable2 = ob_get_clean();
+if ($_prefixVariable1 === $_prefixVariable2) {?>
+                            <button type="button" class="btn btn-success" disabled="true">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> 已納入購物車
+                            </button>
+                            <?php break 1;?>
+                        <?php } else { ?>
+                            <button type="button" class="btn btn-success" value="<?php echo $_smarty_tpl->tpl_vars['newBookArray']->value['bookId'];?>
+" 
+                                    id="btnAddCart" name="btnAddCart">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> 加入購物車
+                            </button>
+                            <?php break 1;?>
+                        <?php }?>
+                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                <?php }?>
+                <!-- 加入購物車按鈕 -->
             </div>
-            <div class="col-sm-3">
-                <div class="well">
-                    <p>Some text..</p>
-                </div>
-                <div class="well">
-                    <p>Some text..</p>
-                </div>
-            </div>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
         <hr>
     </div>
 
     <div class="container text-center">
-        <h3>Our Partners</h3>
+        <h3>店長推薦</h3>
         <br>
         <div class="row">
             <div class="col-sm-2">
@@ -182,6 +240,10 @@ function content_5d45510776b201_44982613 (Smarty_Internal_Template $_smarty_tpl)
     </footer>
 
 </body>
+
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
+>
 
 </html><?php }
 }

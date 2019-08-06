@@ -25,7 +25,7 @@ class Book extends ConnectDb
     }
 
     //修改
-    public function update($array, $articleId)
+    public function update($array, $bookId)
     {
         $update = '';
         foreach($array as $key => $value){
@@ -34,15 +34,15 @@ class Book extends ConnectDb
         //-1表示去掉最後一個','
         $update = substr($update, 0, -1);
         //執行
-        $sql = "UPDATE Article set $update WHERE articleId = $articleId";
+        $sql = "UPDATE Book set $update WHERE bookId = $bookId";
         $result = $this->executeSql($sql);
-        return $result;
+        return ($result === true) ? true : false;
     }
 
     //刪除
-    public function delete($articleId)
+    public function delete($bookId)
     {
-        $sql = "DELETE FROM Article WHERE articleId = $articleId";
+        $sql = "DELETE FROM Book WHERE bookId = $bookId";
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false;
     }
@@ -68,68 +68,13 @@ class Book extends ConnectDb
         return $row_result;
     }
 
-    /**
-     * 檢查文章
-     */
-    //查詢
-    public function checkArticle($articleId)
-    {
-        $sql = "SELECT articleId FROM Article WHERE articleId = $articleId";
-        $result = $this->executeSql($sql);
-        $row_result = mysqli_num_rows($result);
-        return ($row_result === 0) ? false : true;
-    }
-
     /*
-     *  index文章顯示
-     *  總數
+     * 新書上榜 
      */
-    public function getArticleDataCount()
-    {
-        $sql = "SELECT * FROM 
-            (SELECT article.title,article.content,member.nickName,article.createDate,article.articleId 
-            FROM member LEFT JOIN article ON member.userId = article.userId GROUP BY article.articleId ) 
-            as newTable WHERE newTable.articleId IS NOT NULL";
-        $result = $this->executeSql($sql);
-        $row_result = mysqli_num_rows($result);
-        return $row_result;
-    }
-
-    /*
-     *  分頁
-     */
-    public function showArticlePage($start,$count)
-    {
-        $sql = "SELECT * FROM 
-            (SELECT article.title,article.content,member.nickName,article.createDate,article.articleId 
-            FROM member LEFT JOIN article ON member.userId = article.userId GROUP BY article.articleId ) 
-            as newTable WHERE newTable.articleId IS NOT NULL LIMIT $start,$count";
+    public function getLimit($count){
+        $sql = "SELECT * FROM Book ORDER BY releaseDate LIMIT 0,$count";
         $result = $this->executeSql($sql);
         return $result;
     }
 
-    /*
-     * 檢查分頁是否有資料
-     */
-    public function checkPage($start,$count)
-    {
-        $sql = "SELECT * FROM 
-            (SELECT article.title,article.content,member.nickName,article.createDate,article.articleId 
-            FROM member LEFT JOIN article ON member.userId = article.userId GROUP BY article.articleId ) 
-            as newTable WHERE newTable.articleId IS NOT NULL LIMIT $start,$count";
-        $result = $this->executeSql($sql);
-        $row_result = mysqli_num_rows($result);
-        return ($row_result === 0) ? false : true;
-    }
-
-    //index留言顯示
-    public function showMsg($articleId)
-    {
-        $sql = "SELECT msg.msgId,msg.msgName,msg.userId,msg.msgContent,msg.msgDate,msg.articleId 
-            FROM msg LEFT JOIN article ON article.articleId = msg.articleId 
-            WHERE msg.articleId = $articleId";
-        $result = $this->executeSql($sql);
-        return $result;
-    }
-    
 }

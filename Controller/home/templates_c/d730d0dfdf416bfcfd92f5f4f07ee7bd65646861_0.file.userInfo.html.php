@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-02 11:33:09
+/* Smarty version 3.1.33, created on 2019-08-06 05:36:32
   from 'C:\xampp\htdocs\Store\Controller\templates\home\userInfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d440355849d22_67634581',
+  'unifunc' => 'content_5d48f5c05df1e6_78313308',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd730d0dfdf416bfcfd92f5f4f07ee7bd65646861' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\home\\userInfo.html',
-      1 => 1564736582,
+      1 => 1564992249,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d440355849d22_67634581 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d48f5c05df1e6_78313308 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
@@ -98,7 +98,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['bookArrays']->value) {
                             <div class="well">
                                 <p><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookAuthor'];?>
 </p>
-                                <img src="<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookImg'];?>
+                                <img src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookPhoto'];?>
 " class="img-circle" height="55" width="55" alt="狂人日記">
                             </div>
                         </div>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-05 03:23:48
+/* Smarty version 3.1.33, created on 2019-08-06 04:30:10
   from 'C:\xampp\htdocs\Store\Controller\templates\admin\book\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d478524c8cda7_92641653',
+  'unifunc' => 'content_5d48e6326bc840_98881547',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14e8cfa9bf001808315caa680800a6e31c94c6da' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\book\\header.html',
-      1 => 1564968227,
+      1 => 1565058609,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d478524c8cda7_92641653 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d48e6326bc840_98881547 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
@@ -41,7 +41,7 @@ function content_5d478524c8cda7_92641653 (Smarty_Internal_Template $_smarty_tpl)
             <ul class="nav navbar-nav navbar-right">
                 <!-- model -->
                 <li>
-                    <a data-toggle="modal" data-target="#modelAddBook" role="button" class="btn">
+                    <a role="button" class="btn" name="btnShowBookAdd" id="btnShowBookAdd">
                         <span class="glyphicon glyphicon-plus"></span> 新書上架
                     </a>
                 </li>

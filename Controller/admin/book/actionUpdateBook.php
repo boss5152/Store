@@ -4,17 +4,14 @@ require_once('C:/xampp/htdocs/Store/Controller/toolBox/commonMethod.php');
 
 $useBookTable = new Book();
 
-// $upFile = $_FILES['bookPhoto'];
-// var_dump($upFile);
-// move_uploaded_file($_FILES['bookPhoto']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/image/" . $_FILES['bookPhoto']['name']);
-
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     ## 檢查是否有空
     $tips = "";
-    $isAdd = false;
+    $isUpdate = false;
     if (!empty($_POST["bookName"]) && (!empty($_POST["bookAuthor"]))
         && (!empty($_POST["bookInfo"])) && (!empty($_POST["bookPrice"]))) {
         ## 檢查長度
+        $bookId = $_POST["bookId"];
         $bookName = $_POST["bookName"];
         $bookAuthor = $_POST["bookAuthor"];
         $bookInfo = $_POST["bookInfo"];
@@ -32,26 +29,35 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         } elseif (mb_strlen($bookPhoto, "utf-8") > 100) {
             $tips .= "圖檔名稱不可超過100字，您的檔名為" . mb_strlen($bookPhoto, "utf-8") . "字";
         } elseif ($tips === '') {
-            ## 限定上傳type
-            if ($_FILES["bookPhoto"]["type"] === "image/jpeg" || $_FILES["bookPhoto"]["type"] === "image/png") {
+            ## 如果有改圖片則進行圖片格式驗證，沒有更改bookPhoto會為空字串
+            if ($_FILES["bookPhoto"]["type"] === "image/jpeg" || $_FILES["bookPhoto"]["type"] === "image/png" || $bookPhoto === "" ) {
                 ## 防注入
                 $bookName = htmlentities($bookName, ENT_NOQUOTES, "UTF-8");
                 $bookAuthor = htmlentities($bookAuthor, ENT_NOQUOTES, "UTF-8");
                 $bookInfo = htmlentities($bookInfo, ENT_NOQUOTES, "UTF-8");
                 $bookPrice = htmlentities($bookPrice, ENT_NOQUOTES, "UTF-8");
                 $bookPhoto = htmlentities($bookPhoto, ENT_NOQUOTES, "UTF-8");
-                $insertArray = [
-                    'bookName' => $bookName, 
-                    'bookAuthor' => $bookAuthor, 
-                    'bookInfo' => $bookInfo,
-                    'bookPrice' => $bookPrice,
-                    'bookPhoto' => $bookPhoto
-                ];
-                $isInsert = $useBookTable->insert($insertArray);
+                if ($bookPhoto === "") {
+                    $updateArray = [
+                        'bookName' => $bookName, 
+                        'bookAuthor' => $bookAuthor, 
+                        'bookInfo' => $bookInfo,
+                        'bookPrice' => $bookPrice
+                    ];
+                } else {
+                    $updateArray = [
+                        'bookName' => $bookName, 
+                        'bookAuthor' => $bookAuthor, 
+                        'bookInfo' => $bookInfo,
+                        'bookPrice' => $bookPrice,
+                        'bookPhoto' => $bookPhoto
+                    ];
+                }
+                $isUpdate = $useBookTable->update($updateArray, $bookId);
                 ## 回傳
-                if ($isInsert === true) {
-                    $tips = "新增成功";
-                    $isAdd = true;
+                if ($isUpdate === true) {
+                    $tips = "編輯成功";
+                    $isUpdate = true;
                 } else {
                     $tips = "失敗，請重新操作一次";
                 }
@@ -65,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     ## 最後回傳請求
     echo json_encode(array(
-        'isAdd' => $isAdd,
+        'isUpdate' => $isUpdate,
         'tips' => $tips
     ));
 }

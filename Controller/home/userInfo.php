@@ -20,7 +20,7 @@ if (isset($memberData)) {
 }
 
 ## 獲得所有書單
-$bookObj = $useBookTable->getAll();
+$bookObj = $useBookTable->showAll();
 
 $smarty->assign('bookObj', $bookObj);
 $smarty->assign('memberData', $memberData);

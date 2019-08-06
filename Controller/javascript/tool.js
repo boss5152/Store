@@ -14,7 +14,6 @@ $(document).ready(function () {
     var bookAuthorOk = "";
     var bookInfoOk = "";
     var bookPriceOk = "";
-    var bookPhotoOk = "";
 
     $("#account").keyup(function () {
         var stringAccount = $("#account").val();
@@ -93,7 +92,7 @@ $(document).ready(function () {
         ((stringBookName.length > 0) && (stringBookName.length < 31))
             ? (bookNameOk = checkBookName(true))
             : (bookNameOk = checkBookName(false));
-        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk, bookPhotoOk);
+        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
     });
 
     // 作者
@@ -102,7 +101,7 @@ $(document).ready(function () {
         ((stringBookAuthor.length > 0) && (stringBookAuthor.length < 21))
             ? (bookAuthorOk = checkBookAuthor(true))
             : (bookAuthorOk = checkBookAuthor(false));
-        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk, bookPhotoOk);
+        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
 
     });
 
@@ -112,7 +111,7 @@ $(document).ready(function () {
         ((stringBookInfo.length > 0) && (stringBookInfo.length < 101))
             ? (bookInfoOk = checkBookInfo(true))
             : (bookInfoOk = checkBookInfo(false, stringBookInfo.length));
-        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk, bookPhotoOk);
+        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
 
     });
 
@@ -122,14 +121,8 @@ $(document).ready(function () {
         ((stringBookPrice.length > 0) && (stringBookPrice.length < 11) && (/[0-9]/.test(stringBookPrice)))
             ? (bookPriceOk = checkBookPrice(true))
             : (bookPriceOk = checkBookPrice(false));
-        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk, bookPhotoOk);
-
-    });
-
-    // 預覽圖
-    $("#bookPhoto").click(function () {
-        bookPhotoOk = true;
-        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk, bookPhotoOk);
+        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
+        checkUpdateBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
     });
 
 });
@@ -299,11 +292,20 @@ function checkAdminEditBtn(passwordOk, oldPasswordOk, adminKeyOk) {
 }
 
 //新增商品可不可以按
-function checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk, bookPhotoOk) {
-    if ((bookNameOk === true) && (bookAuthorOk === true) && (bookInfoOk === true) && (bookPriceOk === true) && (bookPhotoOk === true)) {
+function checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk) {
+    if ((bookNameOk === true) && (bookAuthorOk === true) && (bookInfoOk === true) && (bookPriceOk === true)) {
         $("#btnBookAdd").attr('disabled', false);
     } else {
         $("#btnBookAdd").attr('disabled', true);
+    }
+}
+
+//修改按鈕可不可以按
+function checkUpdateBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk) {
+    if ((bookNameOk === true) && (bookAuthorOk === true) && (bookInfoOk === true) && (bookPriceOk === true)) {
+        $("#btnActionBookUpdate").attr('disabled', false);
+    } else {
+        $("#btnActionBookUpdate").attr('disabled', true);
     }
 }
 
@@ -523,19 +525,92 @@ $(document).ready(function () {
 });
 
 /*
+ * 顯示新增商品頁面
+ */
+$(document).ready(function () {
+    $("#btnShowBookAdd").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/Store/Controller/admin/book/showAddBook.php",
+            data: {},
+            success: function (data) {
+                $("#mainModal").html(data);//要刷新的div
+                $("#modalAddBook").modal();
+            },
+            error: function () {
+                alert("錯誤請求");
+            }
+        })
+    })
+});
+
+/*
  * 新增商品
  */
-$("#btnBookAdd").click(function () {
-    var formData = new FormData(formAddBook);
+$(document).ready(function () {
+    $("#btnBookAdd").click(function () {
+        var formData = new FormData(formAddBook);
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/Store/Controller/admin/book/actionAddBook.php",
+            dataType: "json",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (data.isAdd === true) {
+                    alert(data.tips);
+                    location = location;
+                } else {
+                    alert(data.tips);
+                }
+            },
+            error: function () {
+                alert("錯誤請求");
+            }
+        })
+    })
+});
+
+/*
+ * 顯示修改商品資訊
+ */
+$(document).ready(function () {
+    $("button").click(function () {
+        if ((this.name) === "btnShowUpdateBook") {
+            var bookId = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/Store/Controller/admin/book/showUpdateBook.php",
+                data: {
+                    'bookId': bookId
+                },
+                success: function (data) {
+                    $("#mainModal").html(data);//要刷新的div
+                    $("#modelUpdateBook").modal();
+                },
+                error: function () {
+                    alert("錯誤請求");
+                }
+            })
+        }
+    });
+});
+
+/*
+ * 執行商品修改
+ */
+$("#btnActionBookUpdate").click(function () {
+    var formData = new FormData(formUpdateBook);
     $.ajax({
         type: "POST",
-        url: "http://localhost/Store/Controller/admin/book/addBook.php",
+        url: "http://localhost/Store/Controller/admin/book/actionUpdateBook.php",
         dataType: "json",
         data: formData,
         contentType: false,
         processData: false,
         success: function (data) {
-            if (data.isAdd === true) {
+            if (data.isUpdate === true) {
                 alert(data.tips);
                 location = location;
             } else {
@@ -548,31 +623,69 @@ $("#btnBookAdd").click(function () {
     })
 })
 
-/*
- * 顯示修改書本資訊
+/**
+ * 刪除商品
  */
 $(document).ready(function () {
     $("button").click(function () {
-        var bookId = $(this).val();
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/Store/Controller/admin/book/showUpdateBook.php",
-            data: {
-                'bookId': bookId
-            },
-            success: function (data) {
-                if (data) {
-                    $("#mainDiv").html(data);//要刷新的div
-                    $("#modelUpdateBook").modal();
-                } else {
-                    alert(data.tips);
-                }
-            },
-            error: function () {
-                alert("錯誤請求");
+        if ((this.name) === "btnDeleteBook") {
+            var bookId = $(this).val();
+            var goDelete = confirm("您確定要刪除這項商品嗎 ?");
+            if (goDelete === true) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/Store/Controller/admin/book/deleteBook.php",
+                    dataType: "json",
+                    data: {
+                        'bookId': bookId
+                    },
+                    success: function (data) {
+                        if (data.isDelete === true) {
+                            alert(data.tips);
+                            location = location;
+                        } else {
+                            alert(data.tips);
+                        }
+                    },
+                    error: function () {
+                        alert("錯誤請求");
+                    }
+                })
             }
-        })
+        }
     });
 });
+
+/**
+ * 加入購物車
+ */
+$(document).ready(function () {
+    $("button").click(function () {
+        if ((this.name) === "btnAddCart") {
+            var bookId = $(this).val();
+            $(this).attr("disabled", true);
+            $(this).html("已納入購物車");
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/Store/Controller/Cart/addCart.php",
+                dataType: "json",
+                data: {
+                    'bookId': bookId
+                },
+                success: function (data) {
+                    if (data.isAdd === true) {
+
+                    } else {
+                        alert(data.tips);
+                    }
+                },
+                error: function () {
+                    alert("錯誤請求");
+                }
+            })
+        }
+    })
+})
+
 
 

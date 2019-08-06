@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2019-08-06 04:42:12
+  from 'C:\xampp\htdocs\Store\Controller\templates\admin\book\addBook.html' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5d48e904c92721_60446662',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'd2b222c05bc3cb8f34f32cda80a3777bec5db15e' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\book\\addBook.html',
+      1 => 1565059330,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5d48e904c92721_60446662 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html>
 <!-- model -->
 
@@ -55,6 +78,9 @@
     </div>
 </body>
 
-<script src="http://localhost/Store/Controller/javascript/tool.js"></script>
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
+>
 
-</html>
+</html><?php }
+}
