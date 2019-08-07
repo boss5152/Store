@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2019 年 08 月 06 日 12:19
+-- 產生時間： 2019 年 08 月 07 日 12:47
 -- 伺服器版本： 10.1.40-MariaDB
 -- PHP 版本： 7.3.5
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`adminId`, `account`, `password`, `adminKey`, `token`) VALUES
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '0000', 66310);
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '0000', 76539);
 
 -- --------------------------------------------------------
 
@@ -68,11 +68,7 @@ INSERT INTO `book` (`bookId`, `bookName`, `bookAuthor`, `bookInfo`, `bookPrice`,
 (2, '像我這樣的一個女子', '西西', '讀西西作品，知道她不徒追求表面技巧，而能相體裁衣，深刻描繪這一代人的悲和喜、矛盾和困惑、懦弱和堅強、冷漠和寬容，左右出入而永遠充滿感性的衝擊。\r\n', 150, '20180420201403-1ucstxhcmhxs.jpg', '2019-08-05 16:03:22'),
 (3, '解憂雜貨店', '東野圭吾', '這裡不只賣日常生活用品，還提供消煩解憂的諮詢。困惑不安的你，糾結不已的你，歡迎來信討論心中的問題。', 50, 'getImage.jfif', '2019-08-05 16:03:23'),
 (4, '在咖啡冷掉之前', '川口俊和', '拜託了，請讓我回到那一天！「聽說來這裡，就能回到過去，是真的嗎？」', 50, 'showThumbnail.jfif', '2019-08-05 16:03:24'),
-(5, '哈利波特', 'J.K.羅琳', '在世界的另一個角落裡，有一個神秘的國度，裡面住滿了巫師，貓頭鷹是他們的信差，飛天掃帚是交通工具，西洋棋子會思考，幽靈頑皮鬼滿天飛，畫像裡的人還會跑出來串門子。', 100, 'magicstone.jfif', '2019-08-05 16:03:25'),
-(9, '111', '111', '111', 111, 'book.png', '2019-08-06 18:19:40'),
-(10, '222', '222', '222', 222, 'book.png', '2019-08-06 14:11:11'),
-(11, '333', '333', '333', 333, 'user_default_150x150.png', '2019-08-06 06:35:17'),
-(12, '444', '444', '444', 444, 'getImage.jfif', '2019-08-06 03:06:22');
+(5, '哈利波特', 'J.K.羅琳', '在世界的另一個角落裡，有一個神秘的國度，裡面住滿了巫師，貓頭鷹是他們的信差，飛天掃帚是交通工具，西洋棋子會思考，幽靈頑皮鬼滿天飛，畫像裡的人還會跑出來串門子。', 100, 'magicstone.jfif', '2019-08-05 16:03:25');
 
 -- --------------------------------------------------------
 
@@ -91,7 +87,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cartId`, `cartList`, `userId`) VALUES
-(1, '1,2,3,', 1),
+(1, '1,2,3,4,', 1),
 (2, '1', 2);
 
 -- --------------------------------------------------------
@@ -113,11 +109,35 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`userId`, `account`, `password`, `email`, `token`) VALUES
-(1, '111', '698d51a19d8a121ce581499d7b701668', '111@mail.com', 72928),
+(1, '111', '698d51a19d8a121ce581499d7b701668', '111@mail.com', 0),
 (2, '222', 'bcbe3365e6ac95ea2c0343a2395834dd', '222@mail.com', 78760),
 (4, '333', '310dcbbf4cce62f762a2aaa148d556bd', '333@mail.com', 0),
 (7, '444', '550a141f12de6341fba65b0ad0433500', '444@mail.com', 0),
 (14, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@mail.com', 0);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `orderbook`
+--
+
+CREATE TABLE `orderbook` (
+  `orderId` int(10) UNSIGNED NOT NULL,
+  `userAccount` int(50) NOT NULL,
+  `bookName` varchar(100) NOT NULL,
+  `bookPrice` int(10) UNSIGNED NOT NULL,
+  `buyCount` int(10) UNSIGNED NOT NULL,
+  `totalPrice` int(15) UNSIGNED NOT NULL,
+  `orderDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `orderbook`
+--
+
+INSERT INTO `orderbook` (`orderId`, `userAccount`, `bookName`, `bookPrice`, `buyCount`, `totalPrice`, `orderDate`) VALUES
+(1, 111, '解憂雜貨店', 50, 3, 150, '2019-08-07 16:28:03'),
+(2, 111, '狂人日記', 100, 2, 200, '2019-08-07 16:47:49');
 
 --
 -- 已傾印資料表的索引
@@ -148,6 +168,12 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`userId`);
 
 --
+-- 資料表索引 `orderbook`
+--
+ALTER TABLE `orderbook`
+  ADD PRIMARY KEY (`orderId`);
+
+--
 -- 在傾印的資料表使用自動增長(AUTO_INCREMENT)
 --
 
@@ -174,6 +200,12 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `member`
   MODIFY `userId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- 使用資料表自動增長(AUTO_INCREMENT) `orderbook`
+--
+ALTER TABLE `orderbook`
+  MODIFY `orderId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
