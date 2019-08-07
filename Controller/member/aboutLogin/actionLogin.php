@@ -1,6 +1,6 @@
 <?php
 
-require_once('../toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useMemberTable = new Member();
 

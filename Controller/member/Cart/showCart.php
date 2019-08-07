@@ -1,6 +1,6 @@
 <?php
 
-require_once('C:/xampp/htdocs/Store/Controller/toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useCartTable = new Cart();
 $useMemberTable = new Member();
@@ -33,5 +33,5 @@ if (isset($memberData)) {
 
 ## smarty
 $smarty->assign('cartListObj', $cartListObj);
-$smarty->display("../templates/home/header.html");
-$smarty->display('C:/xampp/htdocs/Store/Controller/templates/home/showCart.html');
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/home/header.html");
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/home/showCart.html");

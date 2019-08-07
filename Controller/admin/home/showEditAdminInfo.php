@@ -1,6 +1,6 @@
 <?php
 
-require_once('../toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useAdminTable = new Admin();
 
@@ -11,5 +11,5 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $adminData = $useAdminTable->getAll($token);
 
     $smarty->assign("adminData", $adminData);
-    $smarty->display("../templates/admin/home/showEditAdminInfo.html"); 
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/admin/aboutLogin/showEditAdminInfo.html"); 
 }

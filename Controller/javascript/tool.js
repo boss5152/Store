@@ -321,7 +321,7 @@ $(document).ready(function () {
         var email = $("#email").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/member/actionRegister.php",
+            url: "http://localhost/Store/Controller/member/aboutLogin/actionRegister.php",
             dataType: "json",
             data: {
                 'account': account,
@@ -353,7 +353,7 @@ $(document).ready(function () {
         var email = $("#email").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/member/actionLogin.php",
+            url: "http://localhost/Store/Controller/member/aboutLogin/actionLogin.php",
             dataType: "json",
             data: {
                 'account': account,
@@ -385,7 +385,7 @@ $(document).ready(function () {
         var adminKey = $("#adminKey").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/admin/actionAdminLogin.php",
+            url: "http://localhost/Store/Controller/admin/aboutLogin/actionAdminLogin.php",
             dataType: "json",
             data: {
                 'account': account,
@@ -395,7 +395,7 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.isAdminLogin === true) {
                     alert(data.tips);
-                    location = "http://localhost/Store/Controller/admin/adminHome.php";
+                    location = "http://localhost/Store/Controller/admin/home/adminHome.php";
                 } else {
                     alert(data.tips);
                 }
@@ -415,7 +415,7 @@ $(document).ready(function () {
         var token = $("#btnShowEditUserInfo").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/home/showEditUserInfo.php",
+            url: "http://localhost/Store/Controller/member/home/showEditUserInfo.php",
             data: {
                 'token': token
             },
@@ -443,7 +443,7 @@ $(document).ready(function () {
         var email = $("#email").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/home/actionEditUserInfo.php",
+            url: "http://localhost/Store/Controller/member/home/actionEditUserInfo.php",
             dataType: "json",
             data: {
                 'password': password,
@@ -473,7 +473,7 @@ $(document).ready(function () {
         var token = $("#bntShowOrderBook").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/home/showUserOrder.php",
+            url: "http://localhost/Store/Controller/member/home/showUserOrder.php",
             data: {
                 'token': token
             },
@@ -499,7 +499,7 @@ $(document).ready(function () {
         var token = $("#btnShowEditAdminInfo").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/admin/showEditAdminInfo.php",
+            url: "http://localhost/Store/Controller/admin/home/showEditAdminInfo.php",
             data: {
                 'token': token
             },
@@ -527,7 +527,7 @@ $(document).ready(function () {
         var adminKey = $("#adminKey").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/admin/actionEditAdminInfo.php",
+            url: "http://localhost/Store/Controller/admin/home/actionEditAdminInfo.php",
             dataType: "json",
             data: {
                 'password': password,
@@ -693,7 +693,7 @@ $(document).ready(function () {
             $(this).html("已納入購物車");
             $.ajax({
                 type: "POST",
-                url: "http://localhost/Store/Controller/Cart/addCart.php",
+                url: "http://localhost/Store/Controller/member/Cart/addCart.php",
                 dataType: "json",
                 data: {
                     'bookId': bookId
@@ -723,7 +723,7 @@ $(document).ready(function () {
             var buyCount = $("#buyCount" + bookId).val();
             $.ajax({
                 type: "POST",
-                url: "http://localhost/Store/Controller/Cart/buyBook.php",
+                url: "http://localhost/Store/Controller/member/Cart/buyBook.php",
                 dataType: "json",
                 data: {
                     'bookId': bookId,

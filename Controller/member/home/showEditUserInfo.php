@@ -1,6 +1,6 @@
 <?php
 
-require_once('../toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useMemberTable = new Member();
 
@@ -11,5 +11,5 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $memberData = $useMemberTable->getAll($token);
 
     $smarty->assign("memberData", $memberData);
-    $smarty->display("../templates/home/showEditUserInfo.html"); 
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/home/showEditUserInfo.html"); 
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-07 11:43:55
+/* Smarty version 3.1.33, created on 2019-08-07 15:35:40
   from 'C:\xampp\htdocs\Store\Controller\View\index\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4a9d5b308d64_37125876',
+  'unifunc' => 'content_5d4ad3ac44b5e1_55372557',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2af474e1fbdc97477a79582630decdf200a92d02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\index\\index.html',
-      1 => 1565154073,
+      1 => 1565184832,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4a9d5b308d64_37125876 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4ad3ac44b5e1_55372557 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
@@ -36,12 +36,6 @@ function content_5d4a9d5b308d64_37125876 (Smarty_Internal_Template $_smarty_tpl)
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
     <style>
-        /* Add a gray background color and some padding to the footer */
-        footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-        }
-
         .carousel-inner img {
             width: 100%;
             /* Set width to 100% */
@@ -217,10 +211,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </div>
         </div>
     </div><br>
-
-    <footer class="container-fluid text-center">
-        <p>Footer Text</p>
-    </footer>
 
 </body>
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once('../toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
-$smarty->display("../templates/member/header.html"); 
-$smarty->display("../templates/member/register.html"); 
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member//aboutLogin/header.html"); 
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member//aboutLogin/register.html"); 

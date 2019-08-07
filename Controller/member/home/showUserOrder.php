@@ -1,6 +1,6 @@
 <?php
 
-require_once('../toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useMemberTable = new Member();
 $useOrderBookTable = new OrderBook();
@@ -24,4 +24,4 @@ $orderBookObj = $useOrderBookTable->showAll();
 
 $smarty->assign('orderBookObj', $orderBookObj);
 $smarty->assign('memberData', $memberData);
-$smarty->display("../templates/home/showUserOrder.html");
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/home/showUserOrder.html");
