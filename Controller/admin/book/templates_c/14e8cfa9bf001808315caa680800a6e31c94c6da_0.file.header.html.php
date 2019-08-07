@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-06 04:30:10
+/* Smarty version 3.1.33, created on 2019-08-07 11:14:09
   from 'C:\xampp\htdocs\Store\Controller\templates\admin\book\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d48e6326bc840_98881547',
+  'unifunc' => 'content_5d4a9661168643_09382126',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '14e8cfa9bf001808315caa680800a6e31c94c6da' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\book\\header.html',
-      1 => 1565058609,
+      1 => 1565169245,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d48e6326bc840_98881547 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4a9661168643_09382126 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
@@ -55,6 +55,11 @@ function content_5d48e6326bc840_98881547 (Smarty_Internal_Template $_smarty_tpl)
                         <li><a href="/Store/Controller/home/userInfo.php">我的書櫃</a></li>
                         <li><a href="/Store/Controller/member/logout.php">登出</a></li>
                     </ul>
+                </li>
+                <li>
+                    <a href="/Store/Controller/admin/order/showOrder.php">
+                        <span class="glyphicon glyphicon-pencil"></span> 管理訂單
+                    </a>
                 </li>
             </ul>
         </div>

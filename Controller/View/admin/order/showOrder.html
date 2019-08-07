@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>商品清單</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+    td {
+        background-color: #FDF5E6;
+        text-align: center;
+    }
+</style>
+
+
+<body>
+    <!-- 菜單在header裡 -->
+    <div>
+        <table class="table">
+            <thead style="background-color: #AAAAAA">
+                <tr>
+                    <th style="text-align: center" class="col-md-1">用戶帳號</th>
+                    <th style="text-align: center" class="col-md-1">書名</th>
+                    <th style="text-align: center" class="col-md-1">單價</th>
+                    <th style="text-align: center" class="col-md-1">數量</th>
+                    <th style="text-align: center" class="col-md-1">總價</th>
+                    <th style="text-align: center" class="col-md-1">下單日期</th>
+                    <th style="text-align: center" class="col-md-1">修改</th>
+                    <th style="text-align: center" class="col-md-1">刪除</th>
+                </tr>
+            </thead>
+            <tbody class="List">
+                {{foreach $orderBookObj as $orderBookArrays}}
+                <tr>
+                    <td>
+                        {{$orderBookArrays['userAccount']}}
+                    </td>
+                    <td>
+                        {{$orderBookArrays['bookName']}}
+                    </td>
+                    <td>
+                        {{$orderBookArrays['bookPrice']}}
+                    </td>
+                    <td>
+                        {{$orderBookArrays['buyCount']}}
+                    </td>
+                    <td>
+                        {{$orderBookArrays['totalPrice']}}
+                    </td>
+                    <td>
+                        {{$orderBookArrays['orderDate']}}
+                    </td>
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-default" value="{{$bookArrays['bookId']}}"
+                            name="btnShowUpdateBook" id="btnShowUpdateBook">修改
+                        </button>
+                    </td>
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-default" value="{{$bookArrays['bookId']}}"
+                            name="btnDeleteBook" id="btnDeleteBook">刪除
+                        </button>
+                    </td>
+                </tr>
+                {{/foreach}}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

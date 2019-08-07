@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-07 07:01:14
-  from 'C:\xampp\htdocs\Store\Controller\templates\index\index.html' */
+/* Smarty version 3.1.33, created on 2019-08-07 11:43:55
+  from 'C:\xampp\htdocs\Store\Controller\View\index\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4a5b1ac59163_79788310',
+  'unifunc' => 'content_5d4a9d5b308d64_37125876',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '4a7d91ca4a9d5b1da461cd5c0b982e62ac40a7b4' => 
+    '2af474e1fbdc97477a79582630decdf200a92d02' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\index\\index.html',
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\index\\index.html',
       1 => 1565154073,
       2 => 'file',
     ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4a5b1ac59163_79788310 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4a9d5b308d64_37125876 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 

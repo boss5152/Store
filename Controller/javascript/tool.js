@@ -466,6 +466,32 @@ $(document).ready(function () {
 });
 
 /**
+ * 顯示使用者訂單
+ */
+$(document).ready(function () {
+    $("#bntShowOrderBook").click(function () {
+        var token = $("#bntShowOrderBook").val();
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/Store/Controller/home/showUserOrder.php",
+            data: {
+                'token': token
+            },
+            success: function (data) {
+                if (data) {
+                    $("#mainDiv").html(data);//要刷新的div
+                } else {
+                    alert(data.tips);
+                }
+            },
+            error: function () {
+                alert("錯誤請求");
+            }
+        })
+    })
+});
+
+/**
  * 顯示管理者編輯資訊
  */
 $(document).ready(function () {
@@ -687,5 +713,33 @@ $(document).ready(function () {
     })
 })
 
-
-
+/**
+ * 購買書本
+ */
+$(document).ready(function () {
+    $("button").click(function () {
+        if ((this.name) === "btnBuyBook") {
+            var bookId = $(this).val();
+            var buyCount = $("#buyCount" + bookId).val();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/Store/Controller/Cart/buyBook.php",
+                dataType: "json",
+                data: {
+                    'bookId': bookId,
+                    'buyCount': buyCount
+                },
+                success: function (data) {
+                    if (data.isBuy === true) {
+                        alert(data.tips);
+                    } else {
+                        alert(data.tips);
+                    }
+                },
+                error: function () {
+                    alert("錯誤請求");
+                }
+            })
+        }
+    })
+})

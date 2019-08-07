@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+
+<head>
+    <title>購物車</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 菜單在header裡 -->
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h1>您的購物清單</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-3 text-center">
+        <div class="col">
+            {{foreach $cartListObj as $cartListArray}}
+                <div class="col-sm-3">
+                    <div style="display: flex;" class="well">
+                        <div>
+                        <img src="/Store/Controller/image/{{$cartListArray['bookPhoto']}}" class="img-responsive"
+                            style="height: 150pt; width:140pt" alt="Image">
+                        </div>
+                        <div class="col-sm-8">
+                            <h4>{{$cartListArray['bookAuthor']}}</h4>
+                            <h4>《{{$cartListArray['bookName']}}》</h4>
+                            <h4>價格 : {{$cartListArray['bookPrice']}}</h4>
+                            <h4>數量 : 
+                                <input type="text" style="height: 30px; width:50px; border: black solid; text-align: center"
+                                    maxlength="2" id="buyCount{{$cartListArray['bookId']}}" name="buyCount{{$cartListArray['bookId']}}" value="1"></h4>
+                            <button type="button" class="btn btn-success col" id="btnBuyBook" name="btnBuyBook" value="{{$cartListArray['bookId']}}">訂購</button>
+                            <button type="button" class="btn btn-danger">刪除</button>
+                        </div>
+                    </div>
+                </div>
+            {{/foreach}}
+        </div>
+    </div><br><br>
+</body>
+
+<script src="http://localhost/Store/Controller/javascript/tool.js"></script>
+
+</html>
