@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-07 15:35:40
+/* Smarty version 3.1.33, created on 2019-08-08 06:58:08
   from 'C:\xampp\htdocs\Store\Controller\View\index\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4ad3ac44b5e1_55372557',
+  'unifunc' => 'content_5d4babe0ca53c2_24924922',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2af474e1fbdc97477a79582630decdf200a92d02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\index\\index.html',
-      1 => 1565184832,
+      1 => 1565240288,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4ad3ac44b5e1_55372557 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4babe0ca53c2_24924922 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
@@ -161,13 +161,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['newBookArray']->value) {
                 <?php if (isset($_smarty_tpl->tpl_vars['newBookArray']->value['isAddCart'])) {?>
                     <?php if ($_smarty_tpl->tpl_vars['newBookArray']->value['isAddCart'] === true) {?>
                         <button type="button" class="btn btn-success" disabled="true">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> 已納入購物車
+                            已納入購物車
                         </button>
                     <?php } else { ?>
                         <button type="button" class="btn btn-success" value="<?php echo $_smarty_tpl->tpl_vars['newBookArray']->value['bookId'];?>
 " id="btnAddCart"
                             name="btnAddCart">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> 加入購物車
+                            加入購物車
                         </button>
                     <?php }?>
                 <?php }?>

@@ -1,6 +1,6 @@
 <?php
 
-require_once('../toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useAdminTable = new Admin();
 
@@ -18,5 +18,5 @@ if (isset($adminData)) {
     $smarty->assign('account', $adminData['account']);
 }
 
-$smarty->display("../../templates/admin/home/header.html");
-$smarty->display("../../templates/admin/home/adminHome.html");
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/admin/home/header.html");
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/admin/home/adminHome.html");

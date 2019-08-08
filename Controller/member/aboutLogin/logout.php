@@ -8,4 +8,4 @@ $useMemberTable->logout($token);
 
 setcookie("token", "", time()-3600, "/");
 
-header("Location: ../index/index.php?");
+header($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/index/index.php?");

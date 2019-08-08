@@ -126,12 +126,12 @@
                 {{if isset($newBookArray['isAddCart'])}}
                     {{if $newBookArray['isAddCart'] === true}}
                         <button type="button" class="btn btn-success" disabled="true">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> 已納入購物車
+                            已納入購物車
                         </button>
                     {{else}}
                         <button type="button" class="btn btn-success" value="{{$newBookArray['bookId']}}" id="btnAddCart"
                             name="btnAddCart">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> 加入購物車
+                            加入購物車
                         </button>
                     {{/if}}
                 {{/if}}

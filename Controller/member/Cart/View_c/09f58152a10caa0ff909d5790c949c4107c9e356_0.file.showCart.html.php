@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-07 10:47:46
-  from 'C:\xampp\htdocs\Store\Controller\templates\home\showCart.html' */
+/* Smarty version 3.1.33, created on 2019-08-08 06:22:29
+  from 'C:\xampp\htdocs\Store\Controller\View\member\cart\showCart.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4a9032b6e8d6_65161692',
+  'unifunc' => 'content_5d4ba385986777_04232748',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '609c402391a04de80ace1ef32975cb03355087de' => 
+    '09f58152a10caa0ff909d5790c949c4107c9e356' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\home\\showCart.html',
-      1 => 1565167445,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\cart\\showCart.html',
+      1 => 1565237897,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4a9032b6e8d6_65161692 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4ba385986777_04232748 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
@@ -49,32 +49,33 @@ function content_5d4a9032b6e8d6_65161692 (Smarty_Internal_Template $_smarty_tpl)
     <div class="container-fluid bg-3 text-center">
         <div class="col">
             <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['cartListObj']->value, 'cartListArray');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['userCartListArrays']->value, 'usercartListArray');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['cartListArray']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['usercartListArray']->value) {
 ?>
                 <div class="col-sm-3">
                     <div style="display: flex;" class="well">
                         <div>
-                        <img src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['cartListArray']->value['bookPhoto'];?>
+                        <img src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['usercartListArray']->value['bookPhoto'];?>
 " class="img-responsive"
                             style="height: 150pt; width:140pt" alt="Image">
                         </div>
                         <div class="col-sm-8">
-                            <h4><?php echo $_smarty_tpl->tpl_vars['cartListArray']->value['bookAuthor'];?>
+                            <h4><?php echo $_smarty_tpl->tpl_vars['usercartListArray']->value['bookAuthor'];?>
 </h4>
-                            <h4>《<?php echo $_smarty_tpl->tpl_vars['cartListArray']->value['bookName'];?>
+                            <h4>《<?php echo $_smarty_tpl->tpl_vars['usercartListArray']->value['bookName'];?>
 》</h4>
-                            <h4>價格 : <?php echo $_smarty_tpl->tpl_vars['cartListArray']->value['bookPrice'];?>
+                            <h4>價格 : <?php echo $_smarty_tpl->tpl_vars['usercartListArray']->value['bookPrice'];?>
 </h4>
                             <h4>數量 : 
                                 <input type="text" style="height: 30px; width:50px; border: black solid; text-align: center"
-                                    maxlength="2" id="buyCount<?php echo $_smarty_tpl->tpl_vars['cartListArray']->value['bookId'];?>
-" name="buyCount<?php echo $_smarty_tpl->tpl_vars['cartListArray']->value['bookId'];?>
+                                    maxlength="2" id="buyCount<?php echo $_smarty_tpl->tpl_vars['usercartListArray']->value['bookId'];?>
+" name="buyCount<?php echo $_smarty_tpl->tpl_vars['usercartListArray']->value['bookId'];?>
 " value="1"></h4>
-                            <button type="button" class="btn btn-success col" id="btnBuyBook" name="btnBuyBook" value="<?php echo $_smarty_tpl->tpl_vars['cartListArray']->value['bookId'];?>
+                            <button type="button" class="btn btn-success col" id="btnBuyBook" name="btnBuyBook" value="<?php echo $_smarty_tpl->tpl_vars['usercartListArray']->value['bookId'];?>
 ">訂購</button>
-                            <button type="button" class="btn btn-danger">刪除</button>
+                            <button type="button" class="btn btn-danger" id="btnDeleteCart" name="btnDeleteCart" value="<?php echo $_smarty_tpl->tpl_vars['usercartListArray']->value['bookId'];?>
+">刪除</button>
                         </div>
                     </div>
                 </div>

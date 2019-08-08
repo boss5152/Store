@@ -14,15 +14,9 @@ if (isset($_COOKIE['token'])) {
         ## 取資料用於顯示meun暱稱
         $memberData = $useMemberTable->getAll($token);
         ## 取購物車資料表判斷
-        $cartData = $useCartTable->getCartList($memberData['userId']);
-        ## 將購物清單取出
-        $cartList = $cartData['cartList'];
-        ## 去掉最後一個逗點
-        $cartList = substr($cartList, 0, -1);
-        ## 支解成陣列
-        $cartListArray = explode(",", $cartList);
+        $cartListArray = $useCartTable->getCartList($memberData['userId']);
         ## 去資料庫抓出
-        $cartListObj = $useBookTable->showCartList($cartListArray);        
+        $userCartListArrays = $useBookTable->showUserCartList($cartListArray);   
     }
 }
 
@@ -32,6 +26,6 @@ if (isset($memberData)) {
 }
 
 ## smarty
-$smarty->assign('cartListObj', $cartListObj);
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/home/header.html");
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/home/showCart.html");
+$smarty->assign('userCartListArrays', $userCartListArrays);
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/cart/header.html");
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/cart/showCart.html");

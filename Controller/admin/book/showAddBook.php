@@ -1,5 +1,5 @@
 <?php
     
-require_once('C:/xampp/htdocs/Store/Controller/toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
-$smarty->display('C:/xampp/htdocs/Store/Controller/templates/admin/book/addBook.html');
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/templates/admin/book/addBook.html');

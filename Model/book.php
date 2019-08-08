@@ -4,7 +4,12 @@ require_once("ConnectDb.php");
 
 class Book extends ConnectDb
 {
-    //新增
+
+    private $resultArray = [];
+
+    /*
+     * 新增
+     */
     public function insert($array)
     {
         $field = '';
@@ -24,7 +29,9 @@ class Book extends ConnectDb
         return ($result === true) ? true : false ;
     }
 
-    //修改
+    /*
+     * 修改
+     */
     public function update($array, $bookId)
     {
         $update = '';
@@ -39,7 +46,9 @@ class Book extends ConnectDb
         return ($result === true) ? true : false;
     }
 
-    //刪除
+    /*
+     * 刪除
+     */
     public function delete($bookId)
     {
         $sql = "DELETE FROM Book WHERE bookId = $bookId";
@@ -75,13 +84,16 @@ class Book extends ConnectDb
     {
         $sql = "SELECT * FROM Book ORDER BY releaseDate LIMIT 0,$count";
         $result = $this->executeSql($sql);
-        return $result;
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }
+        return $this->resultArray;
     }
 
-    /**
+    /*
      * 顯示購物車所有書單
      */
-    public function showCartList($array)
+    public function showUserCartList($array)
     {
         $select = '';
         foreach($array as $value){
@@ -91,7 +103,10 @@ class Book extends ConnectDb
         $select = substr($select, 0, -4);
         $sql = "SELECT * FROM book WHERE $select";
         $result = $this->executeSql($sql);
-        return $result;
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }
+        return $this->resultArray;
     }
 
 }

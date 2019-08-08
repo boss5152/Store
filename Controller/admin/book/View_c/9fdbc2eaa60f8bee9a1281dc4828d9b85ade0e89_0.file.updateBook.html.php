@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-06 05:08:50
-  from 'C:\xampp\htdocs\Store\Controller\templates\admin\book\updateBook.html' */
+/* Smarty version 3.1.33, created on 2019-08-08 03:32:13
+  from 'C:\xampp\htdocs\Store\Controller\View\admin\book\updateBook.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d48ef428c4965_63570600',
+  'unifunc' => 'content_5d4b7b9dd00875_22246952',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '1b2e8d65cd00665bd9566f504870ff15cc37b3a6' => 
+    '9fdbc2eaa60f8bee9a1281dc4828d9b85ade0e89' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\book\\updateBook.html',
-      1 => 1565060913,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\book\\updateBook.html',
+      1 => 1565227931,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d48ef428c4965_63570600 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4b7b9dd00875_22246952 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <!-- model -->
@@ -74,7 +74,7 @@ function content_5d48ef428c4965_63570600 (Smarty_Internal_Template $_smarty_tpl)
                                 </label>
                                 <br>
                                 <img id="bookPhotoDemo" src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookPhoto'];?>
-">
+" height="150" width="130">
                                 <p id="tipsbookPhoto"></p>
                             </div>
                         </form>
@@ -90,9 +90,9 @@ function content_5d48ef428c4965_63570600 (Smarty_Internal_Template $_smarty_tpl)
     </div>
 </body>
 
-<?php echo '<script'; ?>
+<!-- <?php echo '<script'; ?>
  src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
->
+> -->
 
 </html><?php }
 }

@@ -1,6 +1,6 @@
 <?php
     
-require_once('C:/xampp/htdocs/Store/Controller/toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useBookTable = new Book();
 
@@ -8,4 +8,4 @@ $bookId = $_POST['bookId'];
 $bookArray = $useBookTable->getAll($bookId);
 
 $smarty->assign('bookArray', $bookArray);
-$smarty->display('C:/xampp/htdocs/Store/Controller/templates/admin/book/updateBook.html');
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/View/admin/book/updateBook.html');

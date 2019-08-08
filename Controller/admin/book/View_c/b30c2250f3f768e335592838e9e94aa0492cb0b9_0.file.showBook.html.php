@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-06 05:20:18
-  from 'C:\xampp\htdocs\Store\Controller\templates\admin\book\showBook.html' */
+/* Smarty version 3.1.33, created on 2019-08-08 03:11:32
+  from 'C:\xampp\htdocs\Store\Controller\View\admin\book\showBook.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d48f1f2e86177_34982221',
+  'unifunc' => 'content_5d4b76c4c522c1_72466531',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '7119757407507696795575bbbf027826780029b1' => 
+    'b30c2250f3f768e335592838e9e94aa0492cb0b9' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\admin\\book\\showBook.html',
-      1 => 1565061618,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\book\\showBook.html',
+      1 => 1565225872,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d48f1f2e86177_34982221 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4b76c4c522c1_72466531 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 

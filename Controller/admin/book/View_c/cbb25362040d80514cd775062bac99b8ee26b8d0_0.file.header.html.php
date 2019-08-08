@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-02 08:23:40
-  from 'C:\xampp\htdocs\Store\Controller\templates\member\header.html' */
+/* Smarty version 3.1.33, created on 2019-08-08 03:11:32
+  from 'C:\xampp\htdocs\Store\Controller\View\admin\book\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d43d6ec28a063_39291126',
+  'unifunc' => 'content_5d4b76c4c2fce7_92938327',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '5e1eb40680cb6dd37cc25366877ac67aff1aedeb' => 
+    'cbb25362040d80514cd775062bac99b8ee26b8d0' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\member\\header.html',
-      1 => 1564727015,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\book\\header.html',
+      1 => 1565225872,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d43d6ec28a063_39291126 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4b76c4c2fce7_92938327 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="">Welcome</a>
-        </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/Store/Controller/index/index.php">去購物</a></li>
-            </ul>
             <ul class="nav navbar-nav">
                 <form class="navbar-form" role="search">
                     <div class="form-group input-group">
@@ -45,6 +39,12 @@ function content_5d43d6ec28a063_39291126 (Smarty_Internal_Template $_smarty_tpl)
                 </form>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <!-- model -->
+                <li>
+                    <a role="button" class="btn" name="btnShowBookAdd" id="btnShowBookAdd">
+                        <span class="glyphicon glyphicon-plus"></span> 新書上架
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <span class="glyphicon glyphicon-user"></span>
@@ -52,14 +52,13 @@ function content_5d43d6ec28a063_39291126 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Store/Controller/member/showRegister.php">註冊</a></li>
-                        <li><a href="/Store/Controller/member/showlogin.php">登入</a></li>
-                        <li><a href="/Store/Controller/admin/showAdminlogin.php">我是管理者</a></li>
+                        <li><a href="/Store/Controller/home/userInfo.php">我的書櫃</a></li>
+                        <li><a href="/Store/Controller/member/logout.php">登出</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/Store/Controller/templates/member/myCar.html">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> 我的購物車
+                    <a href="/Store/Controller/admin/order/showOrder.php">
+                        <span class="glyphicon glyphicon-pencil"></span> 管理訂單
                     </a>
                 </li>
             </ul>

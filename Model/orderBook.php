@@ -64,6 +64,16 @@ class OrderBook extends ConnectDb
     }
 
     /*
+     * 顯示對應使用者訂單
+     */
+    public function showUserOrder($userId)
+    {
+        $sql = "SELECT * FROM OrderBook WHERE userId = '" . $userId . "'";
+        $result = $this->executeSql($sql);
+        return $result;
+    }
+
+    /*
      * 獲得全部
      */
     public function getAll($bookId)
@@ -75,19 +85,8 @@ class OrderBook extends ConnectDb
     }
 
     /**
-     * 顯示購物車所有書單
+     * 展示銷售排行
      */
-    public function showCartList($array)
-    {
-        $select = '';
-        foreach($array as $value){
-            $select .= "bookid = '" . $value . "' OR ";
-        }
-        ## 去掉最後的OR與兩邊空白
-        $select = substr($select, 0, -4);
-        $sql = "SELECT * FROM OrderBook WHERE $select";
-        $result = $this->executeSql($sql);
-        return $result;
-    }
+
 
 }

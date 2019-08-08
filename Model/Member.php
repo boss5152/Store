@@ -83,8 +83,6 @@ class Member extends ConnectDb
 
     /*
      * 取資料
-     * 用於顯示於html讓使用者知道自己名稱
-     * 用於登入時給資料讓token存進對應user
      */
     public function getAll($token){
         $sql = "SELECT * FROM member WHERE token = " . $token;

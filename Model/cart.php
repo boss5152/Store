@@ -4,19 +4,42 @@ require_once("ConnectDb.php");
 
 class Cart extends ConnectDb
 {
-    //新增，會員一註冊完就給一台購物車
-    public function insert($userId)
+    private $resultArray = [];
+    /*
+     * 新增
+     */
+    public function insert($array)
     {
+        $fieldName = '';
+        $fieldValue = '';
+        foreach($array as $key => $value){
+            $fieldName .= "" . $key . ",";
+            $fieldValue .= "'" . $value . "',";
+        }
+        $fieldName = substr($fieldName, 0, -1);
+        $fieldValue = substr($fieldValue, 0, -1);
         //執行
-        $sql = "INSERT INTO Cart (userId) VALUES ($userId)";
+        $sql = "INSERT INTO Cart ($fieldName) VALUES ($fieldValue)";
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false ;
     }
 
-    // 加入，或單筆結帳都會用到
+    /*
+     * 更新
+     */
     public function update($cartList, $userId)
     {
         $sql = "UPDATE Cart set cartList = '" . $cartList . "' WHERE userId = $userId";
+        $result = $this->executeSql($sql);
+        return ($result === true) ? true : false;
+    }
+
+    /*
+     * 刪除 
+     */
+    public function delete($bookId)
+    {
+        $sql = "DELETE FROM Cart WHERE bookId = $bookId";
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false;
     }
@@ -36,10 +59,16 @@ class Cart extends ConnectDb
      */
     public function getCartList($userId)
     {
-        $sql = "SELECT cartList FROM Cart WHERE userId = '" . $userId . "'";
+        $sql = "SELECT bookId FROM Cart WHERE userId = '" . $userId . "'";
         $result = $this->executeSql($sql);
-        $row_result = mysqli_fetch_assoc($result);
-        return $row_result;
+        $resultDoubleArray = mysqli_fetch_all($result);
+        ## 把二維拆一維，然後重組成一個key=>bookId的一維陣列
+        foreach ($resultDoubleArray as $resultSingleArray) {
+            foreach ($resultSingleArray as $value) {
+                array_push($this->resultArray, $value);
+            }
+        }
+        return $this->resultArray;
     }
 
 }

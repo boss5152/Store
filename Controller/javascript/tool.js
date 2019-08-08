@@ -693,7 +693,7 @@ $(document).ready(function () {
             $(this).html("已納入購物車");
             $.ajax({
                 type: "POST",
-                url: "http://localhost/Store/Controller/member/Cart/addCart.php",
+                url: "http://localhost/Store/Controller/member/cart/addCart.php",
                 dataType: "json",
                 data: {
                     'bookId': bookId
@@ -723,7 +723,7 @@ $(document).ready(function () {
             var buyCount = $("#buyCount" + bookId).val();
             $.ajax({
                 type: "POST",
-                url: "http://localhost/Store/Controller/member/Cart/buyBook.php",
+                url: "http://localhost/Store/Controller/member/cart/buyBook.php",
                 dataType: "json",
                 data: {
                     'bookId': bookId,
@@ -743,3 +743,36 @@ $(document).ready(function () {
         }
     })
 })
+
+/**
+ * 刪除購物車品項
+ */
+$(document).ready(function () {
+    $("button").click(function () {
+        if ((this.name) === "btnDeleteCart") {
+            var bookId = $(this).val();
+            var goDelete = confirm("您確定要將這項商品移除購物車嗎 ?");
+            if (goDelete === true) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/Store/Controller/member/cart/deleteCart.php",
+                    dataType: "json",
+                    data: {
+                        'bookId': bookId
+                    },
+                    success: function (data) {
+                        if (data.isDelete === true) {
+                            alert(data.tips);
+                            location = location;
+                        } else {
+                            alert(data.tips);
+                        }
+                    },
+                    error: function () {
+                        alert("錯誤請求");
+                    }
+                })
+            }
+        }
+    });
+});

@@ -5,47 +5,36 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod
 $useMemberTable = new Member();
 $useBookTable = new Book();
 $useCartTable = new Cart();
+$useOrderBookTable = new OrderBook();
 $useCommonMethod = new CommonMethod();
 
 ## 新書上榜部分
-$newBookObj = $useBookTable->getLimit(4);
+$bookArrays = $useBookTable->getLimit(4);
 
-## 驗證登入
+## 暢銷排行部分
+// $useOrderBook = $useOrderBook->
+
 $isLogin = $useCommonMethod->checkLogin();
 
 if ($isLogin === true) {
-    ## 取token
+
     $token = $_COOKIE['token'];
-    ## 取資料用於顯示meun暱稱
     $memberData = $useMemberTable->getAll($token);
-    ## 取購物車資料表判斷
-    $cartData = $useCartTable->getCartList($memberData['userId']);
-    ## 將購物清單取出
-    $cartList = $cartData['cartList'];
-    ## 支解成陣列，再丟給前端做比對
-    $cartListArray = explode(",", $cartList);       
+    $cartListArray = $useCartTable->getCartList($memberData['userId']);
     ## 這邊拆解查詢物件重組成一個二維陣列，並在其中裝上一個bool值來給前端button判斷給不給按
     $newBookArrays = [];
-    foreach ($newBookObj as $key => $newBookArray) {
-        foreach ($cartListArray as $cartSingle) {
-            if ($newBookArray['bookId'] === $cartSingle) {
-                $newBookArray['isAddCart'] = true;
-                break;
-            } else {
-                $newBookArray['isAddCart'] = false ;
-            } 
-        }
+    foreach ($bookArrays as $newBookArray) {
+        $newBookArray['isAddCart'] = (in_array($newBookArray['bookId'], $cartListArray)) ? true : false;
         array_push($newBookArrays, $newBookArray); 
     }
-    ## smarty
+    ## 有登入給能顯示購物車的版本
     $smarty->assign('newBookArrays', $newBookArrays);
+    ## 顯示左上角ID
+    $smarty->assign('account', $memberData['account']);
 } else {
-    $smarty->assign('newBookArrays', $newBookObj);
+    ## 沒登入給不能顯示購物車的版本
+    $smarty->assign('newBookArrays', $bookArrays);
 }
 
-## 顯示左上角ID
-if (isset($memberData)) {
-    $smarty->assign('account', $memberData['account']);
-}
 $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/index/header.html"); 
 $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/index/index.html"); 

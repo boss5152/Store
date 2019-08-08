@@ -21,22 +21,22 @@
 
     <div class="container-fluid bg-3 text-center">
         <div class="col">
-            {{foreach $cartListObj as $cartListArray}}
+            {{foreach $userCartListArrays as $usercartListArray}}
                 <div class="col-sm-3">
                     <div style="display: flex;" class="well">
                         <div>
-                        <img src="/Store/Controller/image/{{$cartListArray['bookPhoto']}}" class="img-responsive"
+                        <img src="/Store/Controller/image/{{$usercartListArray['bookPhoto']}}" class="img-responsive"
                             style="height: 150pt; width:140pt" alt="Image">
                         </div>
                         <div class="col-sm-8">
-                            <h4>{{$cartListArray['bookAuthor']}}</h4>
-                            <h4>《{{$cartListArray['bookName']}}》</h4>
-                            <h4>價格 : {{$cartListArray['bookPrice']}}</h4>
+                            <h4>{{$usercartListArray['bookAuthor']}}</h4>
+                            <h4>《{{$usercartListArray['bookName']}}》</h4>
+                            <h4>價格 : {{$usercartListArray['bookPrice']}}</h4>
                             <h4>數量 : 
                                 <input type="text" style="height: 30px; width:50px; border: black solid; text-align: center"
-                                    maxlength="2" id="buyCount{{$cartListArray['bookId']}}" name="buyCount{{$cartListArray['bookId']}}" value="1"></h4>
-                            <button type="button" class="btn btn-success col" id="btnBuyBook" name="btnBuyBook" value="{{$cartListArray['bookId']}}">訂購</button>
-                            <button type="button" class="btn btn-danger">刪除</button>
+                                    maxlength="2" id="buyCount{{$usercartListArray['bookId']}}" name="buyCount{{$usercartListArray['bookId']}}" value="1"></h4>
+                            <button type="button" class="btn btn-success col" id="btnBuyBook" name="btnBuyBook" value="{{$usercartListArray['bookId']}}">訂購</button>
+                            <button type="button" class="btn btn-danger" id="btnDeleteCart" name="btnDeleteCart" value="{{$usercartListArray['bookId']}}">刪除</button>
                         </div>
                     </div>
                 </div>
