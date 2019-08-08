@@ -1,6 +1,6 @@
 <?php
 
-require_once('C:/xampp/htdocs/Store/Controller/toolBox/commonMethod.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useMemberTable = new Member();
 $useBookTable = new Book();
@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     ## 驗證登入
     if (isset($_COOKIE['token'])) {
         $token = $_COOKIE['token'];
+        $tips = "";
+        $isBuy = false;
         $checkToken = $useMemberTable->checkToken($token);
         if ($checkToken === true) {
             ## 取資料用於存入userId
@@ -23,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $totalPrice = $bookData['bookPrice'] * $buyCount;
             ## 存入訂單資料庫
             $arrayBuyBook = [
-                'userId' => $memberData['userId'],
+                'userAccount' => $memberData['account'],
                 'bookName' => $bookData['bookName'],
                 'bookPrice' => $bookData['bookPrice'],
                 'buyCount' => $buyCount,

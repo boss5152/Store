@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-07 10:26:55
-  from 'C:\xampp\htdocs\Store\Controller\templates\home\header.html' */
+/* Smarty version 3.1.33, created on 2019-08-08 15:40:37
+  from 'C:\xampp\htdocs\Store\Controller\View\member\cart\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4a8b4fc9c1f0_42147949',
+  'unifunc' => 'content_5d4c265582d4e4_86463473',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '17d5a82d8c1e247d0ff9321e0ec1b181609a8aeb' => 
+    '33589aeb60feab02096511316be8e2348a89046d' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\templates\\home\\header.html',
-      1 => 1565166413,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\cart\\header.html',
+      1 => 1565271619,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4a8b4fc9c1f0_42147949 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4c265582d4e4_86463473 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
@@ -58,8 +58,8 @@ function content_5d4a8b4fc9c1f0_42147949 (Smarty_Internal_Template $_smarty_tpl)
                     </a>
                     <ul class="dropdown-menu">
                         <?php if (isset($_smarty_tpl->tpl_vars['account']->value)) {?>
-                        <li><a href="/Store/Controller/home/userInfo.php">我的書櫃</a></li>
-                        <li><a href="/Store/Controller/member/logout.php">登出</a></li>
+                        <li><a href="/Store/Controller/member/home/userInfo.php">我的書櫃</a></li>
+                        <li><a type="button" id="btnLogout" name="btnLogout">登出</a></li>
                         <?php } else { ?>
                         <li><a href="/Store/Controller/member/showRegister.php">註冊</a></li>
                         <li><a href="/Store/Controller/member/showlogin.php">登入</a></li>
@@ -67,7 +67,7 @@ function content_5d4a8b4fc9c1f0_42147949 (Smarty_Internal_Template $_smarty_tpl)
                     </ul>
                 </li>
                 <li>
-                    <a href="/Store/Controller/Cart/showCart.php">
+                    <a href="/Store/Controller/member/cart/showCart.php">
                         <span class="glyphicon glyphicon-shopping-cart"></span> 我的購物車
                     </a>
                 </li>

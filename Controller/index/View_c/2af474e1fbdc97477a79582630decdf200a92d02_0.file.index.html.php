@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-08 06:58:08
+/* Smarty version 3.1.33, created on 2019-08-08 14:42:17
   from 'C:\xampp\htdocs\Store\Controller\View\index\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4babe0ca53c2_24924922',
+  'unifunc' => 'content_5d4c18a9146d73_42389302',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2af474e1fbdc97477a79582630decdf200a92d02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\index\\index.html',
-      1 => 1565240288,
+      1 => 1565268133,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4babe0ca53c2_24924922 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4c18a9146d73_42389302 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
@@ -180,37 +180,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
         <hr>
     </div>
-
-    <div class="container text-center">
-        <h3>店長推薦</h3>
-        <br>
-        <div class="row">
-            <div class="col-sm-2">
-                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                <p>Partner 1</p>
-            </div>
-            <div class="col-sm-2">
-                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                <p>Partner 2</p>
-            </div>
-            <div class="col-sm-2">
-                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                <p>Partner 3</p>
-            </div>
-            <div class="col-sm-2">
-                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                <p>Partner 4</p>
-            </div>
-            <div class="col-sm-2">
-                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                <p>Partner 5</p>
-            </div>
-            <div class="col-sm-2">
-                <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-                <p>Partner 6</p>
-            </div>
-        </div>
-    </div><br>
 
 </body>
 

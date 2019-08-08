@@ -22,6 +22,7 @@ class OrderBook extends ConnectDb
         $value = substr($value, 0, -1);
         ## 執行
         $sql = "INSERT INTO OrderBook ($field) VALUES ($value)";
+        // echo $sql;
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false ;
     }

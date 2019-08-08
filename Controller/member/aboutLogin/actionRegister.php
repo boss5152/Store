@@ -4,11 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod
 
 $useMemberTable = new Member();
 
-parse_str(file_get_contents('php://input'), $data);
-var_dump($data);
-
-exit;
-if ($_SERVER['REQUEST_METHOD'] === "DELETE") {
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $tips = "";
     $isRegister = false;
     ##檢查是否有空

@@ -6,3 +6,9 @@
 5. 產品管理
 
 C:/xampp/htdocs/Store/Controller/
+
+
+parse_str(file_get_contents('php://input'), $data);
+var_dump($data);
+
+exit;

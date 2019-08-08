@@ -35,7 +35,7 @@
                     <ul class="dropdown-menu">
                         {{if isset($account)}}
                         <li><a href="/Store/Controller/member/home/userInfo.php">我的書櫃</a></li>
-                        <li><a href="/Store/Controller/member/aboutLogin/logout.php">登出</a></li>
+                        <li><a type="button" id="btnLogout" name="btnLogout">登出</a></li>
                         {{else}}
                         <li><a href="/Store/Controller/member/aboutLogin/showRegister.php">註冊</a></li>
                         <li><a href="/Store/Controller/member/aboutLogin/showlogin.php">登入</a></li>

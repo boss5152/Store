@@ -3,9 +3,23 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useMemberTable = new Member();
-$token = $_COOKIE['token'];
-$useMemberTable->logout($token);
 
-setcookie("token", "", time()-3600, "/");
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $tips = "";
+    $isLogout = false;
+    $token = $_COOKIE['token'];
+    $checkLogout = $useMemberTable->logout($token);
+    if ($checkLogout === true) {
+        setcookie("token", "", time()-3600, "/");
+        $tips = "登出成功";
+        $isLogout = true;
+    } else {
+        $tips = "登出失敗，請重新操作";
+    }
 
-header($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/index/index.php?");
+    echo json_encode(array(
+        'isLogout' => $isLogout,
+        'tips' => $tips
+    ));    
+
+}

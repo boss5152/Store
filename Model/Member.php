@@ -142,7 +142,7 @@ class Member extends ConnectDb
     public function logout($token){
         $sql = "UPDATE member set token = 0 WHERE token = $token";
         $result = $this->executeSql($sql);
-        return $result;
+        return ($result === true) ? true : false;
     }
 
     /*

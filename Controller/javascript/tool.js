@@ -376,6 +376,31 @@ $(document).ready(function () {
 });
 
 /*
+ * 登出
+ */
+$(document).ready(function () {
+    $("#btnLogout").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost/Store/Controller/member/aboutLogin/logout.php",
+            dataType: "json",
+            data: {},
+            success: function (data) {
+                if (data.isLogout === true) {
+                    alert(data.tips);
+                    location = "http://localhost/Store/Controller/index/index.php";
+                } else {
+                    alert(data.tips);
+                }
+            },
+            error: function () {
+                alert("錯誤請求");
+            }
+        })
+    })
+});
+
+/*
  *  管理者登入頁面
  */
 $(document).ready(function () {
@@ -560,7 +585,6 @@ $(document).ready(function () {
             url: "http://localhost/Store/Controller/admin/book/showAddBook.php",
             data: {},
             success: function (data) {
-                $("#mainModal").html(data);//要刷新的div
                 $("#modalAddBook").modal();
             },
             error: function () {
