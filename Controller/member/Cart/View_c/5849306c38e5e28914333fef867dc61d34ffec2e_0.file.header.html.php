@@ -1,9 +1,33 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.33, created on 2019-08-09 10:02:17
+  from 'C:\xampp\htdocs\Store\Controller\View\index\header.html' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5d4d2889646c77_92900921',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '5849306c38e5e28914333fef867dc61d34ffec2e' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\index\\header.html',
+      1 => 1565337636,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5d4d2889646c77_92900921 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="">{{$user}}</a>
+            <a class="navbar-brand" href=""><?php echo $_smarty_tpl->tpl_vars['user']->value;?>
+</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -29,30 +53,31 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        {{if $user != Welcome}}
+                        <?php if ($_smarty_tpl->tpl_vars['user']->value != 'Welcome') {?>
                         <li><a href="/Store/Controller/member/aboutLogin/showEdituserInfo.php">修改資料</a></li>
                         <li><a type="button" id="btnLogout" name="btnLogout">登出</a></li>
-                        {{else}}
+                        <?php } else { ?>
                         <li><a href="/Store/Controller/member/aboutLogin/showRegister.php">註冊</a></li>
                         <li><a href="/Store/Controller/member/aboutLogin/showlogin.php">登入</a></li>
                         <li><a href="/Store/Controller/admin/aboutLogin/showAdminLogin.php">我是管理者</a></li>
-                        {{/if}}
+                        <?php }?>
                     </ul>
                 </li>
-                {{if $user != Welcome}}
+                <?php if ($_smarty_tpl->tpl_vars['user']->value != 'Welcome') {?>
                 <li>
                     <a href="/Store/Controller/member/cart/showCart.php">
                         <span class="glyphicon glyphicon-shopping-cart"></span> 我的購物車
                     </a>
                 </li>
                 <li>
-                    <a href="/Store/Controller/member/order/showUserOrder.php">
+                    <a href="/Store/Controller/member/cart/showCart.php">
                         <span class="glyphicon glyphicon-envelope"></span> 我的訂單
                     </a>
                 </li>
-                {{/if}}
+                <?php }?>
             </ul>
         </div>
     </div>
 </nav>
-<!-- 菜單 -->
+<!-- 菜單 --><?php }
+}

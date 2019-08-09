@@ -25,7 +25,6 @@ if (isset($memberData)) {
     $smarty->assign('account', $memberData['account']);
 }
 
-## smarty
 $smarty->assign('userCartListArrays', $userCartListArrays);
 $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/cart/header.html");
 $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/cart/showCart.html");

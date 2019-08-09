@@ -8,15 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     ## 檢查是否有空
     $tips = "";
     $isAdd = false;
-    if (!empty($_POST["bookName"]) && (!empty($_POST["bookAuthor"]))
-        && (!empty($_POST["bookInfo"])) && (!empty($_POST["bookPrice"]))) {
+    if (!empty($_POST["addBookName"]) && (!empty($_POST["addBookAuthor"]))
+        && (!empty($_POST["addBookInfo"])) && (!empty($_POST["addBookPrice"]))) {
         ## 檢查長度
-        $bookName = $_POST["bookName"];
-        $bookAuthor = $_POST["bookAuthor"];
-        $bookInfo = $_POST["bookInfo"];
-        $bookPrice = $_POST["bookPrice"];
+        $bookName = $_POST["addBookName"];
+        $bookAuthor = $_POST["addBookAuthor"];
+        $bookInfo = $_POST["addBookInfo"];
+        $bookPrice = $_POST["addBookPrice"];
         # 檔名
-        $bookPhoto =  $_FILES["bookPhoto"]["name"];
+        $bookPhoto =  $_FILES["addBookPhoto"]["name"];
         if (mb_strlen($bookName, "utf-8") > 30) {
             $tips .= "書名不可超過30字，您的書名為" . mb_strlen($bookName, "utf-8") . "字";
         } elseif (mb_strlen($bookAuthor, "utf-8") > 20) {
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $tips .= "圖檔名稱不可超過100字，您的檔名為" . mb_strlen($bookPhoto, "utf-8") . "字";
         } elseif ($tips === "") {
             ## 限定上傳type
-            if ($_FILES["bookPhoto"]["type"] === "image/jpeg" || $_FILES["bookPhoto"]["type"] === "image/png") {
+            if ($_FILES["addBookPhoto"]["type"] === "image/jpeg" || $_FILES["addBookPhoto"]["type"] === "image/png") {
                 ## 防注入
                 $bookName = htmlentities($bookName, ENT_NOQUOTES, "UTF-8");
                 $bookAuthor = htmlentities($bookAuthor, ENT_NOQUOTES, "UTF-8");
@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 if ($isInsert === true) {
                     ## 移動圖片
                     move_uploaded_file(
-                        $_FILES['bookPhoto']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . 
-                        "/Store/Controller/image/" . $_FILES['bookPhoto']['name']
+                        $_FILES['addBookPhoto']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . 
+                        "/Store/Controller/image/" . $_FILES['addBookPhoto']['name']
                     );
                     $tips = "新增成功";
                     $isAdd = true;

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-08 12:37:41
-  from 'C:\xampp\htdocs\Store\Controller\View\member\home\showUserOrder.html' */
+/* Smarty version 3.1.33, created on 2019-08-09 12:24:55
+  from 'C:\xampp\htdocs\Store\Controller\View\member\order\showUserOrder.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4bfb757e0328_11959676',
+  'unifunc' => 'content_5d4d49f7ddcdd4_04978179',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '437ba7a30f08788bbc7c33a6e1ea9838d50a5f63' => 
+    'a4598530a8b636453ecac9ebd2b0bc3dbadb2a22' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\home\\showUserOrder.html',
-      1 => 1565225872,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\order\\showUserOrder.html',
+      1 => 1565346295,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,26 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4bfb757e0328_11959676 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4d49f7ddcdd4_04978179 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
+
+<head>
+    <title>購物車</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+</head>
 <style>
     td {
         background-color: #FDF5E6;
+        text-align: center;
     }
 </style>
 
@@ -35,11 +49,12 @@ function content_5d4bfb757e0328_11959676 (Smarty_Internal_Template $_smarty_tpl)
         <table class="table">
             <thead style="background-color: #AAAAAA">
                 <tr>
-                    <th style="text-align: center" class="col-md-1">書名</th>
-                    <th style="text-align: center" class="col-md-1">單價</th>
-                    <th style="text-align: center" class="col-md-1">數量</th>
-                    <th style="text-align: center" class="col-md-1">總價</th>
-                    <th style="text-align: center" class="col-md-1">下單日期</th>
+                    <th style="text-align: center" class="col-md-2">書名</th>
+                    <th style="text-align: center" class="col-md-2">單價</th>
+                    <th style="text-align: center" class="col-md-2">數量</th>
+                    <th style="text-align: center" class="col-md-2">總價</th>
+                    <th style="text-align: center" class="col-md-2">下單日期</th>
+                    <th style="text-align: center" class="col-md-2">訂單狀態</th>
                 </tr>
             </thead>
             <tbody class="List">
@@ -69,6 +84,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['orderBookArrays']->value) {
                         <?php echo $_smarty_tpl->tpl_vars['orderBookArrays']->value['orderDate'];?>
 
                     </td>
+                    <td>
+                        <?php echo $_smarty_tpl->tpl_vars['orderBookArrays']->value['orderStatus'];?>
+
+                    </td>
                 </tr>
                 <?php
 }
@@ -77,6 +96,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
     </div>
+
 </body>
 
 </html><?php }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-08 14:42:17
+/* Smarty version 3.1.33, created on 2019-08-09 12:19:22
   from 'C:\xampp\htdocs\Store\Controller\View\index\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4c18a9146d73_42389302',
+  'unifunc' => 'content_5d4d48aaee8039_23347143',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2af474e1fbdc97477a79582630decdf200a92d02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\index\\index.html',
-      1 => 1565268133,
+      1 => 1565345962,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4c18a9146d73_42389302 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4d48aaee8039_23347143 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
@@ -52,85 +52,8 @@ function content_5d4c18a9146d73_42389302 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 
 <body>
-    <!-- 最上方菜單在header裡 -->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
-
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <div style="display: flex; align-items: center; justify-content: center;">
-                                <img src="/Store/Controller/image/book.png" alt="Image"
-                                    style="height: 375px; width: 500px;">
-                            </div>
-                            <div class="carousel-caption">
-                                <h3>暢銷冠軍</h3>
-                                <p>狂人日記</p>
-                            </div>
-                        </div>
-
-                        <div class="item ">
-                            <div style="display: flex; align-items: center; justify-content: center;">
-                                <img src="/Store/Controller/image/a2fb6c26dd87ee5dee07a5784773.jpg" alt="Image"
-                                    style="height: 375px; width: 500px;">
-                            </div>
-                            <div class="carousel-caption">
-                                <h3>暢銷亞軍</h3>
-                                <p>像我這樣的一個女子</p>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div style="display: flex; align-items: center; justify-content: center;">
-                                <img src="/Store/Controller/image/user_default_150x150.png" alt="Image"
-                                    style="height: 375px; width: 500px;">
-                            </div>
-                            <div class="carousel-caption">
-                                <h3>暢銷亞軍</h3>
-                                <p>像我這樣的一個女子</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="well">
-                    <p>歡迎蒞臨綠水文坊</p>
-                </div>
-                <div class="well">
-                    <p>購買新書享有0%折扣</p>
-                </div>
-                <div class="well">
-                    <p>限時活動 : 買下整間店免運費</p>
-                </div>
-                <div class="well">
-                    <p>其他的優惠資訊</p>
-                </div>
-            </div>
-        </div>
-        <hr>
-    </div>
-
     <div class="container text-center">
-        <h3>新書上榜</h3>
+        <h3>商品</h3>
         <br>
         <div class="row">
             <?php
@@ -172,13 +95,14 @@ foreach ($_from as $_smarty_tpl->tpl_vars['newBookArray']->value) {
                     <?php }?>
                 <?php }?>
                 <!-- 加入購物車按鈕 -->
+                <hr>
             </div>
             <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
-        <hr>
+        
     </div>
 
 </body>

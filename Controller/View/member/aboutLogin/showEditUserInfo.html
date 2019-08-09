@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<title>書</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
     #tipsPassword,
     #tipsOldPassword,
@@ -7,15 +13,16 @@
         color: red;
     }
 </style>
+
 <body>
     <div class="row">
-        <div class="container col-md-10 col-md-offset-1">
+        <div class="container col-md-4 col-md-offset-4">
             <h2>修改</h2>
             <hr>
             <div class="form-group">
                 <label>帳號 : </label>
                 <text type="text" class="form-control" name="account" id="account" value="{{$memberData['account']}}">
-                        {{$memberData['account']}}
+                    {{$memberData['account']}}
                 </text>
             </div>
             <div class="form-group">
@@ -25,17 +32,19 @@
             </div>
             <div class="form-group">
                 <label>您的舊密碼 : </label>
-                <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="英數2碼以上12碼以下">
+                <input type="password" class="form-control" name="oldPassword" id="oldPassword"
+                    placeholder="英數2碼以上12碼以下">
                 <p id="tipsOldPassword"></p>
             </div>
             <div class="form-group">
                 <label>電子郵箱 : </label>
-                <input type="text" class="form-control" name="email" id="email" value="{{$memberData['email']}}" placeholder="example@mail.com">
+                <input type="text" class="form-control" name="email" id="email" value="{{$memberData['email']}}"
+                    placeholder="example@mail.com">
                 <p id="tipsEmail"></p>
             </div>
             <div class="form-group">
                 <button id="btnActionEditUserInfo" type="button" class="btn btn-primary" disabled="true">完成</button>
-                <a href="" class="btn btn-danger" role="button">取消</a>
+                <a href="/Store/Controller/index/index.php" class="btn btn-danger" role="button">取消</a>
             </div>
         </div>
     </div>

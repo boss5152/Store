@@ -77,18 +77,18 @@ class Book extends ConnectDb
         return $row_result;
     }
 
-    /*
-     * 新書上榜 
-     */
-    public function getLimit($count)
-    {
-        $sql = "SELECT * FROM Book ORDER BY releaseDate LIMIT 0,$count";
-        $result = $this->executeSql($sql);
-        foreach ($result as $key => $value) {
-            array_push($this->resultArray, $value);
-        }
-        return $this->resultArray;
-    }
+    // /*
+    //  * 新書上榜 
+    //  */
+    // public function getLimit($count)
+    // {
+    //     $sql = "SELECT * FROM Book ORDER BY releaseDate LIMIT 0,$count";
+    //     $result = $this->executeSql($sql);
+    //     foreach ($result as $key => $value) {
+    //         array_push($this->resultArray, $value);
+    //     }
+    //     return $this->resultArray;
+    // }
 
     /*
      * 顯示購物車所有書單

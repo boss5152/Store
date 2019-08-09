@@ -9,11 +9,6 @@ $(document).ready(function () {
     var oldPasswordOk = "";
     //因為這貨一開始有值，所以給TRUE
     var editEmailOk = true;
-    var adminKeyOk = "";
-    var bookNameOk = "";
-    var bookAuthorOk = "";
-    var bookInfoOk = "";
-    var bookPriceOk = "";
 
     $("#account").keyup(function () {
         var stringAccount = $("#account").val();
@@ -57,72 +52,6 @@ $(document).ready(function () {
             ? (editEmailOk = checkEmail(true))
             : (editEmailOk = checkEmail(false));
         checkMemberBtn(passwordOk, oldPasswordOk, editEmailOk);
-    });
-
-    //管理者登入頁面的管理者金鑰
-    $("#adminKey").keyup(function () {
-        var stringAdminKey = $("#adminKey").val();
-        (stringAdminKey.length > 0)
-            ? (adminKeyOk = checkAdminKey(true))
-            : (adminKeyOk = checkAdminKey(false));
-        checkAdminLoginBtn(accountOk, passwordOk, adminKeyOk);
-    });
-
-    //管理者修改密碼頁面的管理者金鑰
-    $("#adminKey").keyup(function () {
-        var stringAdminKey = $("#adminKey").val();
-        (stringAdminKey.length > 0)
-            ? (adminKeyOk = checkAdminKey(true))
-            : (adminKeyOk = checkAdminKey(false));
-        checkAdminEditBtn(passwordOk, oldPasswordOk, adminKeyOk);
-    });
-
-    // 預覽圖片功能
-    $("#bookPhoto").change(function () {
-        var reader = new FileReader();
-        reader.onload = function (event) {
-            $("#bookPhotoDemo").attr("src", event.target.result);
-        }
-        reader.readAsDataURL(this.files[0]);
-    });
-
-    // 書名
-    $("#bookName").keyup(function () {
-        var stringBookName = $("#bookName").val();
-        ((stringBookName.length > 0) && (stringBookName.length < 31))
-            ? (bookNameOk = checkBookName(true))
-            : (bookNameOk = checkBookName(false));
-        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
-    });
-
-    // 作者
-    $("#bookAuthor").keyup(function () {
-        var stringBookAuthor = $("#bookAuthor").val();
-        ((stringBookAuthor.length > 0) && (stringBookAuthor.length < 21))
-            ? (bookAuthorOk = checkBookAuthor(true))
-            : (bookAuthorOk = checkBookAuthor(false));
-        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
-
-    });
-
-    // 書本介紹
-    $("#bookInfo").keyup(function () {
-        var stringBookInfo = $("#bookInfo").val();
-        ((stringBookInfo.length > 0) && (stringBookInfo.length < 101))
-            ? (bookInfoOk = checkBookInfo(true))
-            : (bookInfoOk = checkBookInfo(false, stringBookInfo.length));
-        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
-
-    });
-
-    // 價格
-    $("#bookPrice").keyup(function () {
-        var stringBookPrice = $("#bookPrice").val();
-        ((stringBookPrice.length > 0) && (stringBookPrice.length < 11) && (/[0-9]/.test(stringBookPrice)))
-            ? (bookPriceOk = checkBookPrice(true))
-            : (bookPriceOk = checkBookPrice(false));
-        checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
-        checkUpdateBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk);
     });
 
 });
@@ -181,78 +110,6 @@ function checkOldPassword(bool) {
     }
 }
 
-// 管理者金鑰驗證
-function checkAdminKey(bool) {
-    if (bool === false) {
-        $("#tipsAdminKey").html("此欄位必填");
-        $("#btnAdminLogin").attr('disabled', true);
-        return false;
-    } else {
-        $("#tipsAdminKey").html("");
-        return true;
-    }
-}
-
-// 書名驗證
-function checkBookName(bool) {
-    if (bool === false) {
-        $("#tipsBookName").html("此欄位必填，且不可超過30字");
-        $("#btnBookAdd").attr('disabled', true);
-        return false;
-    } else {
-        $("#tipsBookName").html("");
-        return true;
-    }
-}
-
-// 作者驗證
-function checkBookAuthor(bool) {
-    if (bool === false) {
-        $("#tipsBookAuthor").html("此欄位必填，且不可超過20字");
-        $("#btnBookAdd").attr('disabled', true);
-        return false;
-    } else {
-        $("#tipsBookAuthor").html("");
-        return true;
-    }
-}
-
-// 書本介紹驗證
-function checkBookInfo(bool, bookInfoLength) {
-    if (bool === false) {
-        $("#tipsBookInfo").html("此欄位必填，且不可超過100字，您當前為" + bookInfoLength + "字");
-        $("#btnBookAdd").attr('disabled', true);
-        return false;
-    } else {
-        $("#tipsBookInfo").html("");
-        return true;
-    }
-}
-
-// 價格驗證
-function checkBookPrice(bool) {
-    if (bool === false) {
-        $("#tipsBookPrice").html("此欄位必填，且只可為不大於10位數之正整數");
-        $("#btnBookAdd").attr('disabled', true);
-        return false;
-    } else {
-        $("#tipsBookPrice").html("");
-        return true;
-    }
-}
-
-// 預覽圖驗證
-function checkBookPhoto(bool) {
-    if (bool === false) {
-        $("#tipsBookPhoto").html("此欄位必填，且檔名不可超過100字");
-        $("#btnBookAdd").attr('disabled', true);
-        return false;
-    } else {
-        $("#tipsBookPhoto").html("");
-        return true;
-    }
-}
-
 // 按鈕可不可以按
 function checkMemberBtn(accountOk, passwordOk, emailOk) {
     if ((accountOk === true) && (passwordOk === true) && (emailOk === true)) {
@@ -273,39 +130,12 @@ function checkEditMemberBtn(passwordOk, emailOk, oldPasswordOk) {
     }
 }
 
-//管理者登入的按鈕可不可以按
-function checkAdminLoginBtn(accountOk, passwordOk, adminKeyOk) {
-    if ((accountOk === true) && (passwordOk === true) && (adminKeyOk === true)) {
-        $("#btnAdminLogin").attr('disabled', false);
-    } else {
-        $("#btnAdminLogin").attr('disabled', true);
-    }
-}
-
 //管理者修改密碼的按鈕可不可以按
 function checkAdminEditBtn(passwordOk, oldPasswordOk, adminKeyOk) {
     if ((passwordOk === true) && (oldPasswordOk === true) && (adminKeyOk === true)) {
         $("#btnEditAdminInfo").attr('disabled', false);
     } else {
         $("#btnEditAdminInfo").attr('disabled', true);
-    }
-}
-
-//新增商品可不可以按
-function checkAddBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk) {
-    if ((bookNameOk === true) && (bookAuthorOk === true) && (bookInfoOk === true) && (bookPriceOk === true)) {
-        $("#btnBookAdd").attr('disabled', false);
-    } else {
-        $("#btnBookAdd").attr('disabled', true);
-    }
-}
-
-//修改按鈕可不可以按
-function checkUpdateBookBtn(bookNameOk, bookAuthorOk, bookInfoOk, bookPriceOk) {
-    if ((bookNameOk === true) && (bookAuthorOk === true) && (bookInfoOk === true) && (bookPriceOk === true)) {
-        $("#btnActionBookUpdate").attr('disabled', false);
-    } else {
-        $("#btnActionBookUpdate").attr('disabled', true);
     }
 }
 
@@ -389,38 +219,6 @@ $(document).ready(function () {
                 if (data.isLogout === true) {
                     alert(data.tips);
                     location = "http://localhost/Store/Controller/index/index.php";
-                } else {
-                    alert(data.tips);
-                }
-            },
-            error: function () {
-                alert("錯誤請求");
-            }
-        })
-    })
-});
-
-/*
- *  管理者登入頁面
- */
-$(document).ready(function () {
-    $("#btnAdminLogin").click(function () {
-        var account = $("#account").val();
-        var password = $("#password").val();
-        var adminKey = $("#adminKey").val();
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/Store/Controller/admin/aboutLogin/actionAdminLogin.php",
-            dataType: "json",
-            data: {
-                'account': account,
-                'password': password,
-                'adminKey': adminKey
-            },
-            success: function (data) {
-                if (data.isAdminLogin === true) {
-                    alert(data.tips);
-                    location = "http://localhost/Store/Controller/admin/home/adminHome.php";
                 } else {
                     alert(data.tips);
                 }
@@ -580,17 +378,7 @@ $(document).ready(function () {
  */
 $(document).ready(function () {
     $("#btnShowBookAdd").click(function () {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/Store/Controller/admin/book/showAddBook.php",
-            data: {},
-            success: function (data) {
-                $("#modalAddBook").modal();
-            },
-            error: function () {
-                alert("錯誤請求");
-            }
-        })
+        $("#modalAddBook").modal();
     })
 });
 
@@ -629,20 +417,18 @@ $(document).ready(function () {
     $("button").click(function () {
         if ((this.name) === "btnShowUpdateBook") {
             var bookId = $(this).val();
-            $.ajax({
-                type: "POST",
-                url: "http://localhost/Store/Controller/admin/book/showUpdateBook.php",
-                data: {
-                    'bookId': bookId
-                },
-                success: function (data) {
-                    $("#mainModal").html(data);//要刷新的div
-                    $("#modelUpdateBook").modal();
-                },
-                error: function () {
-                    alert("錯誤請求");
-                }
-            })
+            var bookName = $("#showBookName" + bookId).html();
+            var bookAuthor = $("#showBookAuthor" + bookId).html();
+            var bookInfo = $("#showBookInfo" + bookId).html();
+            var bookPrice = $("#showBookPrice" + bookId).html();
+            var bookPhotoName = $("#showBookPhotoName" + bookId).val();
+            var photoPath = "/Store/Controller/image/" + bookPhotoName;
+            $("#updateBookName").val(bookName);
+            $("#updateBookAuthor").val(bookAuthor);
+            $("#updateBookInfo").html(bookInfo);
+            $("#updateBookPrice").val(bookPrice);
+            $("#updateBookPhotoDemo").attr('src', photoPath); 
+            $("#modalUpdateBook").modal();
         }
     });
 });

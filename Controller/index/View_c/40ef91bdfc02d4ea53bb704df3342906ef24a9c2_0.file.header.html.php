@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-08 15:18:28
+/* Smarty version 3.1.33, created on 2019-08-09 10:09:41
   from 'C:\xampp\htdocs\Store\Controller\View\index\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4c21240787a2_30171776',
+  'unifunc' => 'content_5d4d2a45f035f9_36550900',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '40ef91bdfc02d4ea53bb704df3342906ef24a9c2' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\index\\header.html',
-      1 => 1565269852,
+      1 => 1565338178,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4c21240787a2_30171776 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4d2a45f035f9_36550900 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <?php if (isset($_smarty_tpl->tpl_vars['account']->value)) {?>
-            <a class="navbar-brand" href="">Hello , <?php echo $_smarty_tpl->tpl_vars['account']->value;?>
+            <a class="navbar-brand" href=""><?php echo $_smarty_tpl->tpl_vars['user']->value;?>
 </a>
-            <?php } else { ?>
-            <a class="navbar-brand" href="">Welcome</a>
-            <?php }?>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -57,8 +53,8 @@ function content_5d4c21240787a2_30171776 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <?php if (isset($_smarty_tpl->tpl_vars['account']->value)) {?>
-                        <li><a href="/Store/Controller/member/home/userInfo.php">我的書櫃</a></li>
+                        <?php if ($_smarty_tpl->tpl_vars['user']->value != 'Welcome') {?>
+                        <li><a href="/Store/Controller/member/aboutLogin/showEdituserInfo.php">修改資料</a></li>
                         <li><a type="button" id="btnLogout" name="btnLogout">登出</a></li>
                         <?php } else { ?>
                         <li><a href="/Store/Controller/member/aboutLogin/showRegister.php">註冊</a></li>
@@ -67,10 +63,15 @@ function content_5d4c21240787a2_30171776 (Smarty_Internal_Template $_smarty_tpl)
                         <?php }?>
                     </ul>
                 </li>
-                <?php if (isset($_smarty_tpl->tpl_vars['account']->value)) {?>
+                <?php if ($_smarty_tpl->tpl_vars['user']->value != 'Welcome') {?>
                 <li>
                     <a href="/Store/Controller/member/cart/showCart.php">
                         <span class="glyphicon glyphicon-shopping-cart"></span> 我的購物車
+                    </a>
+                </li>
+                <li>
+                    <a href="/Store/Controller/member/order/showUserOrder.php">
+                        <span class="glyphicon glyphicon-envelope"></span> 我的訂單
                     </a>
                 </li>
                 <?php }?>

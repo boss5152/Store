@@ -1,50 +1,76 @@
 <!DOCTYPE html>
-<html lang="utf-8">
+<html>
 
 <head>
-    <title>購物車</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <title>商品清單</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
+<style>
+    td {
+        background-color: #FDF5E6;
+    }
+</style>
 
 <body>
-
     <!-- 菜單在header裡 -->
-    <div class="jumbotron">
-        <div class="container text-center">
-            <h1>您的購物清單</h1>
+    <p></p>
+    <div>
+        <table class="table">
+            <thead style="background-color: #AAAAAA">
+                <tr>
+                    <th style="text-align: center" class="col-md-1">預覽圖</th>
+                    <th class="col-md-1">書名</th>
+                    <th class="col-md-1">作者</th>
+                    <th style="text-align: center" class="col-md-1">當前庫存</th>
+                    <th style="text-align: center" class="col-md-1">價格</th>
+                    <th style="text-align: center" class="col-md-1">數量</th>
+                    <th style="text-align: center" class="col-md-1">刪除</th>
+                </tr>
+            </thead>
+            <tbody class="List">
+                {{foreach $userCartListArrays as $userCartListArray}}
+                <tr>
+                    <td style="text-align: center">
+                        <input type="hidden" id="showBookPhotoName{{$userCartListArray['bookId']}}"
+                            value="{{$userCartListArray['bookPhoto']}}">
+                        <img src="/Store/Controller/image/{{$userCartListArray['bookPhoto']}}" class="img-circle"
+                            height="55" width="55">
+                    </td>
+                    <td>
+                        <p id="showBookName{{$userCartListArray['bookId']}}">{{$userCartListArray['bookName']}}</p>
+                    </td>
+                    <td>
+                        <p id="showBookAuthor{{$userCartListArray['bookId']}}">{{$userCartListArray['bookAuthor']}}</p>
+                    </td>
+                    <td style="text-align: center">
+                        <p>10</p>
+                    </td>
+                    <td style="text-align: center">
+                        <p id="showBookPrice{{$userCartListArray['bookId']}}">{{$userCartListArray['bookPrice']}}</p>
+                    </td>
+                    <td style="text-align: center">
+                        <input type="text" style="height: 30px; width:50px; border: black solid; text-align: center"
+                            maxlength="2" value="1">
+                    </td>
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-default" value="{{$userCartListArray['bookId']}}"
+                            name="btnDeleteBook" id="btnDeleteBook">刪除
+                        </button>
+                    </td>
+                </tr>
+                {{/foreach}}
+            </tbody>
+        </table>
+        <hr>
+        <div>
+            <h4>總價 : <p>123</p>
+            </h4>
+            <button type="button" class="btn btn-success">訂購</button>
         </div>
     </div>
-
-    <div class="container-fluid bg-3 text-center">
-        <div class="col">
-            {{foreach $userCartListArrays as $usercartListArray}}
-                <div class="col-sm-3">
-                    <div style="display: flex;" class="well">
-                        <div>
-                        <img src="/Store/Controller/image/{{$usercartListArray['bookPhoto']}}" class="img-responsive"
-                            style="height: 150pt; width:140pt" alt="Image">
-                        </div>
-                        <div class="col-sm-8">
-                            <h4>{{$usercartListArray['bookAuthor']}}</h4>
-                            <h4>《{{$usercartListArray['bookName']}}》</h4>
-                            <h4>價格 : {{$usercartListArray['bookPrice']}}</h4>
-                            <h4>數量 : 
-                                <input type="text" style="height: 30px; width:50px; border: black solid; text-align: center"
-                                    maxlength="2" id="buyCount{{$usercartListArray['bookId']}}" name="buyCount{{$usercartListArray['bookId']}}" value="1"></h4>
-                            <button type="button" class="btn btn-success col" id="btnBuyBook" name="btnBuyBook" value="{{$usercartListArray['bookId']}}">訂購</button>
-                            <button type="button" class="btn btn-danger" id="btnDeleteCart" name="btnDeleteCart" value="{{$usercartListArray['bookId']}}">刪除</button>
-                        </div>
-                    </div>
-                </div>
-            {{/foreach}}
-        </div>
-    </div><br><br>
 </body>
-
-<script src="http://localhost/Store/Controller/javascript/tool.js"></script>
-
-</html>

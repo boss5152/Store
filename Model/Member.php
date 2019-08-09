@@ -107,6 +107,21 @@ class Member extends ConnectDb
     }
 
     /*
+     * 管理者登入
+     */
+    public function adminLogin($array){
+        $check = '';
+        foreach ($array as $key => $value) {
+            $check .= $key . "='" . $value . "' AND ";
+        }
+        $check = substr($check, 0, -5);
+        $sql = "SELECT userId FROM member WHERE $check AND isAdmin = '1'" ;
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_num_rows($result);
+        return ($row_result === 1) ? true : false ;
+    }
+
+    /*
      * 泛用檢查，可以藉由格式檢查任意東西
      */
     public function checkAny($array){
@@ -160,5 +175,16 @@ class Member extends ConnectDb
         $sql = "UPDATE member set $update WHERE token = " . $token;
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false;
+    }
+
+    /*
+     * 檢查是不是管理員
+     */
+    public function checkAdmin($token)
+    {
+        $sql = "SELECT userId FROM member WHERE isAdmin = '1' AND token = $token";
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_num_rows($result);
+        return ($row_result === 1) ? true : false ;
     }
 }

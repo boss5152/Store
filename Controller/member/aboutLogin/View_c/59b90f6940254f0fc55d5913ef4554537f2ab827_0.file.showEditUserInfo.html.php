@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-07 16:21:45
-  from 'C:\xampp\htdocs\Store\Controller\View\member\home\showEditUserInfo.html' */
+/* Smarty version 3.1.33, created on 2019-08-09 09:55:22
+  from 'C:\xampp\htdocs\Store\Controller\View\member\aboutLogin\showEditUserInfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4ade796d8547_53056088',
+  'unifunc' => 'content_5d4d26ea1900b8_63556245',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'fe27bc192ac94ebae4d30ab6182037937d1def61' => 
+    '59b90f6940254f0fc55d5913ef4554537f2ab827' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\home\\showEditUserInfo.html',
-      1 => 1565182845,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\aboutLogin\\showEditUserInfo.html',
+      1 => 1565337319,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4ade796d8547_53056088 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4d26ea1900b8_63556245 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
+<title>書</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 <style>
     #tipsPassword,
     #tipsOldPassword,
@@ -30,16 +40,17 @@ function content_5d4ade796d8547_53056088 (Smarty_Internal_Template $_smarty_tpl)
         color: red;
     }
 </style>
+
 <body>
     <div class="row">
-        <div class="container col-md-10 col-md-offset-1">
+        <div class="container col-md-4 col-md-offset-4">
             <h2>修改</h2>
             <hr>
             <div class="form-group">
                 <label>帳號 : </label>
                 <text type="text" class="form-control" name="account" id="account" value="<?php echo $_smarty_tpl->tpl_vars['memberData']->value['account'];?>
 ">
-                        <?php echo $_smarty_tpl->tpl_vars['memberData']->value['account'];?>
+                    <?php echo $_smarty_tpl->tpl_vars['memberData']->value['account'];?>
 
                 </text>
             </div>
@@ -50,18 +61,20 @@ function content_5d4ade796d8547_53056088 (Smarty_Internal_Template $_smarty_tpl)
             </div>
             <div class="form-group">
                 <label>您的舊密碼 : </label>
-                <input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="英數2碼以上12碼以下">
+                <input type="password" class="form-control" name="oldPassword" id="oldPassword"
+                    placeholder="英數2碼以上12碼以下">
                 <p id="tipsOldPassword"></p>
             </div>
             <div class="form-group">
                 <label>電子郵箱 : </label>
                 <input type="text" class="form-control" name="email" id="email" value="<?php echo $_smarty_tpl->tpl_vars['memberData']->value['email'];?>
-" placeholder="example@mail.com">
+"
+                    placeholder="example@mail.com">
                 <p id="tipsEmail"></p>
             </div>
             <div class="form-group">
                 <button id="btnActionEditUserInfo" type="button" class="btn btn-primary" disabled="true">完成</button>
-                <a href="" class="btn btn-danger" role="button">取消</a>
+                <a href="/Store/Controller/index/index.php" class="btn btn-danger" role="button">取消</a>
             </div>
         </div>
     </div>

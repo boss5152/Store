@@ -8,16 +8,18 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     ## 檢查是否有空
     $tips = "";
     $isUpdate = false;
-    if (!empty($_POST["bookName"]) && (!empty($_POST["bookAuthor"]))
-        && (!empty($_POST["bookInfo"])) && (!empty($_POST["bookPrice"]))) {
+    if (!empty($_POST["updateBookName"]) && (!empty($_POST["updateBookAuthor"]))
+        && (!empty($_POST["updateBookInfo"])) && (!empty($_POST["updateBookPrice"]))
+        && (!empty($_POST["updateBookInStock"]))) {
         ## 檢查長度
         $bookId = $_POST["bookId"];
-        $bookName = $_POST["bookName"];
-        $bookAuthor = $_POST["bookAuthor"];
-        $bookInfo = $_POST["bookInfo"];
-        $bookPrice = $_POST["bookPrice"];
+        $bookName = $_POST["updateBookName"];
+        $bookAuthor = $_POST["updateBookAuthor"];
+        $bookInfo = $_POST["updateBookInfo"];
+        $bookPrice = $_POST["updateBookPrice"];
+        $bookInStock = $_POST["updateBookInStock"];
         # 檔名
-        $bookPhoto =  $_FILES["bookPhoto"]["name"];
+        $bookPhoto =  $_FILES["updateBookPhoto"]["name"];
         if (mb_strlen($bookName, "utf-8") > 30) {
             $tips .= "書名不可超過30字，您的書名為" . mb_strlen($bookName, "utf-8") . "字";
         } elseif (mb_strlen($bookAuthor, "utf-8") > 20) {
@@ -30,19 +32,21 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $tips .= "圖檔名稱不可超過100字，您的檔名為" . mb_strlen($bookPhoto, "utf-8") . "字";
         } elseif ($tips === '') {
             ## 如果有改圖片則進行圖片格式驗證，沒有更改bookPhoto會為空字串
-            if ($_FILES["bookPhoto"]["type"] === "image/jpeg" || $_FILES["bookPhoto"]["type"] === "image/png" || $bookPhoto === "" ) {
+            if ($_FILES["updateBookPhoto"]["type"] === "image/jpeg" || $_FILES["updateBookPhoto"]["type"] === "image/png" || $bookPhoto === "" ) {
                 ## 防注入
                 $bookName = htmlentities($bookName, ENT_NOQUOTES, "UTF-8");
                 $bookAuthor = htmlentities($bookAuthor, ENT_NOQUOTES, "UTF-8");
                 $bookInfo = htmlentities($bookInfo, ENT_NOQUOTES, "UTF-8");
                 $bookPrice = htmlentities($bookPrice, ENT_NOQUOTES, "UTF-8");
+                $bookInStock = htmlentities($bookInStock, ENT_NOQUOTES, "UTF-8");
                 $bookPhoto = htmlentities($bookPhoto, ENT_NOQUOTES, "UTF-8");
                 if ($bookPhoto === "") {
                     $updateArray = [
                         'bookName' => $bookName, 
                         'bookAuthor' => $bookAuthor, 
                         'bookInfo' => $bookInfo,
-                        'bookPrice' => $bookPrice
+                        'bookPrice' => $bookPrice,
+                        'bookInStock' => $bookInStock
                     ];
                 } else {
                     $updateArray = [
@@ -50,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                         'bookAuthor' => $bookAuthor, 
                         'bookInfo' => $bookInfo,
                         'bookPrice' => $bookPrice,
+                        'bookInStock' => $bookInStock,
                         'bookPhoto' => $bookPhoto
                     ];
                 }

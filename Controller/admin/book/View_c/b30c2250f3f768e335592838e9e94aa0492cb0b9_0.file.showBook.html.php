@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-08 16:09:12
+/* Smarty version 3.1.33, created on 2019-08-09 12:29:15
   from 'C:\xampp\htdocs\Store\Controller\View\admin\book\showBook.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4c2d082fd777_55971819',
+  'unifunc' => 'content_5d4d4afba72335_72803668',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b30c2250f3f768e335592838e9e94aa0492cb0b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\book\\showBook.html',
-      1 => 1565273300,
+      1 => 1565346554,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4c2d082fd777_55971819 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4d4afba72335_72803668 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -57,6 +57,7 @@ function content_5d4c2d082fd777_55971819 (Smarty_Internal_Template $_smarty_tpl)
                     <th class="col-md-1">作者</th>
                     <th class="col-md-6">書本介紹</th>
                     <th style="text-align: center" class="col-md-1">價格</th>
+                    <th style="text-align: center" class="col-md-1">當前庫存</th>
                     <th style="text-align: center" class="col-md-1">修改</th>
                     <th style="text-align: center" class="col-md-1">刪除</th>
                 </tr>
@@ -69,25 +70,39 @@ foreach ($_from as $_smarty_tpl->tpl_vars['bookArrays']->value) {
 ?>
                 <tr>
                     <td style="text-align: center">
+                        <input type="hidden" id="showBookPhotoName<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
+"
+                            value="<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookPhoto'];?>
+">
                         <img src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookPhoto'];?>
 " class="img-circle" height="55"
                             width="55">
                     </td>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookName'];?>
-
+                        <p id="showBookName<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookName'];?>
+</p>
                     </td>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookAuthor'];?>
-
+                        <p id="showBookAuthor<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookAuthor'];?>
+</p>
                     </td>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookInfo'];?>
+                        <p id="showBookInfo<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookInfo'];?>
+</p>
 
                     </td>
                     <td style="text-align: center">
-                        <?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookPrice'];?>
-
+                        <p id="showBookPrice<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookPrice'];?>
+</p>
+                    </td>
+                    <td style="text-align: center">
+                        <p id="showBookInStock<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookInStock'];?>
+</p>
                     </td>
                     <td style="text-align: center">
                         <button type="button" class="btn btn-default" value="<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
@@ -109,77 +124,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
     </div>
-    <!-- model -->
-    <div class="container" id="mainModal">
-        <div class="modal fade" id="modelUpdateBook" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">修改商品</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form id="formUpdateBook">
-                            <div>
-                                <input type="hidden" id="bookId" name="bookId" value="<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookId'];?>
-">
-                            </div>
-                            <div class="form-group">
-                                <label>書名 : </label>
-                                <input type="text" class="form-control" name="bookName" id="bookName"
-                                    value="<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookName'];?>
-">
-                                <p id="tipsBookName"></p>
-                            </div>
-                            <div class="form-group">
-                                <label>作者 : </label>
-                                <input type="text" class="form-control" name="bookAuthor" id="bookAuthor"
-                                    value="<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookAuthor'];?>
-">
-                                <p id="tipsBookAuthor"></p>
-                            </div>
-                            <div class="form-group">
-                                <label>書本介紹 : </label>
-                                <textarea style="height: 300px;" type="text" class="form-control" name="bookInfo"
-                                    id="bookInfo"><?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookInfo'];?>
-</textarea>
-                                <p id="tipsBookInfo"></p>
-                            </div>
-                            <div class="form-group">
-                                <label>價格 : </label>
-                                <input type="text" class="form-control" name="bookPrice" id="bookPrice"
-                                    value="<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookPrice'];?>
-">
-                                <p id="tipsBookPrice"></p>
-                            </div>
-                            <div class="form-group">
-                                <label>書本預覽上傳 : </label>
-                                <label class="btn btn-info">
-                                    <input type="hidden" name="bookPhotoName" id="bookPhotoName"
-                                        value="<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookPhoto'];?>
-">
-                                    <input style="display:none;" type="file" name="bookPhoto" id="bookPhoto">
-                                    <span class="glyphicon glyphicon-picture"></span>
-                                    上傳圖片
-                                </label>
-                                <br>
-                                <img id="bookPhotoDemo" src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookPhoto'];?>
-"
-                                    height="150" width="130">
-                                <p id="tipsbookPhoto"></p>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" id="btnActionBookUpdate"
-                            name="btnActionBookUpdate">修改</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
+    <!-- 新增modal -->
     <div class="modal fade" id="modalAddBook" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -191,52 +137,129 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <form id="formAddBook">
                         <div class="form-group">
                             <label>書名 : </label>
-                            <input type="text" class="form-control" name="bookName" id="bookName">
-                            <p id="tipsBookName"></p>
+                            <input type="text" class="form-control" name="addBookName" id="addBookName">
+                            <p id="tipsAddBookName"></p>
                         </div>
                         <div class="form-group">
                             <label>作者 : </label>
-                            <input type="text" class="form-control" name="bookAuthor" id="bookAuthor">
-                            <p id="tipsBookAuthor"></p>
+                            <input type="text" class="form-control" name="addBookAuthor" id="addBookAuthor">
+                            <p id="tipsAddBookAuthor"></p>
                         </div>
                         <div class="form-group">
                             <label>書本介紹 : </label>
-                            <input type="text" class="form-control" name="bookInfo" id="bookInfo">
-                            <p id="tipsBookInfo"></p>
+                            <input type="text" class="form-control" name="addBookInfo" id="addBookInfo">
+                            <p id="tipsAddBookInfo"></p>
                         </div>
                         <div class="form-group">
                             <label>價格 : </label>
-                            <input type="text" class="form-control" name="bookPrice" id="bookPrice">
-                            <p id="tipsBookPrice"></p>
+                            <input type="text" class="form-control" name="addBookPrice" id="addBookPrice">
+                            <p id="tipsAddBookPrice"></p>
                         </div>
                         <div class="form-group">
-                            <label>書本預覽上傳 : </label>
+                            <label>當前庫存 : </label>
+                            <input type="text" class="form-control" name="addBookInStock" id="addBookInStock">
+                            <p id="tipsAddBookInStock"></p>
+                        </div>
+                        <div class="form-group">
                             <label class="btn btn-info">
-                                <input style="display:none;" type="file" name="bookPhoto" id="bookPhoto">
+                                <input style="display:none;" type="file" name="addBookPhoto" id="addBookPhoto">
                                 <span class="glyphicon glyphicon-picture"></span>
                                 上傳圖片
                             </label>
                             <br>
-                            <img id="bookPhotoDemo">
-                            <p id="tipsbookPhoto"></p>
+                            <label>書本預覽上傳 : </label>
+                            <br>
+                            <img id="addBookPhotoDemo" height="150" width="130">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd"
-                        disabled="true">新增</button>
+                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd">新增</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- 修改model -->
+    <div class="modal fade" id="modalUpdateBook" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">修改商品</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="formUpdateBook">
+                        <div>
+                            <input type="hidden" id="bookId" name="bookId" value="">
+                        </div>
+                        <div class="form-group">
+                            <label>書名 : </label>
+                            <input type="text" class="form-control" name="updateBookName" id="updateBookName" value="">
+                            <p id="tipsUpdateBookName"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>作者 : </label>
+                            <input type="text" class="form-control" name="updateBookAuthor" id="updateBookAuthor"
+                                value="">
+                            <p id="tipsUpdateBookAuthor"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>書本介紹 : </label>
+                            <textarea style="height: 300px;" type="text" class="form-control" name="updateBookInfo"
+                                id="updateBookInfo"></textarea>
+                            <p id="tipsUpdateBookInfo"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>價格 : </label>
+                            <input type="text" class="form-control" name="updateBookPrice" id="updateBookPrice"
+                                value="">
+                            <p id="tipsUpdateBookPrice"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>當前庫存 : </label>
+                            <input type="text" class="form-control" name="updateBookInStock" id="updateBookInStock" 
+                                value="">
+                            <p id="tipsUpdateBookInStock"></p>
+                        </div>
+                        <div class="form-group">
+                            <label class="btn btn-info">
+                                <input type="hidden" name="updateBookPhotoName" id="updateBookPhotoName" value="">
+                                <input style="display:none;" type="file" name="updateBookPhoto" id="updateBookPhoto">
+                                <span class="glyphicon glyphicon-picture"></span>
+                                上傳圖片
+                            </label>
+                            <br>
+                            <label>書本預覽上傳 : </label>
+                            <br>
+                            <img id="updateBookPhotoDemo" src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookPhoto'];?>
+"
+                                height="150" width="130">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnActionBookUpdate"
+                        name="btnActionBookUpdate">修改</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
-
 <?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
+ src="http://localhost/Store/Controller/javascript/book/showBook.js"><?php echo '</script'; ?>
 >
-
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/book/addBook.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/book/updateBook.js"><?php echo '</script'; ?>
+>
 
 </html><?php }
 }

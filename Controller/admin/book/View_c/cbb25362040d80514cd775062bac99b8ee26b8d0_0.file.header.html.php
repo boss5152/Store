@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-08 15:46:03
+/* Smarty version 3.1.33, created on 2019-08-09 03:58:01
   from 'C:\xampp\htdocs\Store\Controller\View\admin\book\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4c279b70ec06_16794784',
+  'unifunc' => 'content_5d4cd329cf8c18_99783114',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cbb25362040d80514cd775062bac99b8ee26b8d0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\book\\header.html',
-      1 => 1565271582,
+      1 => 1565315881,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4c279b70ec06_16794784 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d4cd329cf8c18_99783114 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
@@ -52,7 +52,7 @@ function content_5d4c279b70ec06_16794784 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Store/Controller/home/userInfo.php">我的書櫃</a></li>
+                        <li><a href="/Store/Controller/admin/home/adminHome.php">我的書櫃</a></li>
                         <li><a type="button" id="btnLogout" name="btnLogout">登出</a></li>
                     </ul>
                 </li>

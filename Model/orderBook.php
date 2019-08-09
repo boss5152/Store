@@ -85,9 +85,4 @@ class OrderBook extends ConnectDb
         return $row_result;
     }
 
-    /**
-     * 展示銷售排行
-     */
-
-
 }

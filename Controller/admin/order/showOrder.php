@@ -17,5 +17,5 @@ if (isset($_COOKIE['token'])) {
 ## 獲得所有訂單
 $orderBookObj = $useOrderBookTable->showAll();
 $smarty->assign('orderBookObj', $orderBookObj);
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/templates/admin/order/header.html");
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/templates/admin/order/showOrder.html");
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/View/index/adminHeader.html');
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/admin/order/showOrder.html");
