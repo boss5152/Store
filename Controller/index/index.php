@@ -12,29 +12,33 @@ $useCommonMethod = new CommonMethod();
 $bookArrays = $useBookTable->showAll();
 $isLogin = $useCommonMethod->checkLogin();
 $isAdmin = $useCommonMethod->checkAdmin();
-$user = "Welcome";
+$identity = false;
 
 if ($isLogin === true) {
+    if ($isAdmin === true) {
+        $identity = "admin";
+    }
     ## 顯示左上角ID
     $memberData = $useMemberTable->getAll($_COOKIE['token']);
-    $user = $memberData['account'];
-    if ($isAdmin === false) {
-        $cartListArray = $useCartTable->getCartList($memberData['userId']);
-        ## 這邊拆解查詢物件重組成一個二維陣列，並在其中裝上一個bool值來給前端button判斷給不給按
-        $newBookArrays = [];
-        foreach ($bookArrays as $newBookArray) {
-            $newBookArray['isAddCart'] = (in_array($newBookArray['bookId'], $cartListArray)) ? true : false;
-            array_push($newBookArrays, $newBookArray); 
-        }
-        $bookArrays = $newBookArrays;
+    $account = $memberData['account'];
+    $identity = "member";
+    $cartListArray = $useCartTable->getCartList($memberData['userId']);
+    ## 這邊拆解查詢物件重組成一個二維陣列，並在其中裝上一個bool值來給前端button判斷給不給按
+    $newBookArrays = [];
+    foreach ($bookArrays as $newBookArray) {
+        $newBookArray['isAddCart'] = (in_array($newBookArray['bookId'], $cartListArray)) ? true : false;
+        array_push($newBookArrays, $newBookArray); 
     }
+    $bookArrays = $newBookArrays;
+    $smarty->assign('account', $account);
 }
 
 $smarty->assign('newBookArrays', $bookArrays);
-$smarty->assign('user', $user);
-if ($isAdmin === true) {
-    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/index/adminHeader.html"); 
-} else {
-    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/index/header.html");
+if ($identity === false) {
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/header.html");
+} elseif ($identity === "member") {
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/userheader.html");
+} elseif ($identity === "admin") {
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/adminHeader.html"); 
 }
 $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/index/index.html"); 

@@ -29,10 +29,12 @@
                     <th style="text-align: center" class="col-md-1">當前庫存</th>
                     <th style="text-align: center" class="col-md-1">價格</th>
                     <th style="text-align: center" class="col-md-1">數量</th>
+                    <th style="text-align: center" class="col-md-1">總價</th>
                     <th style="text-align: center" class="col-md-1">刪除</th>
                 </tr>
             </thead>
             <tbody class="List">
+                <form id="formCart">
                 {{foreach $userCartListArrays as $userCartListArray}}
                 <tr>
                     <td style="text-align: center">
@@ -48,14 +50,17 @@
                         <p id="showBookAuthor{{$userCartListArray['bookId']}}">{{$userCartListArray['bookAuthor']}}</p>
                     </td>
                     <td style="text-align: center">
-                        <p>10</p>
+                        <p id="showBookInStock{{$userCartListArray['bookId']}}">{{$userCartListArray['bookInStock']}}</p>
                     </td>
                     <td style="text-align: center">
                         <p id="showBookPrice{{$userCartListArray['bookId']}}">{{$userCartListArray['bookPrice']}}</p>
                     </td>
                     <td style="text-align: center">
                         <input type="text" style="height: 30px; width:50px; border: black solid; text-align: center"
-                            maxlength="2" value="1">
+                            maxlength="2" id="showBookCount{{$userCartListArray['bookId']}}" data-bookid="{{$userCartListArray['bookId']}}" value="0">
+                    </td>
+                    <td style="text-align: center">
+                        <p id="showBookTotal{{$userCartListArray['bookId']}}" data-name="showBookTotal">0</p>
                     </td>
                     <td style="text-align: center">
                         <button type="button" class="btn btn-default" value="{{$userCartListArray['bookId']}}"
@@ -64,13 +69,24 @@
                     </td>
                 </tr>
                 {{/foreach}}
+                </form>
             </tbody>
         </table>
         <hr>
         <div>
-            <h4>總價 : <p>123</p>
-            </h4>
-            <button type="button" class="btn btn-success">訂購</button>
+            <div class="well col-sm-2 col-sm-offset-10">
+                <div><strong><h4>總價 : </h4></strong></div>
+                <hr>
+                NTD :<div class="col-md-offset-5"><h3 id="cartTotal">{{$totalArray['totalInit']}}</h3></div>
+                <hr>
+                <div class="col-md-offset-9">
+                    <button type="button" class="btn btn-success" id="btnBuyBook" name="btnBuyBook">訂購</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+
+<script src="http://localhost/Store/Controller/javascript/cart/cart.js"></script>
+
+</html>

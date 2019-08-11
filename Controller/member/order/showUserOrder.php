@@ -24,5 +24,5 @@ $orderBookObj = $useOrderBookTable->showAll();
 
 $smarty->assign('orderBookObj', $orderBookObj);
 $smarty->assign('memberData', $memberData);
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/order/header.html");
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/userHeader.html"); 
 $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/order/showUserOrder.html");

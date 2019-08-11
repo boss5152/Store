@@ -10,4 +10,4 @@ $token = $_COOKIE['token'];
 $memberData = $useMemberTable->getAll($token);
 
 $smarty->assign("memberData", $memberData);
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/aboutLogin/showEditUserInfo.html"); 
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/userHeader.html"); 

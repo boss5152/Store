@@ -2,5 +2,5 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member//aboutLogin/header.html"); 
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member//aboutLogin/login.html"); 
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/header.html"); 
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/aboutLogin/login.html"); 

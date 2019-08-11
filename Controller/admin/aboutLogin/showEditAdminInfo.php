@@ -11,5 +11,5 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $adminData = $useAdminTable->getAll($token);
 
     $smarty->assign("adminData", $adminData);
-    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/admin/home/showEditAdminInfo.html"); 
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/adminHeader.html"); 
 }
