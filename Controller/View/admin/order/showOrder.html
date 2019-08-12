@@ -35,34 +35,40 @@
                 </tr>
             </thead>
             <tbody class="List">
-                {{foreach $orderBookObj as $orderBookArrays}}
+                {{foreach $orderBookObj as $orderBookArray}}
                 <tr>
                     <td>
-                        {{$orderBookArrays['userAccount']}}
+                        {{$orderBookArray['userAccount']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['bookName']}}
+                        {{$orderBookArray['bookName']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['bookPrice']}}
+                        {{$orderBookArray['bookPrice']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['buyCount']}}
+                        {{$orderBookArray['buyCount']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['totalPrice']}}
+                        {{$orderBookArray['totalPrice']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['orderDate']}}
+                        {{$orderBookArray['orderDate']}}
                     </td>
                     <td style="text-align: center">
-                        <button type="button" class="btn btn-default" value="{{$bookArrays['bookId']}}"
-                            name="btnDeleteBook" id="btnDeleteBook">結單
+                        {{if $orderBookArray['orderStatus'] == "已出貨"}}
+                        <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
+                            name="btnCompleteOrder" id="btnCompleteOrder" disabled="true">已結單
                         </button>
+                        {{else}}
+                        <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
+                            name="btnCompleteOrder" id="btnCompleteOrder">結單
+                        </button>
+                        {{/if}}
                     </td>
                     <td style="text-align: center">
-                        <button type="button" class="btn btn-default" value="{{$bookArrays['bookId']}}"
-                            name="btnDeleteBook" id="btnDeleteBook">刪除
+                        <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
+                            name="btnDeleteOrder" id="btnDeleteOrder">刪除
                         </button>
                     </td>
                 </tr>
@@ -71,5 +77,10 @@
         </table>
     </div>
 </body>
+
+<script src="http://localhost/Store/Controller/javascript/admin/order/deleteOrder.js"></script>
+<script src="http://localhost/Store/Controller/javascript/admin/order/completeOrder.js"></script>
+<script src="http://localhost/Store/Controller/javascript/tool.js"></script>
+
 
 </html>

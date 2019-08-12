@@ -17,20 +17,21 @@ $identity = false;
 if ($isLogin === true) {
     if ($isAdmin === true) {
         $identity = "admin";
+    } else {
+        ## 顯示左上角ID
+        $memberData = $useMemberTable->getAll($_COOKIE['token']);
+        $account = $memberData['account'];
+        $identity = "member";
+        $cartListArray = $useCartTable->getCartBookId($memberData['userId']);
+        ## 這邊拆解查詢物件重組成一個二維陣列，並在其中裝上一個bool值來給前端button判斷給不給按
+        $newBookArrays = [];
+        foreach ($bookArrays as $newBookArray) {
+            $newBookArray['isAddCart'] = (in_array($newBookArray['bookId'], $cartListArray)) ? true : false;
+            array_push($newBookArrays, $newBookArray); 
+        }
+        $bookArrays = $newBookArrays;
+        $smarty->assign('account', $account);
     }
-    ## 顯示左上角ID
-    $memberData = $useMemberTable->getAll($_COOKIE['token']);
-    $account = $memberData['account'];
-    $identity = "member";
-    $cartListArray = $useCartTable->getCartList($memberData['userId']);
-    ## 這邊拆解查詢物件重組成一個二維陣列，並在其中裝上一個bool值來給前端button判斷給不給按
-    $newBookArrays = [];
-    foreach ($bookArrays as $newBookArray) {
-        $newBookArray['isAddCart'] = (in_array($newBookArray['bookId'], $cartListArray)) ? true : false;
-        array_push($newBookArrays, $newBookArray); 
-    }
-    $bookArrays = $newBookArrays;
-    $smarty->assign('account', $account);
 }
 
 $smarty->assign('newBookArrays', $bookArrays);

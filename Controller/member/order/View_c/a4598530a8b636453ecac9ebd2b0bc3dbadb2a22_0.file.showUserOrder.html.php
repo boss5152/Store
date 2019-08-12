@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-09 12:24:55
+/* Smarty version 3.1.33, created on 2019-08-12 09:29:32
   from 'C:\xampp\htdocs\Store\Controller\View\member\order\showUserOrder.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4d49f7ddcdd4_04978179',
+  'unifunc' => 'content_5d51155ce45692_79504863',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4598530a8b636453ecac9ebd2b0bc3dbadb2a22' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\order\\showUserOrder.html',
-      1 => 1565346295,
+      1 => 1565594972,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4d49f7ddcdd4_04978179 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d51155ce45692_79504863 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -98,6 +98,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </div>
 
 </body>
+
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
+>
 
 </html><?php }
 }

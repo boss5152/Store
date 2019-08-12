@@ -3,6 +3,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useCartTable = new Cart();
+$useBookTable = new Book();
 $useMemberTable = new Member();
 $useCommonMethod = new CommonMethod();
 
@@ -10,21 +11,23 @@ $isLogin = $useCommonMethod->checkLogin();
 
 if ($isLogin === true) {
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
         $tips = "";
         $isAdd = false;
         $bookId = $_POST['bookId'];
         $memberData = $useMemberTable->getAll($_COOKIE['token']);
         $userId = $memberData['userId'];
 
-        $cartListArray = $useCartTable->getCartList($userId);
+        $cartBookIdArray = $useCartTable->getCartBookId($userId);
+        ## 取書本價格用
+        $bookData = $useBookTable->getAll($bookId);
 
-        $tips = in_array($bookId, $cartListArray) ? ("這本書已在購物車裡") : ("");
+        $tips = in_array($bookId, $cartBookIdArray) ? ("這本書已在購物車裡") : ("");
         ## 沒重複，加入資料庫
         if ($tips === "") {
             $addCartArray = [
                 'userId' => $userId,
-                'bookId' => $bookId
+                'bookId' => $bookId,
+                'bookTotalPrice' => 0
             ];
             $isAddCart = $useCartTable->insert($addCartArray);
             if ($isAddCart === true) {

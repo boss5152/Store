@@ -27,9 +27,9 @@ class Cart extends ConnectDb
     /*
      * 更新
      */
-    public function update($cartList, $userId)
+    public function update($array)
     {
-        $sql = "UPDATE Cart set cartList = '" . $cartList . "' WHERE userId = $userId";
+        $sql = "UPDATE Cart set bookCount = '" . $array['count'] . "', bookTotalPrice = '" . $array['bookTotalPrice'] . "' WHERE userId = '" . $array['userId'] . "' AND bookId = '" . $array['bookId'] . "'";
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false;
     }
@@ -57,7 +57,7 @@ class Cart extends ConnectDb
     /*
      * 獲得全部
      */
-    public function getCartList($userId)
+    public function getCartBookId($userId)
     {
         $sql = "SELECT bookId FROM Cart WHERE userId = '" . $userId . "'";
         $result = $this->executeSql($sql);
@@ -71,4 +71,34 @@ class Cart extends ConnectDb
         return $this->resultArray;
     }
 
+    /*
+     * 獲得全部
+     */
+    public function getCartList($userId)
+    {
+        $sql = "SELECT * FROM cart LEFT JOIN book on cart.bookId = book.bookId WHERE cart.userId = '" . $userId . "'";
+        $result = $this->executeSql($sql);
+        return $result;
+    }
+
+    /**
+     * 計算總價
+     */
+    public function getCartAllTotal($userId)
+    {
+        $sql = "SELECT sum(bookTotalPrice) FROM cart LEFT JOIN book on cart.bookId = book.bookId WHERE cart.userId = '" . $userId . "'";
+        $result = $this->executeSql($sql);
+        $resultArray = mysqli_fetch_array($result);
+        return $resultArray;
+    }
+
+    /**
+     * 重製訂單比數
+     */
+    public function initCart($bookId){
+        $sql = "Update cart set bookCount = '0', bookTotalPrice = '0' WHERE bookId = '" . $bookId . "'" ;
+        $result = $this->executeSql($sql);
+        return ($result === true) ? true : false;
+    }
 }
+

@@ -1,11 +1,33 @@
-<!DOCTYPE html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<?php
+/* Smarty version 3.1.33, created on 2019-08-12 04:16:18
+  from 'C:\xampp\htdocs\Store\Controller\View\header\userHeader.html' */
 
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5d50cbf2ab18e0_77262326',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'fb523d7e40bfb2f4b3164da8403ac213e58265cc' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\userHeader.html',
+      1 => 1565572302,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5d50cbf2ab18e0_77262326 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="">admin</a>
+            <a class="navbar-brand" href=""><?php echo $_smarty_tpl->tpl_vars['account']->value;?>
+</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
@@ -36,20 +58,18 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/Store/Controller/admin/book/showBook.php">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> 管理商品
+                    <a href="/Store/Controller/member/cart/showCart.php">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> 我的購物車
                     </a>
                 </li>
                 <li>
-                    <a href="/Store/Controller/admin/order/showOrder.php">
-                        <span class="glyphicon glyphicon-envelope"></span> 管理訂單
+                    <a href="/Store/Controller/member/order/showUserOrder.php">
+                        <span class="glyphicon glyphicon-envelope"></span> 我的訂單
                     </a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
-<script src="http://localhost/Store/Controller/javascript/search.js"></script>
-
-<!-- 菜單 -->
+<!-- 菜單 --><?php }
+}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-10 10:53:59
+/* Smarty version 3.1.33, created on 2019-08-12 11:56:32
   from 'C:\xampp\htdocs\Store\Controller\View\header\userHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d4e8627429330_32637333',
+  'unifunc' => 'content_5d5137d0a602b4_94998786',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fb45bc470c2473bdffb7b580f4fdc0d3443cd88a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\userHeader.html',
-      1 => 1565427131,
+      1 => 1565603767,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d4e8627429330_32637333 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d5137d0a602b4_94998786 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
+<?php echo '<script'; ?>
+ src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
+>
+
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -36,9 +40,9 @@ function content_5d4e8627429330_32637333 (Smarty_Internal_Template $_smarty_tpl)
             <ul class="nav navbar-nav">
                 <form class="navbar-form" role="search">
                     <div class="form-group input-group">
-                        <input type="text" class="form-control" placeholder="Search..">
+                        <input type="text" class="form-control" placeholder="Search.." id="searchWhat" name="searchWhat">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
+                            <button class="btn btn-default" type="button" id="btnSearch">
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
                         </span>
@@ -71,5 +75,10 @@ function content_5d4e8627429330_32637333 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </div>
 </nav>
+
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/search.js"><?php echo '</script'; ?>
+>
+
 <!-- 菜單 --><?php }
 }

@@ -2,15 +2,15 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
-$useBookTable = new Book();
+$useOrderTable = new OrderBook();
 $useCommonMethod = new CommonMethod();
 
 $isAdmin = $useCommonMethod->checkAdmin();
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($isAdmin === true) {
-        $bookId = $_POST["bookId"];
-        $checkDelete = $useBookTable->delete($bookId);
+        $orderId = $_POST["orderId"];
+        $checkDelete = $useOrderTable->delete($orderId);
         if ($checkDelete === true) {
             $tips = "刪除成功";
             echo json_encode(array(

@@ -109,4 +109,23 @@ class Book extends ConnectDb
         return $this->resultArray;
     }
 
+    /**
+     * 購買書本後更新庫存
+     */
+    public function updateInStock($array)
+    {
+        $sql = "UPDATE Book set bookInStock = '" . $array['bookInStock'] . "' WHERE bookId = '" . $array['bookId'] . "'";
+        $result = $this->executeSql($sql);
+        return ($result === true) ? true : false;
+    }
+
+    /**
+     * 關鍵字搜尋
+     */
+    public function searchBookName($keyword){
+        $sql = "SELECT * FROM Book WHERE bookName LIKE '%$keyword%'";
+        $result = $this->executeSql($sql);
+        return $result;
+    }
+
 }

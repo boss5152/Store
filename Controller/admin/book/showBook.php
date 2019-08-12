@@ -3,9 +3,13 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
 $useBookTable = new Book();
+$useCommonMethod = new CommonMethod();
 
-$bookObj = $useBookTable->showAll();
+$isAdmin = $useCommonMethod->checkAdmin();
 
-$smarty->assign('bookObj', $bookObj);
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/View/header/adminHeader.html');
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/View/admin/book/showBook.html');
+if ($isAdmin === true) {
+    $bookObj = $useBookTable->showAll();
+    $smarty->assign('bookObj', $bookObj);
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/View/header/adminHeader.html');
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/View/admin/book/showBook.html');
+}

@@ -4,24 +4,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod
 
 $useMemberTable = new Member();
 $useOrderBookTable = new OrderBook();
+$useCommonMethod = new CommonMethod();
 
-## 驗證登入
-if (isset($_COOKIE['token'])) {
-    $token = $_COOKIE['token'];
-    $checkToken = $useMemberTable->checkToken($token);
-    if ($checkToken === true) {
-        ##取資料用於顯示meun暱稱
-        $memberData = $useMemberTable->getAll($token);
-    }
-}
-if (isset($memberData)) {
+$isLogin = $useCommonMethod->checkLogin();
+if ($isLogin === true) {
+    ##取資料用於顯示meun暱稱
+    $memberData = $useMemberTable->getAll($_COOKIE['token']);
     ## 顯示左上角暱稱
     $smarty->assign('account', $memberData['account']);
 }
-
 ## 獲得所有訂單
-$orderBookObj = $useOrderBookTable->showAll();
-
+$orderBookObj = $useOrderBookTable->showUserOrder($memberData['account']);
 $smarty->assign('orderBookObj', $orderBookObj);
 $smarty->assign('memberData', $memberData);
 $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/userHeader.html"); 

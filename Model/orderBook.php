@@ -28,18 +28,11 @@ class OrderBook extends ConnectDb
     }
 
     /*
-     * 修改
+     * 結單
      */ 
-    public function update($array, $bookId)
+    public function complete($orderId)
     {
-        $update = '';
-        foreach($array as $key => $value){
-            $update .= $key . "='" . $value . "',";
-        }
-        ## -1表示去掉最後一個','
-        $update = substr($update, 0, -1);
-        ## 執行
-        $sql = "UPDATE OrderBook set $update WHERE bookId = $bookId";
+        $sql = "UPDATE OrderBook set orderStatus = '已出貨' WHERE orderId = $orderId";
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false;
     }
@@ -47,9 +40,9 @@ class OrderBook extends ConnectDb
     /*
      * 刪除
      */ 
-    public function delete($bookId)
+    public function delete($orderId)
     {
-        $sql = "DELETE FROM OrderBook WHERE bookId = $bookId";
+        $sql = "DELETE FROM OrderBook WHERE orderId = $orderId";
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false;
     }
@@ -67,9 +60,9 @@ class OrderBook extends ConnectDb
     /*
      * 顯示對應使用者訂單
      */
-    public function showUserOrder($userId)
+    public function showUserOrder($userAccount)
     {
-        $sql = "SELECT * FROM OrderBook WHERE userId = '" . $userId . "'";
+        $sql = "SELECT * FROM OrderBook WHERE userAccount = '" . $userAccount . "'";
         $result = $this->executeSql($sql);
         return $result;
     }

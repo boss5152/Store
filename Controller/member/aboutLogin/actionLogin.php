@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $tips = "登入成功";
             $isLogin = true;
             ## 儲存cookie，保存1小時
-            setcookie("token", $token, time()+3600, "/");
+            setcookie("token", $token, time()+36000, "/");
         }
     } else {
         $tips = "帳號密碼不得為空";

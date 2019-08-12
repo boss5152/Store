@@ -1,6 +1,27 @@
-<!DOCTYPE html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<?php
+/* Smarty version 3.1.33, created on 2019-08-12 07:49:04
+  from 'C:\xampp\htdocs\Store\Controller\View\header\adminHeader.html' */
 
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5d50fdd0a61356_65256625',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '04ac5965eb4451adf463229a547a89732224a3e1' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\adminHeader.html',
+      1 => 1565572302,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5d50fdd0a61356_65256625 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -49,7 +70,5 @@
         </div>
     </div>
 </nav>
-
-<script src="http://localhost/Store/Controller/javascript/search.js"></script>
-
-<!-- 菜單 -->
+<!-- 菜單 --><?php }
+}
