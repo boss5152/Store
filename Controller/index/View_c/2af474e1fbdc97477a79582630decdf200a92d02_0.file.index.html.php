@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 11:47:10
+/* Smarty version 3.1.33, created on 2019-08-12 12:47:48
   from 'C:\xampp\htdocs\Store\Controller\View\index\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d51359e3c7505_04333545',
+  'unifunc' => 'content_5d5143d4097ff5_94036478',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2af474e1fbdc97477a79582630decdf200a92d02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\index\\index.html',
-      1 => 1565603152,
+      1 => 1565606867,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d51359e3c7505_04333545 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d5143d4097ff5_94036478 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
@@ -55,7 +55,7 @@ function content_5d51359e3c7505_04333545 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 
 <body>
-    <div class="container text-center">
+    <div class="container text-center" id="mainDiv">
         <h3>商品</h3>
         <br>
         <div class="row">
@@ -104,6 +104,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['newBookArray']->value) {
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        </div>
+        <div>
+            <ul class="pagination">
+                <li><a id="page" role="button">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="">4</a></li>
+                <li><a href="">5</a></li>
+            </ul>
         </div>
     </div>
 

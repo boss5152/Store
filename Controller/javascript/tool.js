@@ -522,3 +522,31 @@ $(document).ready(function () {
         }
     })
 })
+
+/**
+ * 分頁查詢功能
+ */
+$(document).ready(function () {
+    $("#page").click(function () {
+        console.log($("#page").html());
+            // $.ajax({
+            //     type: "POST",
+            //     url: "http://localhost/Store/Controller/member/cart/addCart.php",
+            //     dataType: "json",
+            //     data: {
+            //         'bookId': bookId
+            //     },
+            //     success: function (data) {
+            //         if (data.isAdd === true) {
+
+            //         } else {
+            //             alert(data.tips);
+            //         }
+            //     },
+            //     error: function () {
+            //         alert("錯誤請求");
+            //     }
+            // })
+
+    })
+})

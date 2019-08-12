@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 11:56:12
+/* Smarty version 3.1.33, created on 2019-08-12 12:24:48
   from 'C:\xampp\htdocs\Store\Controller\View\header\userheader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5137bc36dd92_93244628',
+  'unifunc' => 'content_5d513e7081c446_63762276',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd74c67fd885f57c90a1ae12343beac1710abe6ca' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\userheader.html',
-      1 => 1565603767,
+      1 => 1565605487,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5137bc36dd92_93244628 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d513e7081c446_63762276 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -40,7 +40,7 @@ function content_5d5137bc36dd92_93244628 (Smarty_Internal_Template $_smarty_tpl)
             <ul class="nav navbar-nav">
                 <form class="navbar-form" role="search">
                     <div class="form-group input-group">
-                        <input type="text" class="form-control" placeholder="Search.." id="searchWhat" name="searchWhat">
+                        <input type="text" class="form-control" placeholder="找書名..." id="searchWhat" name="searchWhat">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button" id="btnSearch">
                                 <span class="glyphicon glyphicon-search"></span>
