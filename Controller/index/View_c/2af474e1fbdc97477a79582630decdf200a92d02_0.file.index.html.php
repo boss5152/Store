@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 12:47:48
+/* Smarty version 3.1.33, created on 2019-08-13 08:27:42
   from 'C:\xampp\htdocs\Store\Controller\View\index\index.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5143d4097ff5_94036478',
+  'unifunc' => 'content_5d52585e0a0953_41825565',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2af474e1fbdc97477a79582630decdf200a92d02' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\index\\index.html',
-      1 => 1565606867,
+      1 => 1565677658,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5143d4097ff5_94036478 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d52585e0a0953_41825565 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="utf-8">
 
@@ -107,11 +107,21 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
         <div>
             <ul class="pagination">
-                <li><a id="page" role="button">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
+                <?php
+$_smarty_tpl->tpl_vars['page'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['page']->step = 1;$_smarty_tpl->tpl_vars['page']->total = (int) ceil(($_smarty_tpl->tpl_vars['page']->step > 0 ? $_smarty_tpl->tpl_vars['pageCount']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['pageCount']->value)+1)/abs($_smarty_tpl->tpl_vars['page']->step));
+if ($_smarty_tpl->tpl_vars['page']->total > 0) {
+for ($_smarty_tpl->tpl_vars['page']->value = 1, $_smarty_tpl->tpl_vars['page']->iteration = 1;$_smarty_tpl->tpl_vars['page']->iteration <= $_smarty_tpl->tpl_vars['page']->total;$_smarty_tpl->tpl_vars['page']->value += $_smarty_tpl->tpl_vars['page']->step, $_smarty_tpl->tpl_vars['page']->iteration++) {
+$_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteration === 1;$_smarty_tpl->tpl_vars['page']->last = $_smarty_tpl->tpl_vars['page']->iteration === $_smarty_tpl->tpl_vars['page']->total;?>
+                    <?php if ($_smarty_tpl->tpl_vars['page']->value == $_smarty_tpl->tpl_vars['nowPage']->value) {?>
+                    <li class="active"><a id="page" name="page" role="button"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+</a></li>
+                    <?php } else { ?>
+                    <li><a id="page" name="page" role="button"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+</a></li>
+                    <?php }?>
+                <?php }
+}
+?>
             </ul>
         </div>
     </div>
@@ -120,6 +130,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 <?php echo '<script'; ?>
  src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/page.js"><?php echo '</script'; ?>
 >
 
 </html><?php }

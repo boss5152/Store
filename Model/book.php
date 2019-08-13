@@ -4,9 +4,7 @@ require_once("ConnectDb.php");
 
 class Book extends ConnectDb
 {
-
     private $resultArray = [];
-
     /*
      * 新增
      */
@@ -63,7 +61,10 @@ class Book extends ConnectDb
     {
         $sql = "SELECT * FROM book";
         $result = $this->executeSql($sql);
-        return $result;
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
     }
 
     /*
@@ -120,12 +121,47 @@ class Book extends ConnectDb
     }
 
     /**
-     * 關鍵字搜尋
+     * 關鍵字搜尋查到的總比數
      */
-    public function searchBookName($keyword){
+    public function searchAllBookNameCount($keyword){
         $sql = "SELECT * FROM Book WHERE bookName LIKE '%$keyword%'";
         $result = $this->executeSql($sql);
-        return $result;
+        $row_result = mysqli_num_rows($result);
+        return $row_result;
+    }
+
+    /**
+     * 搜尋後每頁固定顯示八筆
+     */
+    public function searchBookNameLimitCount($keyword, $page){
+        $sql = "SELECT * FROM Book WHERE bookName LIKE '%$keyword%' LIMIT $page,8";
+        $result = $this->executeSql($sql);
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
+    }
+
+    /**
+     * 取得資料總筆數
+     */
+    public function allBookCount(){
+        $sql = "SELECT * FROM Book";
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_num_rows($result);
+        return $row_result;
+    }
+
+    /**
+     * 固定取八筆
+     */
+    public function showBookLimit($page){
+        $sql = "SELECT * FROM Book Limit $page,8";
+        $result = $this->executeSql($sql);
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
     }
 
 }

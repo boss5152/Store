@@ -2,14 +2,12 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
-$useAdminTable = new Admin();
+$useMemberTable = new Member();
+$tips = '';
+## 顯示
+$token = $_COOKIE['token'];
+$adminData = $useMemberTable->getAll($token);
 
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $tips = '';
-    ## 顯示
-    $token = $_COOKIE['token'];
-    $adminData = $useAdminTable->getAll($token);
-
-    $smarty->assign("adminData", $adminData);
-    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/adminHeader.html"); 
-}
+$smarty->assign("adminData", $adminData);
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/adminHeader.html"); 
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/admin/aboutLogin/showEditAdminInfo.html"); 

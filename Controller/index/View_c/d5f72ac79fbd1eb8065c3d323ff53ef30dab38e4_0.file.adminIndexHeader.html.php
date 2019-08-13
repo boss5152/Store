@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-13 05:00:47
-  from 'C:\xampp\htdocs\Store\Controller\View\header\userHeader.html' */
+/* Smarty version 3.1.33, created on 2019-08-13 05:44:53
+  from 'C:\xampp\htdocs\Store\Controller\View\header\adminIndexHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5227df4a9918_03680039',
+  'unifunc' => 'content_5d523235a5e5d3_34066113',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'fb523d7e40bfb2f4b3164da8403ac213e58265cc' => 
+    'd5f72ac79fbd1eb8065c3d323ff53ef30dab38e4' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\userHeader.html',
-      1 => 1565665237,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\adminIndexHeader.html',
+      1 => 1565665232,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5227df4a9918_03680039 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d523235a5e5d3_34066113 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -30,12 +30,23 @@ function content_5d5227df4a9918_03680039 (Smarty_Internal_Template $_smarty_tpl)
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href=""><?php echo $_smarty_tpl->tpl_vars['account']->value;?>
-</a>
+            <a class="navbar-brand" href="">admin</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/Store/Controller/index/index.php">首頁</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <form class="navbar-form" role="search">
+                    <div class="form-group input-group">
+                        <input type="text" class="form-control" placeholder="Search.." id="searchWhat">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="btnSearch">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -45,18 +56,18 @@ function content_5d5227df4a9918_03680039 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Store/Controller/member/aboutLogin/showEditUserInfo.php">修改資料</a></li>
+                        <li><a href="/Store/Controller/admin/aboutLogin/showEditAdminInfo.php">修改資料</a></li>
                         <li><a type="button" id="btnLogout" name="btnLogout">登出</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/Store/Controller/member/cart/showCart.php">
-                        <span class="glyphicon glyphicon-shopping-cart"></span> 我的購物車
+                    <a href="/Store/Controller/admin/book/showBook.php">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> 管理商品
                     </a>
                 </li>
                 <li>
-                    <a href="/Store/Controller/member/order/showUserOrder.php">
-                        <span class="glyphicon glyphicon-envelope"></span> 我的訂單
+                    <a href="/Store/Controller/admin/order/showOrder.php">
+                        <span class="glyphicon glyphicon-envelope"></span> 管理訂單
                     </a>
                 </li>
             </ul>
@@ -70,6 +81,7 @@ function content_5d5227df4a9918_03680039 (Smarty_Internal_Template $_smarty_tpl)
 <?php echo '<script'; ?>
  src="http://localhost/Store/Controller/javascript/header/logout.js"><?php echo '</script'; ?>
 >
+
 
 <!-- 菜單 --><?php }
 }

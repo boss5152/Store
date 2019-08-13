@@ -12,10 +12,13 @@ if ($isLogin === true) {
     $memberData = $useMemberTable->getAll($_COOKIE['token']);
     ## 顯示左上角暱稱
     $smarty->assign('account', $memberData['account']);
+    ## 獲得所有訂單
+    $orderBookArrays = $useOrderBookTable->showUserOrder($memberData['account']);
+    
+    $smarty->assign('orderBookArrays', $orderBookArrays);
+    $smarty->assign('memberData', $memberData);
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/userHeader.html"); 
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/order/showUserOrder.html");
+} else {
+    header("Location: /Store/Controller/index/index.php");
 }
-## 獲得所有訂單
-$orderBookObj = $useOrderBookTable->showUserOrder($memberData['account']);
-$smarty->assign('orderBookObj', $orderBookObj);
-$smarty->assign('memberData', $memberData);
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/userHeader.html"); 
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/order/showUserOrder.html");

@@ -31,25 +31,25 @@
                 </tr>
             </thead>
             <tbody class="List">
-                {{foreach $orderBookObj as $orderBookArrays}}
+                {{foreach $orderBookArrays as $orderBookArray}}
                 <tr>
                     <td>
-                        {{$orderBookArrays['bookName']}}
+                        {{$orderBookArray['bookName']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['bookPrice']}}
+                        {{$orderBookArray['bookPrice']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['buyCount']}}
+                        {{$orderBookArray['buyCount']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['totalPrice']}}
+                        {{$orderBookArray['totalPrice']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['orderDate']}}
+                        {{$orderBookArray['orderDate']}}
                     </td>
                     <td>
-                        {{$orderBookArrays['orderStatus']}}
+                        {{$orderBookArray['orderStatus']}}
                     </td>
                 </tr>
                 {{/foreach}}

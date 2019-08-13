@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-13 05:00:47
-  from 'C:\xampp\htdocs\Store\Controller\View\header\userHeader.html' */
+/* Smarty version 3.1.33, created on 2019-08-13 05:00:45
+  from 'C:\xampp\htdocs\Store\Controller\View\header\userIndexHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5227df4a9918_03680039',
+  'unifunc' => 'content_5d5227dd8b5df2_05089095',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'fb523d7e40bfb2f4b3164da8403ac213e58265cc' => 
+    '2cd8b5863826b147782686ebe5ce5ea00637067b' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\userHeader.html',
-      1 => 1565665237,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\userIndexHeader.html',
+      1 => 1565665230,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5227df4a9918_03680039 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d5227dd8b5df2_05089095 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -36,6 +36,18 @@ function content_5d5227df4a9918_03680039 (Smarty_Internal_Template $_smarty_tpl)
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/Store/Controller/index/index.php">首頁</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <form class="navbar-form" role="search">
+                    <div class="form-group input-group">
+                        <input type="text" class="form-control" placeholder="找書名..." id="searchWhat" name="searchWhat">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="btnSearch">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

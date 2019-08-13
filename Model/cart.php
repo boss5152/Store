@@ -45,17 +45,20 @@ class Cart extends ConnectDb
     }
 
     /*
-     * 獲得全部
+     * 展示全部
      */
     public function showAll()
     {
         $sql = "SELECT * FROM Cart";
         $result = $this->executeSql($sql);
-        return $result;
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
     }
 
     /*
-     * 獲得全部
+     * 獲得bookId
      */
     public function getCartBookId($userId)
     {
@@ -78,18 +81,10 @@ class Cart extends ConnectDb
     {
         $sql = "SELECT * FROM cart LEFT JOIN book on cart.bookId = book.bookId WHERE cart.userId = '" . $userId . "'";
         $result = $this->executeSql($sql);
-        return $result;
-    }
-
-    /**
-     * 計算總價
-     */
-    public function getCartAllTotal($userId)
-    {
-        $sql = "SELECT sum(bookTotalPrice) FROM cart LEFT JOIN book on cart.bookId = book.bookId WHERE cart.userId = '" . $userId . "'";
-        $result = $this->executeSql($sql);
-        $resultArray = mysqli_fetch_array($result);
-        return $resultArray;
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
     }
 
     /**

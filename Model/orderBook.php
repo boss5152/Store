@@ -4,6 +4,7 @@ require_once("ConnectDb.php");
 
 class OrderBook extends ConnectDb
 {
+    private $resultArray = [];
     /*
      * 新增
      */ 
@@ -54,7 +55,10 @@ class OrderBook extends ConnectDb
     {
         $sql = "SELECT * FROM OrderBook";
         $result = $this->executeSql($sql);
-        return $result;
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
     }
 
     /*
@@ -64,7 +68,10 @@ class OrderBook extends ConnectDb
     {
         $sql = "SELECT * FROM OrderBook WHERE userAccount = '" . $userAccount . "'";
         $result = $this->executeSql($sql);
-        return $result;
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
     }
 
     /*

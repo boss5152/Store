@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 09:29:32
+/* Smarty version 3.1.33, created on 2019-08-13 07:47:56
   from 'C:\xampp\htdocs\Store\Controller\View\member\order\showUserOrder.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d51155ce45692_79504863',
+  'unifunc' => 'content_5d524f0c5cf5a9_34387957',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4598530a8b636453ecac9ebd2b0bc3dbadb2a22' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\order\\showUserOrder.html',
-      1 => 1565594972,
+      1 => 1565675275,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d51155ce45692_79504863 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d524f0c5cf5a9_34387957 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -59,33 +59,33 @@ function content_5d51155ce45692_79504863 (Smarty_Internal_Template $_smarty_tpl)
             </thead>
             <tbody class="List">
                 <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['orderBookObj']->value, 'orderBookArrays');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['orderBookArrays']->value, 'orderBookArray');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['orderBookArrays']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['orderBookArray']->value) {
 ?>
                 <tr>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['orderBookArrays']->value['bookName'];?>
+                        <?php echo $_smarty_tpl->tpl_vars['orderBookArray']->value['bookName'];?>
 
                     </td>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['orderBookArrays']->value['bookPrice'];?>
+                        <?php echo $_smarty_tpl->tpl_vars['orderBookArray']->value['bookPrice'];?>
 
                     </td>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['orderBookArrays']->value['buyCount'];?>
+                        <?php echo $_smarty_tpl->tpl_vars['orderBookArray']->value['buyCount'];?>
 
                     </td>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['orderBookArrays']->value['totalPrice'];?>
+                        <?php echo $_smarty_tpl->tpl_vars['orderBookArray']->value['totalPrice'];?>
 
                     </td>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['orderBookArrays']->value['orderDate'];?>
+                        <?php echo $_smarty_tpl->tpl_vars['orderBookArray']->value['orderDate'];?>
 
                     </td>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['orderBookArrays']->value['orderStatus'];?>
+                        <?php echo $_smarty_tpl->tpl_vars['orderBookArray']->value['orderStatus'];?>
 
                     </td>
                 </tr>

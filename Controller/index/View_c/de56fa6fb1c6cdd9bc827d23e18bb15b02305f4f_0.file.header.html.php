@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 12:30:11
+/* Smarty version 3.1.33, created on 2019-08-13 05:26:39
   from 'C:\xampp\htdocs\Store\Controller\View\header\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d513fb3975875_10147631',
+  'unifunc' => 'content_5d522def3f0434_73393414',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'de56fa6fb1c6cdd9bc827d23e18bb15b02305f4f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\header.html',
-      1 => 1565600950,
+      1 => 1565665240,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d513fb3975875_10147631 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d522def3f0434_73393414 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -66,7 +66,11 @@ function content_5d513fb3975875_10147631 (Smarty_Internal_Template $_smarty_tpl)
     </div>
 </nav>
 <?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/search.js"><?php echo '</script'; ?>
+ src="http://localhost/Store/Controller/javascript/header/search.js"><?php echo '</script'; ?>
 >
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/header/logout.js"><?php echo '</script'; ?>
+>
+
 <!-- 菜單 --><?php }
 }

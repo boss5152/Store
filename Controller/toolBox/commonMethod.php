@@ -11,8 +11,6 @@ class CommonMethod
     public function __construct()
     {
         $this->useMemberTable = new Member();
-        $this->useBookTable = new Book();
-        $this->useCartTable = new Cart();
         $this->useOrderBookTable = new OrderBook();
     }
 
@@ -22,8 +20,7 @@ class CommonMethod
     public function checkLogin()
     {
         if (isset($_COOKIE['token'])) {
-            $checkToken = $this->useMemberTable->checkToken($_COOKIE['token']);
-            return ($checkToken === true) ? true : false;
+            return $this->useMemberTable->checkToken($_COOKIE['token']);
         }
     }
 
@@ -33,8 +30,7 @@ class CommonMethod
     public function checkAdmin()
     {
         if (isset($_COOKIE['token'])) {
-            $checkAdmin = $this->useMemberTable->checkAdmin($_COOKIE['token']);
-            return ($checkAdmin === true) ? true : false;
+            return $checkAdmin = $this->useMemberTable->checkAdmin($_COOKIE['token']);
         }
     }
 }

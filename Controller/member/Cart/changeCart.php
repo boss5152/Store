@@ -35,8 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         } else {
             $tips = "更新失敗，請重新操作";
         }
+    } else {
+        $tips = "登入逾時，請重新登入";
     }
-
     echo json_encode(array(
         'isUpdate' => $isUpdate,
         'total' => $total,

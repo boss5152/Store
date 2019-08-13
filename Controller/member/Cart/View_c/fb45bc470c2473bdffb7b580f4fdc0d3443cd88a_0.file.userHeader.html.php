@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 11:56:32
+/* Smarty version 3.1.33, created on 2019-08-13 05:00:46
   from 'C:\xampp\htdocs\Store\Controller\View\header\userHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5137d0a602b4_94998786',
+  'unifunc' => 'content_5d5227de994a96_21260498',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fb45bc470c2473bdffb7b580f4fdc0d3443cd88a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\userHeader.html',
-      1 => 1565603767,
+      1 => 1565665237,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5137d0a602b4_94998786 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d5227de994a96_21260498 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -37,18 +37,6 @@ function content_5d5137d0a602b4_94998786 (Smarty_Internal_Template $_smarty_tpl)
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/Store/Controller/index/index.php">首頁</a></li>
             </ul>
-            <ul class="nav navbar-nav">
-                <form class="navbar-form" role="search">
-                    <div class="form-group input-group">
-                        <input type="text" class="form-control" placeholder="Search.." id="searchWhat" name="searchWhat">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" id="btnSearch">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
-                    </div>
-                </form>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -57,7 +45,7 @@ function content_5d5137d0a602b4_94998786 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Store/Controller/member/aboutLogin/showEdituserInfo.php">修改資料</a></li>
+                        <li><a href="/Store/Controller/member/aboutLogin/showEditUserInfo.php">修改資料</a></li>
                         <li><a type="button" id="btnLogout" name="btnLogout">登出</a></li>
                     </ul>
                 </li>
@@ -77,7 +65,10 @@ function content_5d5137d0a602b4_94998786 (Smarty_Internal_Template $_smarty_tpl)
 </nav>
 
 <?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/search.js"><?php echo '</script'; ?>
+ src="http://localhost/Store/Controller/javascript/header/search.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/header/logout.js"><?php echo '</script'; ?>
 >
 
 <!-- 菜單 --><?php }

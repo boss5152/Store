@@ -205,31 +205,6 @@ $(document).ready(function () {
     })
 });
 
-/*
- * 登出
- */
-$(document).ready(function () {
-    $("#btnLogout").click(function () {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/Store/Controller/member/aboutLogin/logout.php",
-            dataType: "json",
-            data: {},
-            success: function (data) {
-                if (data.isLogout === true) {
-                    alert(data.tips);
-                    location = "http://localhost/Store/Controller/index/index.php";
-                } else {
-                    alert(data.tips);
-                }
-            },
-            error: function () {
-                alert("錯誤請求");
-            }
-        })
-    })
-});
-
 /**
  * 顯示編輯資訊
  */
@@ -373,124 +348,7 @@ $(document).ready(function () {
     })
 });
 
-/*
- * 顯示新增商品頁面
- */
-$(document).ready(function () {
-    $("#btnShowBookAdd").click(function () {
-        $("#modalAddBook").modal();
-    })
-});
 
-/*
- * 新增商品
- */
-$(document).ready(function () {
-    $("#btnBookAdd").click(function () {
-        var formData = new FormData(formAddBook);
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/Store/Controller/admin/book/actionAddBook.php",
-            dataType: "json",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                if (data.isAdd === true) {
-                    alert(data.tips);
-                    location = location;
-                } else {
-                    alert(data.tips);
-                }
-            },
-            error: function () {
-                alert("錯誤請求");
-            }
-        })
-    })
-});
-
-/*
- * 顯示修改商品資訊
- */
-$(document).ready(function () {
-    $("button").click(function () {
-        if ((this.name) === "btnShowUpdateBook") {
-            var bookId = $(this).val();
-            var bookName = $("#showBookName" + bookId).html();
-            var bookAuthor = $("#showBookAuthor" + bookId).html();
-            var bookInfo = $("#showBookInfo" + bookId).html();
-            var bookPrice = $("#showBookPrice" + bookId).html();
-            var bookPhotoName = $("#showBookPhotoName" + bookId).val();
-            var photoPath = "/Store/Controller/image/" + bookPhotoName;
-            $("#updateBookName").val(bookName);
-            $("#updateBookAuthor").val(bookAuthor);
-            $("#updateBookInfo").html(bookInfo);
-            $("#updateBookPrice").val(bookPrice);
-            $("#updateBookPhotoDemo").attr('src', photoPath); 
-            $("#modalUpdateBook").modal();
-        }
-    });
-});
-
-/*
- * 執行商品修改
- */
-$("#btnActionBookUpdate").click(function () {
-    var formData = new FormData(formUpdateBook);
-    $.ajax({
-        type: "POST",
-        url: "http://localhost/Store/Controller/admin/book/actionUpdateBook.php",
-        dataType: "json",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function (data) {
-            if (data.isUpdate === true) {
-                alert(data.tips);
-                location = location;
-            } else {
-                alert(data.tips);
-            }
-        },
-        error: function () {
-            alert("錯誤請求");
-        }
-    })
-})
-
-/**
- * 刪除商品
- */
-$(document).ready(function () {
-    $("button").click(function () {
-        if ((this.name) === "btnDeleteBook") {
-            var bookId = $(this).val();
-            var goDelete = confirm("您確定要刪除這項商品嗎 ?");
-            if (goDelete === true) {
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost/Store/Controller/admin/book/deleteBook.php",
-                    dataType: "json",
-                    data: {
-                        'bookId': bookId
-                    },
-                    success: function (data) {
-                        if (data.isDelete === true) {
-                            alert(data.tips);
-                            location = location;
-                        } else {
-                            alert(data.tips);
-                        }
-                    },
-                    error: function () {
-                        alert("錯誤請求");
-                    }
-                })
-            }
-        }
-    });
-});
 
 /**
  * 加入購物車
@@ -520,33 +378,5 @@ $(document).ready(function () {
                 }
             })
         }
-    })
-})
-
-/**
- * 分頁查詢功能
- */
-$(document).ready(function () {
-    $("#page").click(function () {
-        console.log($("#page").html());
-            // $.ajax({
-            //     type: "POST",
-            //     url: "http://localhost/Store/Controller/member/cart/addCart.php",
-            //     dataType: "json",
-            //     data: {
-            //         'bookId': bookId
-            //     },
-            //     success: function (data) {
-            //         if (data.isAdd === true) {
-
-            //         } else {
-            //             alert(data.tips);
-            //         }
-            //     },
-            //     error: function () {
-            //         alert("錯誤請求");
-            //     }
-            // })
-
     })
 })

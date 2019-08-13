@@ -37,6 +37,7 @@
                 <form id="formCart">
                 {{foreach $userCartListArrays as $userCartListArray}}
                 <tr>
+                    <input type="hidden" class="bookId" value="{{$userCartListArray['bookId']}}">
                     <td style="text-align: center">
                         <input type="hidden" id="showBookPhotoName{{$userCartListArray['bookId']}}"
                             value="{{$userCartListArray['bookPhoto']}}">
@@ -58,10 +59,10 @@
                     <td style="text-align: center">
                         <input type="text" style="height: 30px; width:50px; border: black solid; text-align: center"
                             maxlength="2" id="showBookCount{{$userCartListArray['bookId']}}" data-bookid="{{$userCartListArray['bookId']}}" 
-                            value="{{$userCartListArray['bookCount']}}">
+                            class="bookCount" value="0">
                     </td>
                     <td style="text-align: center">
-                        <p id="showBookTotal{{$userCartListArray['bookId']}}" data-name="showBookTotal">{{$userCartListArray['bookTotalPrice']}}</p>
+                        <p id="showBookTotal{{$userCartListArray['bookId']}}" class="showBookTotal" name="showBookTotal">0</p>
                     </td>
                     <td style="text-align: center">
                         <button type="button" class="btn btn-default" value="{{$userCartListArray['bookId']}}"
@@ -78,14 +79,10 @@
             <div class="well col-sm-2 col-sm-offset-9">
                 <div><strong><h4>總價 : </h4></strong></div>
                 <hr>
-                NTD :<div class="col-md-offset-5"><h3 id="cartTotal">{{$allTotalPrice}}</h3></div>
+                NTD :<div class="col-md-offset-5"><h3 id="cartTotal">0</h3></div>
                 <hr>
                 <div class="col-md-offset-9">
-                    {{if $allTotalPrice == 0}}
                     <button type="button" class="btn btn-success" id="btnBuyBook" name="btnBuyBook" disabled="true">訂購</button>
-                    {{else}}
-                    <button type="button" class="btn btn-success" id="btnBuyBook" name="btnBuyBook">訂購</button>
-                    {{/if}}
                 </div>
             </div>
         </div>

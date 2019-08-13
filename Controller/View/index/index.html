@@ -66,11 +66,13 @@
         </div>
         <div>
             <ul class="pagination">
-                <li><a id="page" role="button">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
+                {{for $page = 1 to $pageCount }}
+                    {{if $page == $nowPage}}
+                    <li class="active"><a id="page" name="page" role="button">{{$page}}</a></li>
+                    {{else}}
+                    <li><a id="page" name="page" role="button">{{$page}}</a></li>
+                    {{/if}}
+                {{/for}}
             </ul>
         </div>
     </div>
@@ -78,5 +80,6 @@
 </body>
 
 <script src="http://localhost/Store/Controller/javascript/tool.js"></script>
+<script src="http://localhost/Store/Controller/javascript/page.js"></script>
 
 </html>

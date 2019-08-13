@@ -10,6 +10,9 @@ $useCommonMethod = new CommonMethod();
 
 $isLogin = $useCommonMethod->checkLogin();
 
+$bookIdArray = $_POST['bookIdArray'];
+$bookCountArray = $_POST['bookCountArray'];
+
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($isLogin === true) {
         $token = $_COOKIE['token'];
@@ -20,14 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         ## 抓購物車
         $userCartArrays = $useCartTable->getCartList($memberData['userId']);
         ## 把訂單利用迴圈方式一筆筆存入資料庫
-        foreach ($userCartArrays as $userCartArray) {
-            if ($userCartArray['bookCount'] == 0 ){
+        foreach ($bookIdArray as $key => $bookId) {
+            if ($bookCountArray[$key] == 0 ){
                 continue;
             }
-            $bookId = $userCartArray['bookId'];
             $bookData = $useBookTable->getAll($bookId);
-            $buyCount = $userCartArray['bookCount'];
-            $bookTotalPrice = $userCartArray['bookTotalPrice'];
+            $buyCount = $bookCountArray[$key];
+            $bookTotalPrice = $buyCount * $bookData['bookPrice'];
             ## 存入訂單資料庫
             $arrayBuyBook = [
                 'userAccount' => $memberData['account'],
@@ -48,13 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 ];
                 $checkUpdate = $useBookTable->updateInStock($arraySubInStock);
                 if ($checkUpdate === true) {
-                    ## 重製訂單筆數
-                    $checkInit = $useCartTable->initCart($bookId);
-                    if ($checkInit === true) {
-                        $isBuy = true;
-                    } else {
-                        $tips = "訂單重製失敗";
-                    }
+                    $isBuy = true;
                 } else {
                     $tips = "庫存扣除失敗";
                 }
@@ -62,11 +58,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $tips = "購買失敗，請重新操作";
             }
         }
-        ## 回傳
-        echo json_encode(array(
-            'isBuy' => $isBuy,
-            'tips' => $tips
-        ));
+    } else {
+        $tips = "登入逾時，請重新登入";
     }
+    echo json_encode(array(
+        'isBuy' => $isBuy,
+        'tips' => $tips
+    ));
 }
 

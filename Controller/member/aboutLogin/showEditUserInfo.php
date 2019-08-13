@@ -9,5 +9,7 @@ $tips = '';
 $token = $_COOKIE['token'];
 $memberData = $useMemberTable->getAll($token);
 
+$smarty->assign("account", $memberData['account']);
 $smarty->assign("memberData", $memberData);
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/userHeader.html"); 
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/userIndexHeader.html"); 
+$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/aboutLogin/showEditUserInfo.html"); 

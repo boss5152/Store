@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 12:31:31
+/* Smarty version 3.1.33, created on 2019-08-13 04:44:42
   from 'C:\xampp\htdocs\Store\Controller\View\header\adminHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d514003ba4c63_21222117',
+  'unifunc' => 'content_5d52241aec7891_81538789',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2bf5997c65b259e7cc164eb6cdc035fd9feed888' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\adminHeader.html',
-      1 => 1565605890,
+      1 => 1565664270,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d514003ba4c63_21222117 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d52241aec7891_81538789 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -56,7 +56,7 @@ function content_5d514003ba4c63_21222117 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Store/Controller/member/aboutLogin/showEdituserInfo.php">修改資料</a></li>
+                        <li><a href="/Store/Controller/admin/aboutLogin/showEditAdminInfo.php">修改資料</a></li>
                         <li><a type="button" id="btnLogout" name="btnLogout">登出</a></li>
                     </ul>
                 </li>
@@ -76,7 +76,10 @@ function content_5d514003ba4c63_21222117 (Smarty_Internal_Template $_smarty_tpl)
 </nav>
 
 <?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/search.js"><?php echo '</script'; ?>
+ src="http://localhost/Store/Controller/javascript/header/search.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
 >
 
 <!-- 菜單 --><?php }

@@ -1,8 +1,9 @@
-/**
- * 隨數量變動總價格
- */
 $(document).ready(function () {
+    /**
+     * 隨數量變動總價格
+     */
     $("input").change(function () {
+        var allBookTotal = 0;
         var bookId = $(this).attr("data-bookid");
         var count = Number($('#showBookCount' + bookId).val());
         var price = Number($('#showBookPrice' + bookId).html());
@@ -10,54 +11,41 @@ $(document).ready(function () {
         if (count > inStock) {
             count = inStock;
             $('#showBookCount' + bookId).val(count);
-        } else if (isNaN(count)){
-            count = 0;
-            $('#showBookCount' + bookId).val(count);
-        } else if (count < 0 ) {
+        } else if ((!(/\d/.test(count))) || (count < 0) || (count == 0)) {
             count = 0;
             $('#showBookCount' + bookId).val(count);
         }
-        var total = count * price ;
+        var total = count * price;
         (total > 0) ? $("#btnBuyBook").attr('disabled', false) : $("#btnBuyBook").attr('disabled', true);
         $('#showBookTotal' + bookId).html(total);
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/Store/Controller/member/cart/changeCart.php",
-            dataType: "json",
-            data: {
-                'bookId': bookId,
-                'count': count,
-                'bookTotalPrice': total
-            },
-            success: function (data) {
-                if (data.isUpdate === true) {
-                    $('#cartTotal').html(data.total);
-                } else {
-                    alert(data.tips);
-                }
-            },
-            error: function () {
-                alert("錯誤請求");
-            }
-        })
+        $('.showBookTotal').each(function () {
+            allBookTotal = Number($(this).html()) + allBookTotal;
+        });
+        $('#cartTotal').html(allBookTotal);
     })
-})
 
-/**
- * 購買書本
- */
-$(document).ready(function () {
+    /**
+     * 購買書本
+     */
     $("button").click(function () {
         if ((this.name) === "btnBuyBook") {
-            var bookId = $(this).val();
-            var buyCount = $("#buyCount" + bookId).val();
+            var bookIdArray = [];
+            var bookCountArray = [];
+            $('.bookId').each(function () {
+                bookId = $(this).val();
+                bookIdArray.push(bookId);
+            });
+            $('.bookCount').each(function () {
+                bookCount = Number($(this).val());
+                bookCountArray.push(bookCount);
+            });
             $.ajax({
                 type: "POST",
                 url: "http://localhost/Store/Controller/member/cart/buyBook.php",
                 dataType: "json",
                 data: {
-                    'bookId': bookId,
-                    'buyCount': buyCount
+                    'bookIdArray': bookIdArray,
+                    'bookCountArray': bookCountArray
                 },
                 success: function (data) {
                     if (data.isBuy === true) {

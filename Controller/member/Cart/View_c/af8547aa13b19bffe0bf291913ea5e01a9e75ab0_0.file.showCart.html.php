@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 10:08:54
+/* Smarty version 3.1.33, created on 2019-08-13 10:33:29
   from 'C:\xampp\htdocs\Store\Controller\View\member\cart\showCart.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d511e96626d30_27756510',
+  'unifunc' => 'content_5d5275d9086424_90696491',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'af8547aa13b19bffe0bf291913ea5e01a9e75ab0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\cart\\showCart.html',
-      1 => 1565597333,
+      1 => 1565685207,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d511e96626d30_27756510 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d5275d9086424_90696491 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -70,6 +70,8 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['userCartListArray']->value) {
 ?>
                 <tr>
+                    <input type="hidden" class="bookId" value="<?php echo $_smarty_tpl->tpl_vars['userCartListArray']->value['bookId'];?>
+">
                     <td style="text-align: center">
                         <input type="hidden" id="showBookPhotoName<?php echo $_smarty_tpl->tpl_vars['userCartListArray']->value['bookId'];?>
 "
@@ -104,13 +106,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['userCartListArray']->value) {
                             maxlength="2" id="showBookCount<?php echo $_smarty_tpl->tpl_vars['userCartListArray']->value['bookId'];?>
 " data-bookid="<?php echo $_smarty_tpl->tpl_vars['userCartListArray']->value['bookId'];?>
 " 
-                            value="<?php echo $_smarty_tpl->tpl_vars['userCartListArray']->value['bookCount'];?>
-">
+                            class="bookCount" value="0">
                     </td>
                     <td style="text-align: center">
                         <p id="showBookTotal<?php echo $_smarty_tpl->tpl_vars['userCartListArray']->value['bookId'];?>
-" data-name="showBookTotal"><?php echo $_smarty_tpl->tpl_vars['userCartListArray']->value['bookTotalPrice'];?>
-</p>
+" class="showBookTotal" name="showBookTotal">0</p>
                     </td>
                     <td style="text-align: center">
                         <button type="button" class="btn btn-default" value="<?php echo $_smarty_tpl->tpl_vars['userCartListArray']->value['bookId'];?>
@@ -131,15 +131,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <div class="well col-sm-2 col-sm-offset-9">
                 <div><strong><h4>總價 : </h4></strong></div>
                 <hr>
-                NTD :<div class="col-md-offset-5"><h3 id="cartTotal"><?php echo $_smarty_tpl->tpl_vars['allTotalPrice']->value;?>
-</h3></div>
+                NTD :<div class="col-md-offset-5"><h3 id="cartTotal">0</h3></div>
                 <hr>
                 <div class="col-md-offset-9">
-                    <?php if ($_smarty_tpl->tpl_vars['allTotalPrice']->value == 0) {?>
                     <button type="button" class="btn btn-success" id="btnBuyBook" name="btnBuyBook" disabled="true">訂購</button>
-                    <?php } else { ?>
-                    <button type="button" class="btn btn-success" id="btnBuyBook" name="btnBuyBook">訂購</button>
-                    <?php }?>
                 </div>
             </div>
         </div>

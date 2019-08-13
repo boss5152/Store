@@ -6,12 +6,12 @@ $useBookTable = new Book();
 $useCommonMethod = new CommonMethod();
 
 $isAdmin = $useCommonMethod->checkAdmin();
+$tips = "";
+$isAdd = false;
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($isAdmin === true) {
         ## 檢查是否有空
-        $tips = "";
-        $isAdd = false;
         if (!empty($_POST["addBookName"]) && (!empty($_POST["addBookAuthor"]))
             && (!empty($_POST["addBookInfo"])) && (!empty($_POST["addBookPrice"]))
             && (!empty($_POST["addBookInStock"]))) {
@@ -74,9 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $tips .= "任一欄位皆不得為空";
         }
     }
-    ## 最後回傳請求
-    echo json_encode(array(
-        'isAdd' => $isAdd,
-        'tips' => $tips
-    ));
+} else {
+    $tips = "登入逾時，請重新登入";
 }
+
+## 最後回傳請求
+echo json_encode(array(
+    'isAdd' => $isAdd,
+    'tips' => $tips
+));

@@ -14,6 +14,9 @@
     td {
         background-color: #FDF5E6;
     }
+    .tips {
+        color:red;
+    }
 </style>
 
 <body>
@@ -87,27 +90,27 @@
                         <div class="form-group">
                             <label>書名 : </label>
                             <input type="text" class="form-control" name="addBookName" id="addBookName">
-                            <p id="tipsAddBookName"></p>
+                            <p id="tipsAddBookName" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>作者 : </label>
                             <input type="text" class="form-control" name="addBookAuthor" id="addBookAuthor">
-                            <p id="tipsAddBookAuthor"></p>
+                            <p id="tipsAddBookAuthor" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>書本介紹 : </label>
                             <input type="text" class="form-control" name="addBookInfo" id="addBookInfo">
-                            <p id="tipsAddBookInfo"></p>
+                            <p id="tipsAddBookInfo" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>價格 : </label>
                             <input type="text" class="form-control" name="addBookPrice" id="addBookPrice">
-                            <p id="tipsAddBookPrice"></p>
+                            <p id="tipsAddBookPrice" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>當前庫存 : </label>
                             <input type="text" class="form-control" name="addBookInStock" id="addBookInStock">
-                            <p id="tipsAddBookInStock"></p>
+                            <p id="tipsAddBookInStock" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label class="btn btn-info">
@@ -123,7 +126,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd">新增</button>
+                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd" disabled="true">新增</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 </div>
             </div>
@@ -146,31 +149,31 @@
                         <div class="form-group">
                             <label>書名 : </label>
                             <input type="text" class="form-control" name="updateBookName" id="updateBookName" value="">
-                            <p id="tipsUpdateBookName"></p>
+                            <p id="tipsUpdateBookName" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>作者 : </label>
                             <input type="text" class="form-control" name="updateBookAuthor" id="updateBookAuthor"
                                 value="">
-                            <p id="tipsUpdateBookAuthor"></p>
+                            <p id="tipsUpdateBookAuthor" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>書本介紹 : </label>
                             <textarea style="height: 300px;" type="text" class="form-control" name="updateBookInfo"
                                 id="updateBookInfo"></textarea>
-                            <p id="tipsUpdateBookInfo"></p>
+                            <p id="tipsUpdateBookInfo" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>價格 : </label>
                             <input type="text" class="form-control" name="updateBookPrice" id="updateBookPrice"
                                 value="">
-                            <p id="tipsUpdateBookPrice"></p>
+                            <p id="tipsUpdateBookPrice" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>當前庫存 : </label>
                             <input type="text" class="form-control" name="updateBookInStock" id="updateBookInStock" 
                                 value="">
-                            <p id="tipsUpdateBookInStock"></p>
+                            <p id="tipsUpdateBookInStock" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label class="btn btn-info">

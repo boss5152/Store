@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 09:54:36
+/* Smarty version 3.1.33, created on 2019-08-13 06:04:44
   from 'C:\xampp\htdocs\Store\Controller\View\admin\book\showBook.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d511b3c133de8_61755863',
+  'unifunc' => 'content_5d5236dcd99cd4_73345651',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b30c2250f3f768e335592838e9e94aa0492cb0b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\book\\showBook.html',
-      1 => 1565596475,
+      1 => 1565669083,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d511b3c133de8_61755863 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d5236dcd99cd4_73345651 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -42,6 +42,9 @@ function content_5d511b3c133de8_61755863 (Smarty_Internal_Template $_smarty_tpl)
 <style>
     td {
         background-color: #FDF5E6;
+    }
+    .tips {
+        color:red;
     }
 </style>
 
@@ -138,27 +141,27 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         <div class="form-group">
                             <label>書名 : </label>
                             <input type="text" class="form-control" name="addBookName" id="addBookName">
-                            <p id="tipsAddBookName"></p>
+                            <p id="tipsAddBookName" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>作者 : </label>
                             <input type="text" class="form-control" name="addBookAuthor" id="addBookAuthor">
-                            <p id="tipsAddBookAuthor"></p>
+                            <p id="tipsAddBookAuthor" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>書本介紹 : </label>
                             <input type="text" class="form-control" name="addBookInfo" id="addBookInfo">
-                            <p id="tipsAddBookInfo"></p>
+                            <p id="tipsAddBookInfo" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>價格 : </label>
                             <input type="text" class="form-control" name="addBookPrice" id="addBookPrice">
-                            <p id="tipsAddBookPrice"></p>
+                            <p id="tipsAddBookPrice" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>當前庫存 : </label>
                             <input type="text" class="form-control" name="addBookInStock" id="addBookInStock">
-                            <p id="tipsAddBookInStock"></p>
+                            <p id="tipsAddBookInStock" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label class="btn btn-info">
@@ -174,7 +177,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd">新增</button>
+                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd" disabled="true">新增</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 </div>
             </div>
@@ -197,31 +200,31 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         <div class="form-group">
                             <label>書名 : </label>
                             <input type="text" class="form-control" name="updateBookName" id="updateBookName" value="">
-                            <p id="tipsUpdateBookName"></p>
+                            <p id="tipsUpdateBookName" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>作者 : </label>
                             <input type="text" class="form-control" name="updateBookAuthor" id="updateBookAuthor"
                                 value="">
-                            <p id="tipsUpdateBookAuthor"></p>
+                            <p id="tipsUpdateBookAuthor" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>書本介紹 : </label>
                             <textarea style="height: 300px;" type="text" class="form-control" name="updateBookInfo"
                                 id="updateBookInfo"></textarea>
-                            <p id="tipsUpdateBookInfo"></p>
+                            <p id="tipsUpdateBookInfo" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>價格 : </label>
                             <input type="text" class="form-control" name="updateBookPrice" id="updateBookPrice"
                                 value="">
-                            <p id="tipsUpdateBookPrice"></p>
+                            <p id="tipsUpdateBookPrice" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label>當前庫存 : </label>
                             <input type="text" class="form-control" name="updateBookInStock" id="updateBookInStock" 
                                 value="">
-                            <p id="tipsUpdateBookInStock"></p>
+                            <p id="tipsUpdateBookInStock" class="tips"></p>
                         </div>
                         <div class="form-group">
                             <label class="btn btn-info">
