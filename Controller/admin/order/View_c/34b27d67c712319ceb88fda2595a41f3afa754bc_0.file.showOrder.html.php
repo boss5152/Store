@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-12 08:53:27
+/* Smarty version 3.1.33, created on 2019-08-14 02:53:07
   from 'C:\xampp\htdocs\Store\Controller\View\admin\order\showOrder.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d510ce7152774_12323753',
+  'unifunc' => 'content_5d535b7397f4d1_27989117',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '34b27d67c712319ceb88fda2595a41f3afa754bc' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\order\\showOrder.html',
-      1 => 1565592806,
+      1 => 1565743688,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d510ce7152774_12323753 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d535b7397f4d1_27989117 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -65,7 +65,7 @@ function content_5d510ce7152774_12323753 (Smarty_Internal_Template $_smarty_tpl)
             </thead>
             <tbody class="List">
                 <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['orderBookObj']->value, 'orderBookArray');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['orderBookArrays']->value, 'orderBookArray');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['orderBookArray']->value) {
 ?>

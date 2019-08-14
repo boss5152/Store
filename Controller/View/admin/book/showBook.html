@@ -37,37 +37,37 @@
                 </tr>
             </thead>
             <tbody class="List">
-                {{foreach $bookObj as $bookArrays}}
+                {{foreach $bookArrays as $bookArray}}
                 <tr>
                     <td style="text-align: center">
-                        <input type="hidden" id="showBookPhotoName{{$bookArrays['bookId']}}"
-                            value="{{$bookArrays['bookPhoto']}}">
-                        <img src="/Store/Controller/image/{{$bookArrays['bookPhoto']}}" class="img-circle" height="55"
+                        <input type="hidden" id="showBookPhotoName{{$bookArray['bookId']}}"
+                            value="{{$bookArray['bookPhoto']}}">
+                        <img src="/Store/Controller/image/{{$bookArray['bookPhoto']}}" class="img-circle" height="55"
                             width="55">
                     </td>
                     <td>
-                        <p id="showBookName{{$bookArrays['bookId']}}">{{$bookArrays['bookName']}}</p>
+                        <p id="showBookName{{$bookArray['bookId']}}">{{$bookArray['bookName']}}</p>
                     </td>
                     <td>
-                        <p id="showBookAuthor{{$bookArrays['bookId']}}">{{$bookArrays['bookAuthor']}}</p>
+                        <p id="showBookAuthor{{$bookArray['bookId']}}">{{$bookArray['bookAuthor']}}</p>
                     </td>
                     <td>
-                        <p id="showBookInfo{{$bookArrays['bookId']}}">{{$bookArrays['bookInfo']}}</p>
+                        <p id="showBookInfo{{$bookArray['bookId']}}">{{$bookArray['bookInfo']}}</p>
 
                     </td>
                     <td style="text-align: center">
-                        <p id="showBookPrice{{$bookArrays['bookId']}}">{{$bookArrays['bookPrice']}}</p>
+                        <p id="showBookPrice{{$bookArray['bookId']}}">{{$bookArray['bookPrice']}}</p>
                     </td>
                     <td style="text-align: center">
-                        <p id="showBookInStock{{$bookArrays['bookId']}}">{{$bookArrays['bookInStock']}}</p>
+                        <p id="showBookInStock{{$bookArray['bookId']}}">{{$bookArray['bookInStock']}}</p>
                     </td>
                     <td style="text-align: center">
-                        <button type="button" class="btn btn-default" value="{{$bookArrays['bookId']}}"
+                        <button type="button" class="btn btn-default" value="{{$bookArray['bookId']}}"
                             name="btnShowUpdateBook" id="btnShowUpdateBook">修改
                         </button>
                     </td>
                     <td style="text-align: center">
-                        <button type="button" class="btn btn-default" value="{{$bookArrays['bookId']}}"
+                        <button type="button" class="btn btn-default" value="{{$bookArray['bookId']}}"
                             name="btnDeleteBook" id="btnDeleteBook">刪除
                         </button>
                     </td>

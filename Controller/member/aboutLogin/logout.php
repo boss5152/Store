@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $token = $_COOKIE['token'];
     $checkLogout = $useMemberTable->logout($token);
     if ($checkLogout === true) {
-        setcookie("token", "", time()-3600, "/");
+        setcookie("token", "", time()-36000, "/");
         $tips = "登出成功";
         $isLogout = true;
     } else {

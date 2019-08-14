@@ -21,6 +21,9 @@ $(document).ready(function () {
                             alert(data.tips);
                         } else {
                             alert(data.tips);
+                            if (data.isLogin === false) {
+                                location = location;
+                            }
                         }
                     },
                     error: function () {

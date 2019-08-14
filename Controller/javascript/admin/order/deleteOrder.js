@@ -20,6 +20,9 @@ $(document).ready(function () {
                             location = location;
                         } else {
                             alert(data.tips);
+                            if (data.isLogin === false) {
+                                location = location;
+                            }
                         }
                     },
                     error: function () {

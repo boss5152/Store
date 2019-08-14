@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $account = $_POST["account"];
                 $password = $_POST["password"];
                 $password = md5($password);
-
                 $array_adminLoginData = [
                     'account' => $account,
                     'password' => $password

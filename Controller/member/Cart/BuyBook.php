@@ -2,32 +2,25 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
-$useMemberTable = new Member();
-$useBookTable = new Book();
-$useOrderBookTable = new OrderBook();
-$useCartTable = new Cart();
 $useCommonMethod = new CommonMethod();
-
-$isLogin = $useCommonMethod->checkLogin();
 
 $bookIdArray = $_POST['bookIdArray'];
 $bookCountArray = $_POST['bookCountArray'];
+$tips = "";
+$isBuy = false;
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    if ($isLogin === true) {
-        $token = $_COOKIE['token'];
-        $tips = "";
-        $isBuy = false;
+    if ($useCommonMethod->identity === "member") {
         ## 取資料用於存入userId
-        $memberData = $useMemberTable->getAll($token);
+        $memberData = $useCommonMethod->useMemberTable->getAll($useCommonMethod->check['token']);
         ## 抓購物車
-        $userCartArrays = $useCartTable->getCartList($memberData['userId']);
+        $userCartArrays = $useCommonMethod->useCartTable->getCartList($memberData['userId']);
         ## 把訂單利用迴圈方式一筆筆存入資料庫
         foreach ($bookIdArray as $key => $bookId) {
             if ($bookCountArray[$key] == 0 ){
                 continue;
             }
-            $bookData = $useBookTable->getAll($bookId);
+            $bookData = $useCommonMethod->useBookTable->getAll($bookId);
             $buyCount = $bookCountArray[$key];
             $bookTotalPrice = $buyCount * $bookData['bookPrice'];
             ## 存入訂單資料庫
@@ -38,17 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 'buyCount' => $buyCount,
                 'totalPrice' => $bookTotalPrice                
             ];
-            $checkBuyBook = $useOrderBookTable->insert($arrayBuyBook);
+            $checkBuyBook = $useCommonMethod->useOrderBookTable->insert($arrayBuyBook);
             if ($checkBuyBook === true) {
                 $tips = "購買成功 ! ";
-                // $isBuy = true;
                 ## 扣除庫存
                 $newInStock = $bookData['bookInStock'] - $buyCount;
                 $arraySubInStock = [
                     'bookId' => $bookId,
                     'bookInStock' => $newInStock
                 ];
-                $checkUpdate = $useBookTable->updateInStock($arraySubInStock);
+                $checkUpdate = $useCommonMethod->useBookTable->updateInStock($arraySubInStock);
                 if ($checkUpdate === true) {
                     $isBuy = true;
                 } else {
@@ -63,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
     echo json_encode(array(
         'isBuy' => $isBuy,
-        'tips' => $tips
+        'tips' => $tips,
+        'isLogin' => $useCommonMethod->check['isLogin']
     ));
 }
 

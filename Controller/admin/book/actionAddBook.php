@@ -2,15 +2,13 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
-$useBookTable = new Book();
 $useCommonMethod = new CommonMethod();
 
-$isAdmin = $useCommonMethod->checkAdmin();
 $tips = "";
 $isAdd = false;
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    if ($isAdmin === true) {
+    if ($useCommonMethod->identity === "admin") {
         ## 檢查是否有空
         if (!empty($_POST["addBookName"]) && (!empty($_POST["addBookAuthor"]))
             && (!empty($_POST["addBookInfo"])) && (!empty($_POST["addBookPrice"]))
@@ -53,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                         'bookInStock' => $bookInStock,
                         'bookPhoto' => $bookPhoto
                     ];
-                    $isInsert = $useBookTable->insert($insertArray);
+                    $isInsert = $useCommonMethod->useBookTable->insert($insertArray);
                     ## 回傳
                     if ($isInsert === true) {
                         ## 移動圖片
@@ -81,5 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 ## 最後回傳請求
 echo json_encode(array(
     'isAdd' => $isAdd,
-    'tips' => $tips
+    'tips' => $tips,
+    'isLogin' => $useCommonMethod->check['isLogin']
 ));

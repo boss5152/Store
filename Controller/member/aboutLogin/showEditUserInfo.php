@@ -2,14 +2,15 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
-$useMemberTable = new Member();
+$useCommonMethod = new CommonMethod();
 
-$tips = '';
-## 顯示
-$token = $_COOKIE['token'];
-$memberData = $useMemberTable->getAll($token);
+if ($useCommonMethod->identity === "member") {
+    $memberData = $useCommonMethod->useMemberTable->getAll($useCommonMethod->check['token']);
+    $smarty->assign("account", $memberData['account']);
+    $smarty->assign("memberData", $memberData);
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/header.html"); 
+    $smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/aboutLogin/showEditUserInfo.html"); 
 
-$smarty->assign("account", $memberData['account']);
-$smarty->assign("memberData", $memberData);
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/header/userIndexHeader.html"); 
-$smarty->display($_SERVER['DOCUMENT_ROOT'] . "/Store/Controller/View/member/aboutLogin/showEditUserInfo.html"); 
+} else {
+    header("Location: /Store/Controller/index/index.php");
+}

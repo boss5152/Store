@@ -56,6 +56,9 @@ $(document).ready(function () {
                         } else {
                             alert(data.tips);
                         }
+                        if (data.isLogin === false) {
+                            location = location;
+                        }
                     },
                     error: function () {
                         alert("錯誤請求");

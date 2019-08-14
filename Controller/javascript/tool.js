@@ -222,6 +222,9 @@ $(document).ready(function () {
                     $("#mainDiv").html(data);//要刷新的div
                 } else {
                     alert(data.tips);
+                    if (data.isLogin === false) {
+                        location = location;
+                    }
                 }
             },
             error: function () {
@@ -241,7 +244,7 @@ $(document).ready(function () {
         var email = $("#email").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/member/home/actionEditUserInfo.php",
+            url: "http://localhost/Store/Controller/member/aboutLogin/actionEditUserInfo.php",
             dataType: "json",
             data: {
                 'password': password,
@@ -251,9 +254,12 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.isEdit === true) {
                     alert(data.tips);
-                    location = location;
+                    location = "http://localhost/Store/Controller/index/index.php";
                 } else {
                     alert(data.tips);
+                    if (data.isLogin === false) {
+                        location = location;
+                    }
                 }
             },
             error: function () {
@@ -280,6 +286,9 @@ $(document).ready(function () {
                     $("#mainDiv").html(data);//要刷新的div
                 } else {
                     alert(data.tips);
+                    if (data.isLogin === false) {
+                        location = location;
+                    }
                 }
             },
             error: function () {
@@ -306,6 +315,9 @@ $(document).ready(function () {
                     $("#mainDiv").html(data);//要刷新的div
                 } else {
                     alert(data.tips);
+                    if (data.isLogin === false) {
+                        location = location;
+                    }
                 }
             },
             error: function () {
@@ -336,9 +348,11 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.isEdit === true) {
                     alert(data.tips);
-                    location = location;
                 } else {
                     alert(data.tips);
+                    if (data.isLogin === false) {
+                        location = location;
+                    }
                 }
             },
             error: function () {
@@ -368,9 +382,12 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     if (data.isAdd === true) {
-
+                        alert(data.tips);
                     } else {
                         alert(data.tips);
+                        if (data.isLogin === false) {
+                            location = location;
+                        }
                     }
                 },
                 error: function () {

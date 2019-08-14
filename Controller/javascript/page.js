@@ -8,9 +8,10 @@ $(document).ready(function () {
             var page = $(this).html();
             $.ajax({
                 type: "POST",
-                url: "http://localhost/Store/Controller/index/page.php",
+                url: "http://localhost/Store/Controller/index/index.php",
                 data: {
-                    'page': page
+                    'page': page,
+                    'identity': "noNeed"
                 },
                 success: function (data) {
                     $("#mainDiv").html(data);

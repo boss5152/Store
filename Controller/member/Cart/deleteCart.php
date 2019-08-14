@@ -2,18 +2,15 @@
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod.php');
 
-$useCartTable = new Cart();
 $useCommonMethod = new CommonMethod();
-
-$isLogin = $useCommonMethod->checkLogin();
 
 $tips = "";
 $isDelete = false;
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    if ($isLogin === true) {
+    if ($useCommonMethod->identity === "member") {
         $bookId = $_POST["bookId"];
-        $checkDelete = $useCartTable->delete($bookId);
+        $checkDelete = $useCommonMethod->useCartTable->delete($bookId);
         if ($checkDelete === true) {
             $tips = "刪除成功";
             $isDelete = true;
@@ -25,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
     echo json_encode(array(
         'isDelete' => $isDelete,
-        'tips' => $tips
+        'tips' => $tips,
+        'isLogin' => $useCommonMethod->check['isLogin']
     ));
 }

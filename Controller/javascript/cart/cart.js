@@ -16,12 +16,12 @@ $(document).ready(function () {
             $('#showBookCount' + bookId).val(count);
         }
         var total = count * price;
-        (total > 0) ? $("#btnBuyBook").attr('disabled', false) : $("#btnBuyBook").attr('disabled', true);
         $('#showBookTotal' + bookId).html(total);
         $('.showBookTotal').each(function () {
             allBookTotal = Number($(this).html()) + allBookTotal;
         });
         $('#cartTotal').html(allBookTotal);
+        (allBookTotal > 0) ? $("#btnBuyBook").attr('disabled', false) : $("#btnBuyBook").attr('disabled', true);
     })
 
     /**
@@ -50,9 +50,12 @@ $(document).ready(function () {
                 success: function (data) {
                     if (data.isBuy === true) {
                         alert(data.tips);
-                        location = location;
+                        location = "http://localhost/Store/Controller/member/order/showUserOrder.php";
                     } else {
                         alert(data.tips);
+                        if (data.isLogin === false) {
+                            location = location;
+                        }
                     }
                 },
                 error: function () {
@@ -85,6 +88,9 @@ $(document).ready(function () {
                             location = location;
                         } else {
                             alert(data.tips);
+                            if (data.isLogin === false) {
+                                location = location;
+                            }
                         }
                     },
                     error: function () {

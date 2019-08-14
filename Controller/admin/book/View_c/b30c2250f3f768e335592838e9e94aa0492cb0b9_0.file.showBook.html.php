@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-13 06:04:44
+/* Smarty version 3.1.33, created on 2019-08-14 03:08:08
   from 'C:\xampp\htdocs\Store\Controller\View\admin\book\showBook.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5236dcd99cd4_73345651',
+  'unifunc' => 'content_5d535ef86bd950_70617534',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b30c2250f3f768e335592838e9e94aa0492cb0b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\book\\showBook.html',
-      1 => 1565669083,
+      1 => 1565744887,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5236dcd99cd4_73345651 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d535ef86bd950_70617534 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -67,54 +67,54 @@ function content_5d5236dcd99cd4_73345651 (Smarty_Internal_Template $_smarty_tpl)
             </thead>
             <tbody class="List">
                 <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['bookObj']->value, 'bookArrays');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['bookArrays']->value, 'bookArray');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['bookArrays']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['bookArray']->value) {
 ?>
                 <tr>
                     <td style="text-align: center">
-                        <input type="hidden" id="showBookPhotoName<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
+                        <input type="hidden" id="showBookPhotoName<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookId'];?>
 "
-                            value="<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookPhoto'];?>
+                            value="<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookPhoto'];?>
 ">
-                        <img src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookPhoto'];?>
+                        <img src="/Store/Controller/image/<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookPhoto'];?>
 " class="img-circle" height="55"
                             width="55">
                     </td>
                     <td>
-                        <p id="showBookName<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookName'];?>
+                        <p id="showBookName<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookName'];?>
 </p>
                     </td>
                     <td>
-                        <p id="showBookAuthor<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookAuthor'];?>
+                        <p id="showBookAuthor<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookAuthor'];?>
 </p>
                     </td>
                     <td>
-                        <p id="showBookInfo<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookInfo'];?>
+                        <p id="showBookInfo<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookInfo'];?>
 </p>
 
                     </td>
                     <td style="text-align: center">
-                        <p id="showBookPrice<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookPrice'];?>
+                        <p id="showBookPrice<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookPrice'];?>
 </p>
                     </td>
                     <td style="text-align: center">
-                        <p id="showBookInStock<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
-"><?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookInStock'];?>
+                        <p id="showBookInStock<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookId'];?>
+"><?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookInStock'];?>
 </p>
                     </td>
                     <td style="text-align: center">
-                        <button type="button" class="btn btn-default" value="<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
+                        <button type="button" class="btn btn-default" value="<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookId'];?>
 "
                             name="btnShowUpdateBook" id="btnShowUpdateBook">修改
                         </button>
                     </td>
                     <td style="text-align: center">
-                        <button type="button" class="btn btn-default" value="<?php echo $_smarty_tpl->tpl_vars['bookArrays']->value['bookId'];?>
+                        <button type="button" class="btn btn-default" value="<?php echo $_smarty_tpl->tpl_vars['bookArray']->value['bookId'];?>
 "
                             name="btnDeleteBook" id="btnDeleteBook">刪除
                         </button>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-13 05:44:54
+/* Smarty version 3.1.33, created on 2019-08-14 03:22:08
   from 'C:\xampp\htdocs\Store\Controller\View\header\adminHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5232368deec6_90535722',
+  'unifunc' => 'content_5d536240d8c192_02966854',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc76d160cc801a59173115e9920857eb4cbb25f9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\adminHeader.html',
-      1 => 1565665244,
+      1 => 1565745472,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5232368deec6_90535722 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d536240d8c192_02966854 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -29,9 +29,6 @@ function content_5d5232368deec6_90535722 (Smarty_Internal_Template $_smarty_tpl)
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="">admin</a>
-        </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/Store/Controller/index/index.php">首頁</a></li>
@@ -40,7 +37,7 @@ function content_5d5232368deec6_90535722 (Smarty_Internal_Template $_smarty_tpl)
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <span class="glyphicon glyphicon-user"></span>
-                        帳戶管理
+                        帳戶管理(adimin)
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">

@@ -1,15 +1,15 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-14 08:34:42
+/* Smarty version 3.1.33, created on 2019-08-14 11:01:56
   from 'C:\xampp\htdocs\Store\Controller\View\header\header.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d53ab822f6f86_67558762',
+  'unifunc' => 'content_5d53ce0487d849_59495447',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'de56fa6fb1c6cdd9bc827d23e18bb15b02305f4f' => 
+    'afed9574103fc5a4366bce7517b5ad1971baf5f5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\header.html',
       1 => 1565764481,
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d53ab822f6f86_67558762 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d53ce0487d849_59495447 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>

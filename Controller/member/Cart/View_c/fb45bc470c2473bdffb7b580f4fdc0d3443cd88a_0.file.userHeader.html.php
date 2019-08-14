@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-13 05:00:46
+/* Smarty version 3.1.33, created on 2019-08-14 03:18:02
   from 'C:\xampp\htdocs\Store\Controller\View\header\userHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5227de994a96_21260498',
+  'unifunc' => 'content_5d53614ac11fc7_34259628',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fb45bc470c2473bdffb7b580f4fdc0d3443cd88a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\userHeader.html',
-      1 => 1565665237,
+      1 => 1565745453,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5227de994a96_21260498 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d53614ac11fc7_34259628 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -29,10 +29,6 @@ function content_5d5227de994a96_21260498 (Smarty_Internal_Template $_smarty_tpl)
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href=""><?php echo $_smarty_tpl->tpl_vars['account']->value;?>
-</a>
-        </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/Store/Controller/index/index.php">首頁</a></li>
@@ -41,7 +37,8 @@ function content_5d5227de994a96_21260498 (Smarty_Internal_Template $_smarty_tpl)
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <span class="glyphicon glyphicon-user"></span>
-                        帳戶管理
+                        帳戶管理(<?php echo $_smarty_tpl->tpl_vars['account']->value;?>
+)
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
