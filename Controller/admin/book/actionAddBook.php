@@ -71,14 +71,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         } else {
             $tips .= "任一欄位皆不得為空";
         }
+    } else {
+        $tips = "登入逾時，請重新登入";
     }
-} else {
-    $tips = "登入逾時，請重新登入";
-}
+    echo json_encode(array(
+        'isAdd' => $isAdd,
+        'tips' => $tips,
+        'isLogin' => $useCommonMethod->check['isLogin']
+    ));
+} 
 
-## 最後回傳請求
-echo json_encode(array(
-    'isAdd' => $isAdd,
-    'tips' => $tips,
-    'isLogin' => $useCommonMethod->check['isLogin']
-));
+

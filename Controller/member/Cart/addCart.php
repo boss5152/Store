@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     } else {
         $tips = "登入逾時，請重新登入";
     } 
-
     echo json_encode(array(
         'isAdd' => $isAdd,
         'tips' => $tips,

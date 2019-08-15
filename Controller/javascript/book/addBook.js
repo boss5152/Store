@@ -13,7 +13,7 @@ $(document).ready(function () {
         }
         reader.readAsDataURL(this.files[0]);
     });
-    
+
     // 書名
     $("#addBookName").keyup(function () {
         var stringBookName = $("#addBookName").val();
@@ -49,7 +49,7 @@ $(document).ready(function () {
         ((stringBookPrice.length > 0) && (stringBookPrice.length < 11) && (/[0-9]/.test(stringBookPrice)))
             ? (addBookPriceOk = checkAddBookPrice(true))
             : (addBookPriceOk = checkAddBookPrice(false));
-            checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk);
+        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk);
     });
 
     // 庫存
@@ -131,7 +131,6 @@ function checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookP
         $("#btnBookAdd").attr('disabled', true);
     }
 }
-
 
 /*
  * 新增商品

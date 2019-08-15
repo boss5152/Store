@@ -62,10 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     } else {
         $tips .= "不得為空。" ;
     }
+    echo json_encode(array(
+        'isRegister' => $isRegister,
+        'tips' => $tips
+    ));
 }
-
-## 最後回傳請求
-echo json_encode(array(
-    'isRegister' => $isRegister,
-    'tips' => $tips
-));

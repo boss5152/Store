@@ -133,8 +133,8 @@ class Book extends ConnectDb
     /**
      * 搜尋後每頁固定顯示八筆
      */
-    public function searchBookNameLimitCount($keyword, $page){
-        $sql = "SELECT * FROM Book WHERE bookName LIKE '%$keyword%' LIMIT $page,8";
+    public function searchBookNameLimitCount($keyword, $page, $count){
+        $sql = "SELECT * FROM Book WHERE bookName LIKE '%$keyword%' LIMIT $page, $count";
         $result = $this->executeSql($sql);
         foreach ($result as $key => $value) {
             array_push($this->resultArray, $value);
@@ -153,15 +153,26 @@ class Book extends ConnectDb
     }
 
     /**
-     * 固定取八筆
+     * 取幾筆資料
      */
-    public function showBookLimit($page){
-        $sql = "SELECT * FROM Book Limit $page,8";
+    public function showBookLimit($page, $count){
+        $sql = "SELECT * FROM Book Limit $page, $count";
         $result = $this->executeSql($sql);
         foreach ($result as $key => $value) {
             array_push($this->resultArray, $value);
         }     
         return $this->resultArray;
+    }
+
+    /**
+     * 檢查分頁有無資料
+     */
+    public function checkPage($page, $count)
+    {
+        $sql = "SELECT bookId FROM Book LIMIT $page, $count";
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_num_rows($result);
+        return ($row_result === 0) ? false : true;
     }
 
 }

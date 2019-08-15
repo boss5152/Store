@@ -56,6 +56,27 @@
             </tbody>
         </table>
     </div>
+    <div class="text-center text-center">
+        <ul class="pagination">
+            {{if isset($keyword)}}
+                {{for $page = 1 to $pageCount }}
+                    {{if $page == $nowPage}}
+                    <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
+                    {{else}}
+                    <li><a href="/Store/Controller/member/order/showUserOrder.php?page={{$page}}&userOrderSearch={{$keyword}}" role="button" id="page" name="page">{{$page}}</a></li>
+                    {{/if}}
+                {{/for}}
+            {{else}}
+                {{for $page = 1 to $pageCount }}
+                    {{if $page == $nowPage}}
+                    <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
+                    {{else}}
+                    <li><a href="/Store/Controller/member/order/showUserOrder.php?page={{$page}}" role="button" id="page" name="page">{{$page}}</a></li>
+                    {{/if}}
+                {{/for}}
+            {{/if}}
+        </ul>
+    </div>
 
 </body>
 

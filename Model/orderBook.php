@@ -62,11 +62,45 @@ class OrderBook extends ConnectDb
     }
 
     /*
-     * 顯示對應使用者訂單
+     * 顯示對應使用者訂單總筆數
      */
-    public function showUserOrder($userAccount)
+    public function allUserOrderCount($userAccount)
     {
         $sql = "SELECT * FROM OrderBook WHERE userAccount = '" . $userAccount . "'";
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_num_rows($result);
+        return $row_result;
+    }
+
+    /*
+     * 顯示對應使用者訂單
+     * 與他的筆數
+     */
+    public function showUserOrderLimit($userAccount, $page, $count)
+    {
+        $sql = "SELECT * FROM OrderBook WHERE userAccount = '" . $userAccount . "' LIMIT $page, $count";
+        $result = $this->executeSql($sql);
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
+    }
+
+    /**
+     * 關鍵字搜尋到的使用者訂單總比數
+     */
+    public function searchUserOrderCount($userAccount, $keyword){
+        $sql = "SELECT * FROM orderBook WHERE userAccount = $userAccount AND bookName LIKE '%$keyword%'";
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_num_rows($result);
+        return $row_result;
+    }
+
+    /**
+     * 搜尋後每頁固定顯示count筆使用者訂單
+     */
+    public function searchUserOrderLimitCount($keyword, $userAccount, $page){
+        $sql = "SELECT * FROM orderBook WHERE userAccount = $userAccount AND bookName LIKE '%$keyword%' LIMIT $page, 10";
         $result = $this->executeSql($sql);
         foreach ($result as $key => $value) {
             array_push($this->resultArray, $value);
@@ -85,4 +119,58 @@ class OrderBook extends ConnectDb
         return $row_result;
     }
 
+    /**
+     * 關鍵字搜尋查到的總比數
+     */
+    public function searchAllOrderCount($keyword){
+        $sql = "SELECT * FROM orderBook WHERE userAccount LIKE '%$keyword%'";
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_num_rows($result);
+        return $row_result;
+    }
+
+    /**
+     * 搜尋後每頁固定顯示八筆
+     */
+    public function searchOrderLimitCount($keyword, $page, $count){
+        $sql = "SELECT * FROM orderBook WHERE userAccount LIKE '%$keyword%' LIMIT $page, $count";
+        $result = $this->executeSql($sql);
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
+    }
+
+    /**
+     * 取得資料總筆數
+     */
+    public function allOrderCount(){
+        $sql = "SELECT * FROM orderBook";
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_num_rows($result);
+        return $row_result;
+    }
+
+    /**
+     * 取幾筆資料
+     */
+    public function showOrderLimit($page, $count){
+        $sql = "SELECT * FROM orderBook Limit $page, $count";
+        $result = $this->executeSql($sql);
+        foreach ($result as $key => $value) {
+            array_push($this->resultArray, $value);
+        }     
+        return $this->resultArray;
+    }
+
+    /**
+     * 檢查分頁有無資料
+     */
+    public function checkPage($page, $count)
+    {
+        $sql = "SELECT orderId FROM orderBook LIMIT $page, $count";
+        $result = $this->executeSql($sql);
+        $row_result = mysqli_num_rows($result);
+        return ($row_result === 0) ? false : true;
+    }
 }

@@ -9,6 +9,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/Store/Model/OrderBook.php");
 class CommonMethod
 {
     public $check = [];
+    public $page;
     public $account = "visitor";
     public $identity = "visitor";
     public function __construct()
@@ -27,10 +28,12 @@ class CommonMethod
                 $this->identity = "member";
                 $this->getToken();
                 $this->getAccount();
-                ## 確認admin，成功的那這裡會覆蓋掉account為admin
+                ## 確認admin，成功的話這裡會覆蓋掉account為admin
                 $this->checkAdmin();
             }
         }
+        ## 分頁防呆
+        $this->page = $this->checkPage();
     }
 
     /*
@@ -77,4 +80,20 @@ class CommonMethod
         $this->account = $memberData['account'];
     }
 
+    /**
+     * 分頁防呆
+     */
+    public function checkPage()
+    {
+        if (isset($_GET['page'])) {
+            if ((!is_numeric($_GET['page'])) || ($_GET['page'] < 1) || ($_SERVER['QUERY_STRING'] === "")) {
+                $page = 1;
+            } else {
+                $page = $_GET['page'];
+            }
+        } else {
+            $page = 1;
+        }
+        return $page;
+    }
 }

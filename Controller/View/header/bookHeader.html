@@ -1,30 +1,5 @@
-<?php
-/* Smarty version 3.1.33, created on 2019-08-15 06:10:37
-  from 'C:\xampp\htdocs\Store\Controller\View\header\header.html' */
-
-/* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '3.1.33',
-  'unifunc' => 'content_5d54db3dbb5a02_11667287',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    'b131d6229c9685425408b4f0626a7563c66f73db' => 
-    array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\header.html',
-      1 => 1565842191,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_5d54db3dbb5a02_11667287 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
-<?php echo '<script'; ?>
- src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
->
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- 菜單 -->
 <nav class="navbar navbar-inverse">
@@ -34,26 +9,27 @@ function content_5d54db3dbb5a02_11667287 (Smarty_Internal_Template $_smarty_tpl)
         </ul>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <form class="navbar-form">
+                <div class="navbar-form">
                     <div class="form-group input-group">
-                        <?php if (isset($_smarty_tpl->tpl_vars['keyword']->value)) {?>
-                            <input type="text" class="form-control" placeholder="找書名.." 
-                                id="keyword" name="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-">
-                        <?php } else { ?>
-                            <input type="text" class="form-control" placeholder="找書名.." 
-                                id="keyword" name="keyword">
-                        <?php }?>
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" id="btnSearch" name="btnSearch">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
+                        <form action="/Store/Controller/admin/book/showBook.php" method="GET">
+                            {{if isset($keyword)}}
+                                <input type="text" class="form-control" placeholder="找書名.." 
+                                    id="keyword" name="bookSearch" value="{{$keyword}}">
+                            {{else}}
+                                <input type="text" class="form-control" placeholder="找書名.." 
+                                    id="keyword" name="bookSearch">
+                            {{/if}}
+                            <span class="input-group-btn">
+                                <button class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </form>
                     </div>
-                </form>
+                </div>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <?php if ($_smarty_tpl->tpl_vars['account']->value === 'visitor') {?>
+                {{if $account === visitor}}
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                         <span class="glyphicon glyphicon-user"></span>
@@ -66,12 +42,11 @@ function content_5d54db3dbb5a02_11667287 (Smarty_Internal_Template $_smarty_tpl)
                         <li><a href="/Store/Controller/admin/aboutLogin/showAdminLogin.php">我是管理者</a></li>
                     </ul>
                 </li>
-                <?php } elseif ($_smarty_tpl->tpl_vars['account']->value === 'admin') {?>
+                {{else if $account === admin}}
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <span class="glyphicon glyphicon-user"></span>
-                        帳戶管理(<?php echo $_smarty_tpl->tpl_vars['account']->value;?>
-)
+                        帳戶管理({{$account}})
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -89,12 +64,11 @@ function content_5d54db3dbb5a02_11667287 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="glyphicon glyphicon-envelope"></span> 管理訂單
                     </a>
                 </li>
-                <?php } else { ?>
+                {{else}}
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                         <span class="glyphicon glyphicon-user"></span>
-                        帳戶管理(<?php echo $_smarty_tpl->tpl_vars['account']->value;?>
-)
+                        帳戶管理({{$account}})
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -112,17 +86,11 @@ function content_5d54db3dbb5a02_11667287 (Smarty_Internal_Template $_smarty_tpl)
                         <span class="glyphicon glyphicon-envelope"></span> 我的訂單
                     </a>
                 </li>
-                <?php }?>
+                {{/if}}
             </ul>
         </div>
     </div>
 </nav>
-<?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/header/search.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/header/logout.js"><?php echo '</script'; ?>
->
+<script src="http://localhost/Store/Controller/javascript/header/logout.js"></script>
 
-<!-- 菜單 --><?php }
-}
+<!-- 菜單 -->

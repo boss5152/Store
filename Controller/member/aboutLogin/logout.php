@@ -16,10 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     } else {
         $tips = "登出失敗，請重新操作";
     }
-
     echo json_encode(array(
         'isLogout' => $isLogout,
         'tips' => $tips
     ));    
-
 }

@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <div class="container text-center" id="mainDiv">
+    <div class="container text-center">
         <h3>商品</h3>
         <br>
         <div class="row">
@@ -43,7 +43,7 @@
                         <p>{{$newBookArray['bookInfo']}}</p>
                     </div>
                 </div>
-                <p>{{$newBookArray['bookPrice']}} NTD</p>
+                <p class="bookPrice">{{$newBookArray['bookPrice']}} NTD</p>
                 <!-- 加入購物車按鈕 -->
                 <!-- 已加入關掉不給按 -->
                 <!-- 沒登入就不顯示了 -->
@@ -66,13 +66,23 @@
         </div>
         <div>
             <ul class="pagination">
-                {{for $page = 1 to $pageCount }}
-                    {{if $page == $nowPage}}
-                    <li class="active"><a id="page" name="page" role="button">{{$page}}</a></li>
-                    {{else}}
-                    <li><a id="page" name="page" role="button">{{$page}}</a></li>
-                    {{/if}}
-                {{/for}}
+                {{if isset($keyword)}}
+                    {{for $page = 1 to $pageCount }}
+                        {{if $page == $nowPage}}
+                        <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
+                        {{else}}
+                        <li><a href="/Store/Controller/index/index.php?page={{$page}}&indexSearch={{$keyword}}" role="button" id="page" name="page">{{$page}}</a></li>
+                        {{/if}}
+                    {{/for}}
+                {{else}}
+                    {{for $page = 1 to $pageCount }}
+                        {{if $page == $nowPage}}
+                        <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
+                        {{else}}
+                        <li><a href="/Store/Controller/index/index.php?page={{$page}}" role="button" id="page" name="page">{{$page}}</a></li>
+                        {{/if}}
+                    {{/for}}
+                {{/if}}
             </ul>
         </div>
     </div>
@@ -80,6 +90,6 @@
 </body>
 
 <script src="http://localhost/Store/Controller/javascript/tool.js"></script>
-<script src="http://localhost/Store/Controller/javascript/page.js"></script>
+<script src="http://localhost/Store/Controller/javascript/index/page.js"></script>
 
 </html>

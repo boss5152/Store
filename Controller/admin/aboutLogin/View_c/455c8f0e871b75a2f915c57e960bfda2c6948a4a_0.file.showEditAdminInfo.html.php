@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-13 04:27:29
+/* Smarty version 3.1.33, created on 2019-08-15 11:31:19
   from 'C:\xampp\htdocs\Store\Controller\View\admin\aboutLogin\showEditAdminInfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5220119a8e65_09294462',
+  'unifunc' => 'content_5d5526674adb32_94317895',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '455c8f0e871b75a2f915c57e960bfda2c6948a4a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\aboutLogin\\showEditAdminInfo.html',
-      1 => 1565663248,
+      1 => 1565861460,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5220119a8e65_09294462 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d5526674adb32_94317895 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <title>修改資料</title>
@@ -70,14 +70,14 @@ function content_5d5220119a8e65_09294462 (Smarty_Internal_Template $_smarty_tpl)
             </div>
             <div class="form-group">
                 <button id="btnEditAdminInfo" type="button" class="btn btn-primary" disabled="true">完成</button>
-                <a href="" class="btn btn-danger" role="button">取消</a>
+                <a href="/Store/Controller/index/index.php" class="btn btn-danger" role="button">取消</a>
             </div>
         </div>
     </div>
 </body>
 
 <?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/tool.js"><?php echo '</script'; ?>
+ src="http://localhost/Store/Controller/javascript/admin/aboutLogin/adminEditInfo.js"><?php echo '</script'; ?>
 >
 
 </html><?php }

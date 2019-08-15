@@ -38,10 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     } else {
         $tips = "帳號密碼不得為空";
     }
+    echo json_encode(array(
+        'isLogin' => $isLogin,
+        'tips' => $tips
+    ));
 }
-
-## 最後回傳請求
-echo json_encode(array(
-    'isLogin' => $isLogin,
-    'tips' => $tips
-));

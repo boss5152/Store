@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-15 06:10:37
-  from 'C:\xampp\htdocs\Store\Controller\View\header\header.html' */
+/* Smarty version 3.1.33, created on 2019-08-15 12:00:39
+  from 'C:\xampp\htdocs\Store\Controller\View\header\indexHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d54db3dbb5a02_11667287',
+  'unifunc' => 'content_5d552d471d7ae5_59376232',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'b131d6229c9685425408b4f0626a7563c66f73db' => 
+    '68ef8def53cfd1f4ca2e61d6804d521b52ed9ef9' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\header.html',
-      1 => 1565842191,
+      0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\indexHeader.html',
+      1 => 1565859310,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d54db3dbb5a02_11667287 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d552d471d7ae5_59376232 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -34,23 +34,25 @@ function content_5d54db3dbb5a02_11667287 (Smarty_Internal_Template $_smarty_tpl)
         </ul>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <form class="navbar-form">
+                <div class="navbar-form">
                     <div class="form-group input-group">
-                        <?php if (isset($_smarty_tpl->tpl_vars['keyword']->value)) {?>
-                            <input type="text" class="form-control" placeholder="找書名.." 
-                                id="keyword" name="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+                        <form action="/Store/Controller/index/index.php" method="GET">
+                            <?php if (isset($_smarty_tpl->tpl_vars['keyword']->value)) {?>
+                                <input type="text" class="form-control" placeholder="找書名.." 
+                                    id="keyword" name="indexSearch" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 ">
-                        <?php } else { ?>
-                            <input type="text" class="form-control" placeholder="找書名.." 
-                                id="keyword" name="keyword">
-                        <?php }?>
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" id="btnSearch" name="btnSearch">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
+                            <?php } else { ?>
+                                <input type="text" class="form-control" placeholder="找書名.." 
+                                    id="keyword" name="indexSearch">
+                            <?php }?>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </form>
                     </div>
-                </form>
+                </div>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php if ($_smarty_tpl->tpl_vars['account']->value === 'visitor') {?>
@@ -117,9 +119,6 @@ function content_5d54db3dbb5a02_11667287 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </div>
 </nav>
-<?php echo '<script'; ?>
- src="http://localhost/Store/Controller/javascript/header/search.js"><?php echo '</script'; ?>
->
 <?php echo '<script'; ?>
  src="http://localhost/Store/Controller/javascript/header/logout.js"><?php echo '</script'; ?>
 >

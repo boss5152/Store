@@ -130,15 +130,6 @@ function checkEditMemberBtn(passwordOk, emailOk, oldPasswordOk) {
     }
 }
 
-//管理者修改密碼的按鈕可不可以按
-function checkAdminEditBtn(passwordOk, oldPasswordOk, adminKeyOk) {
-    if ((passwordOk === true) && (oldPasswordOk === true) && (adminKeyOk === true)) {
-        $("#btnEditAdminInfo").attr('disabled', false);
-    } else {
-        $("#btnEditAdminInfo").attr('disabled', true);
-    }
-}
-
 // 驗證結束-------------
 
 /*
@@ -326,43 +317,6 @@ $(document).ready(function () {
         })
     })
 });
-
-/**
- * 編輯管理者資訊
- */
-$(document).ready(function () {
-    $("#btnEditAdminInfo").click(function () {
-        var password = $("#password").val();
-        var oldPassword = $("#oldPassword").val();
-        var adminKey = $("#adminKey").val();
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/Store/Controller/admin/home/actionEditAdminInfo.php",
-            dataType: "json",
-            data: {
-                'password': password,
-                'oldPassword': oldPassword,
-                'adminKey': adminKey
-
-            },
-            success: function (data) {
-                if (data.isEdit === true) {
-                    alert(data.tips);
-                } else {
-                    alert(data.tips);
-                    if (data.isLogin === false) {
-                        location = location;
-                    }
-                }
-            },
-            error: function () {
-                alert("錯誤請求");
-            }
-        })
-    })
-});
-
-
 
 /**
  * 加入購物車

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-13 07:47:56
+/* Smarty version 3.1.33, created on 2019-08-15 12:29:36
   from 'C:\xampp\htdocs\Store\Controller\View\member\order\showUserOrder.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d524f0c5cf5a9_34387957',
+  'unifunc' => 'content_5d553410cdd942_68626622',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4598530a8b636453ecac9ebd2b0bc3dbadb2a22' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\order\\showUserOrder.html',
-      1 => 1565675275,
+      1 => 1565864976,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d524f0c5cf5a9_34387957 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d553410cdd942_68626622 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -95,6 +95,46 @@ foreach ($_from as $_smarty_tpl->tpl_vars['orderBookArray']->value) {
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
+    </div>
+    <div class="text-center text-center">
+        <ul class="pagination">
+            <?php if (isset($_smarty_tpl->tpl_vars['keyword']->value)) {?>
+                <?php
+$_smarty_tpl->tpl_vars['page'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['page']->step = 1;$_smarty_tpl->tpl_vars['page']->total = (int) ceil(($_smarty_tpl->tpl_vars['page']->step > 0 ? $_smarty_tpl->tpl_vars['pageCount']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['pageCount']->value)+1)/abs($_smarty_tpl->tpl_vars['page']->step));
+if ($_smarty_tpl->tpl_vars['page']->total > 0) {
+for ($_smarty_tpl->tpl_vars['page']->value = 1, $_smarty_tpl->tpl_vars['page']->iteration = 1;$_smarty_tpl->tpl_vars['page']->iteration <= $_smarty_tpl->tpl_vars['page']->total;$_smarty_tpl->tpl_vars['page']->value += $_smarty_tpl->tpl_vars['page']->step, $_smarty_tpl->tpl_vars['page']->iteration++) {
+$_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteration === 1;$_smarty_tpl->tpl_vars['page']->last = $_smarty_tpl->tpl_vars['page']->iteration === $_smarty_tpl->tpl_vars['page']->total;?>
+                    <?php if ($_smarty_tpl->tpl_vars['page']->value == $_smarty_tpl->tpl_vars['nowPage']->value) {?>
+                    <li class="active"><a role="button" id="nowPage" name="page"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+</a></li>
+                    <?php } else { ?>
+                    <li><a href="/Store/Controller/member/order/showUserOrder.php?page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+&userOrderSearch=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+" role="button" id="page" name="page"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+</a></li>
+                    <?php }?>
+                <?php }
+}
+?>
+            <?php } else { ?>
+                <?php
+$_smarty_tpl->tpl_vars['page'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['page']->step = 1;$_smarty_tpl->tpl_vars['page']->total = (int) ceil(($_smarty_tpl->tpl_vars['page']->step > 0 ? $_smarty_tpl->tpl_vars['pageCount']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['pageCount']->value)+1)/abs($_smarty_tpl->tpl_vars['page']->step));
+if ($_smarty_tpl->tpl_vars['page']->total > 0) {
+for ($_smarty_tpl->tpl_vars['page']->value = 1, $_smarty_tpl->tpl_vars['page']->iteration = 1;$_smarty_tpl->tpl_vars['page']->iteration <= $_smarty_tpl->tpl_vars['page']->total;$_smarty_tpl->tpl_vars['page']->value += $_smarty_tpl->tpl_vars['page']->step, $_smarty_tpl->tpl_vars['page']->iteration++) {
+$_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteration === 1;$_smarty_tpl->tpl_vars['page']->last = $_smarty_tpl->tpl_vars['page']->iteration === $_smarty_tpl->tpl_vars['page']->total;?>
+                    <?php if ($_smarty_tpl->tpl_vars['page']->value == $_smarty_tpl->tpl_vars['nowPage']->value) {?>
+                    <li class="active"><a role="button" id="nowPage" name="page"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+</a></li>
+                    <?php } else { ?>
+                    <li><a href="/Store/Controller/member/order/showUserOrder.php?page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+" role="button" id="page" name="page"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+</a></li>
+                    <?php }?>
+                <?php }
+}
+?>
+            <?php }?>
+        </ul>
     </div>
 
 </body>

@@ -49,11 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     } else {
         $tips = "登入逾時，請重新登入";
     }
+    echo json_encode(array(
+        'isEdit' => $isEdit,
+        'tips' => $tips,
+        'isLogin' => $useCommonMethod->check['isLogin']
+    ));
 }
-
-## 最後回傳請求
-echo json_encode(array(
-    'isEdit' => $isEdit,
-    'tips' => $tips,
-    'isLogin' => $useCommonMethod->check['isLogin']
-));
