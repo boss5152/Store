@@ -5,7 +5,7 @@ $(document).ready(function () {
     $("button").click(function () {
         if ((this.name) === "btnDeleteOrder") {
             var orderId = $(this).val();
-            var goDelete = confirm("您確定要刪除這筆訂單嗎 ?");
+            var goDelete = confirm("您確定要註銷這筆訂單嗎 ?");
             if (goDelete === true) {
                 $.ajax({
                     type: "POST",

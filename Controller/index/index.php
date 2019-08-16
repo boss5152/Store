@@ -4,51 +4,37 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/Store/Controller/toolBox/commonMethod
 
 $useCommonMethod = new CommonMethod();
 
-$page = $useCommonMethod->page;
+$count = 8;
+$getPage = (isset($_GET['page'])) ? $_GET['page'] : 1;
+$page = $useCommonMethod->pageStupid($getPage);
+$bookNameSearch = (!empty($_GET['bookNameSearch'])) ? $_GET['bookNameSearch'] : '';
+
 ## 檢查該分頁是否有資料
-$checkPage = $useCommonMethod->useBookTable->checkPage($page, 8);
-## 沒有則導回首頁page1
-if ($checkPage === false) {
-    $page = 1;
-}
-
-## 分頁籤讓他亮
+$page = ($useCommonMethod->useBookTable->checkPage($page, $count)) ? $page : 1;
 $nowPage = $page;
+
 ## 接收分頁碼並判斷
-$page = ($page != 1) ? (($page - 1) * 8) : 0 ;
+($page != 1) ? ($page = ($page - 1) * $count) : ($page = 0);
 
-## 如果有搜尋值，換成搜尋的
-## 判斷keyword
-if (isset($_GET['indexSearch'])) {
-    $keyword = $_GET['indexSearch'];
-    $bookArrays = $useCommonMethod->useBookTable->searchBookNameLimitCount($keyword, $page, 8);
-    $allBookCount = $useCommonMethod->useBookTable->searchAllBookNameCount($keyword, 8);
-} else {
-    ## 無，取得八筆書本資訊
-    $bookArrays = $useCommonMethod->useBookTable->showBookLimit($page, 8);
-    $allBookCount = $useCommonMethod->useBookTable->allBookCount();
-}
-
-($allBookCount % 8 == 0) ? ($pageCount = $allBookCount / 8) : ($pageCount = $allBookCount / 8 + 1);
+$bookArrays = $useCommonMethod->useBookTable->searchBookNameLimit($bookNameSearch, $page, $count);
+$allBookCount = $useCommonMethod->useBookTable->searchAllBookNameCount($bookNameSearch, $count);
+$pageCount =  ($allBookCount % $count == 0) ? ($allBookCount / $count) : ($allBookCount / $count + 1);
 $pageCount = intval($pageCount);
 
-if ($useCommonMethod->check['isLogin'] && $useCommonMethod->check['isToken']) {
+if ($useCommonMethod->identity == "member") {
     $memberData = $useCommonMethod->useMemberTable->getAll($useCommonMethod->check['token']);
     $cartListArray = $useCommonMethod->useCartTable->getCartBookId($memberData['userId']);
     ## 這邊拆解查詢陣列重組成一個二維陣列，並在其中裝上一個bool值來給前端button判斷給不給按
-    if ($useCommonMethod->check['isAdmin'] === false) {
-        $newBookArrays = [];
-        foreach ($bookArrays as $newBookArray) {
-            $newBookArray['isAddCart'] = (in_array($newBookArray['bookId'], $cartListArray)) ? true : false;
-            array_push($newBookArrays, $newBookArray); 
-        }
-        $bookArrays = $newBookArrays;
+    $newBookArrays = [];
+    foreach ($bookArrays as $newBookArray) {
+        $newBookArray['isAddCart'] = (in_array($newBookArray['bookId'], $cartListArray)) ? "已納入購物車" : "加入購物車";
+        $newBookArray['isAddCart'] = ($newBookArray['bookInStock'] == 0 && $newBookArray['isAddCart'] == "加入購物車") ? "庫存不足" : $newBookArray['isAddCart'];
+        array_push($newBookArrays, $newBookArray); 
     }
+    $bookArrays = $newBookArrays;
 }
 
-if (isset($keyword)) {
-    $smarty->assign('keyword', $keyword);
-}
+$smarty->assign('bookNameSearch', $bookNameSearch);
 $smarty->assign('account', $useCommonMethod->account);
 $smarty->assign('nowPage', $nowPage);
 $smarty->assign('pageCount', $pageCount);

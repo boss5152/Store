@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-15 10:45:27
+/* Smarty version 3.1.33, created on 2019-08-16 08:23:22
   from 'C:\xampp\htdocs\Store\Controller\View\admin\book\showBook.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d551ba7d2e682_44098778',
+  'unifunc' => 'content_5d564bdad518f8_37474295',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b30c2250f3f768e335592838e9e94aa0492cb0b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\book\\showBook.html',
-      1 => 1565856063,
+      1 => 1565935630,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d551ba7d2e682_44098778 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d564bdad518f8_37474295 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -177,7 +177,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd" disabled="true">新增</button>
+                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd" disabled="false">新增</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 </div>
             </div>
@@ -258,7 +258,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <hr>
     <div class="text-center text-center">
         <ul class="pagination">
-            <?php if (isset($_smarty_tpl->tpl_vars['keyword']->value)) {?>
+            <?php if ('bookNameSearch' == '') {?>
                 <?php
 $_smarty_tpl->tpl_vars['page'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['page']->step = 1;$_smarty_tpl->tpl_vars['page']->total = (int) ceil(($_smarty_tpl->tpl_vars['page']->step > 0 ? $_smarty_tpl->tpl_vars['pageCount']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['pageCount']->value)+1)/abs($_smarty_tpl->tpl_vars['page']->step));
 if ($_smarty_tpl->tpl_vars['page']->total > 0) {
@@ -269,7 +269,6 @@ $_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteratio
 </a></li>
                     <?php } else { ?>
                     <li><a href="/Store/Controller/admin/book/showBook.php?page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
-&indexSearch=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " role="button" id="page" name="page"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 </a></li>
                     <?php }?>
@@ -287,6 +286,7 @@ $_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteratio
 </a></li>
                     <?php } else { ?>
                     <li><a href="/Store/Controller/admin/book/showBook.php?page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+&bookNameSearch=<?php echo $_smarty_tpl->tpl_vars['bookNameSearch']->value;?>
 " role="button" id="page" name="page"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 </a></li>
                     <?php }?>

@@ -35,6 +35,16 @@ class Cart extends ConnectDb
     }
 
     /*
+     * 刪除全部，購買完後做的事
+     */
+    public function deleteAll($userId)
+    {
+        $sql = "DELETE FROM Cart WHERE userId = $userId";
+        $result = $this->executeSql($sql);
+        return ($result === true) ? true : false;
+    }
+
+    /*
      * 刪除 
      */
     public function delete($bookId)

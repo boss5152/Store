@@ -126,7 +126,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd" disabled="true">新增</button>
+                    <button type="button" class="btn btn-default" id="btnBookAdd" name="btnBookAdd" disabled="false">新增</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 </div>
             </div>
@@ -206,12 +206,12 @@
     <hr>
     <div class="text-center text-center">
         <ul class="pagination">
-            {{if isset($keyword)}}
+            {{if bookNameSearch == ""}}
                 {{for $page = 1 to $pageCount }}
                     {{if $page == $nowPage}}
                     <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
                     {{else}}
-                    <li><a href="/Store/Controller/admin/book/showBook.php?page={{$page}}&indexSearch={{$keyword}}" role="button" id="page" name="page">{{$page}}</a></li>
+                    <li><a href="/Store/Controller/admin/book/showBook.php?page={{$page}}" role="button" id="page" name="page">{{$page}}</a></li>
                     {{/if}}
                 {{/for}}
             {{else}}
@@ -219,7 +219,7 @@
                     {{if $page == $nowPage}}
                     <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
                     {{else}}
-                    <li><a href="/Store/Controller/admin/book/showBook.php?page={{$page}}" role="button" id="page" name="page">{{$page}}</a></li>
+                    <li><a href="/Store/Controller/admin/book/showBook.php?page={{$page}}&bookNameSearch={{$bookNameSearch}}" role="button" id="page" name="page">{{$page}}</a></li>
                     {{/if}}
                 {{/for}}
             {{/if}}

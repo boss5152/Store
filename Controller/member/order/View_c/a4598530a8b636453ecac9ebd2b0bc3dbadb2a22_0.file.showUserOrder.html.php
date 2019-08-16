@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-15 12:29:36
+/* Smarty version 3.1.33, created on 2019-08-16 10:40:59
   from 'C:\xampp\htdocs\Store\Controller\View\member\order\showUserOrder.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d553410cdd942_68626622',
+  'unifunc' => 'content_5d566c1b33d891_65443618',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4598530a8b636453ecac9ebd2b0bc3dbadb2a22' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\member\\order\\showUserOrder.html',
-      1 => 1565864976,
+      1 => 1565944857,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d553410cdd942_68626622 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d566c1b33d891_65443618 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 
@@ -49,9 +49,10 @@ function content_5d553410cdd942_68626622 (Smarty_Internal_Template $_smarty_tpl)
         <table class="table">
             <thead style="background-color: #AAAAAA">
                 <tr>
+                    <th style="text-align: center" class="col-md-1">訂單編號</th>
                     <th style="text-align: center" class="col-md-2">書名</th>
-                    <th style="text-align: center" class="col-md-2">單價</th>
-                    <th style="text-align: center" class="col-md-2">數量</th>
+                    <th style="text-align: center" class="col-md-1">單價</th>
+                    <th style="text-align: center" class="col-md-1">數量</th>
                     <th style="text-align: center" class="col-md-2">總價</th>
                     <th style="text-align: center" class="col-md-2">下單日期</th>
                     <th style="text-align: center" class="col-md-2">訂單狀態</th>
@@ -64,6 +65,10 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['orderBookArray']->value) {
 ?>
                 <tr>
+                    <td>
+                        <?php echo $_smarty_tpl->tpl_vars['orderBookArray']->value['orderId'];?>
+
+                    </td>
                     <td>
                         <?php echo $_smarty_tpl->tpl_vars['orderBookArray']->value['bookName'];?>
 
@@ -98,7 +103,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </div>
     <div class="text-center text-center">
         <ul class="pagination">
-            <?php if (isset($_smarty_tpl->tpl_vars['keyword']->value)) {?>
+            <?php if ($_smarty_tpl->tpl_vars['orderSearch']->value == '') {?>
                 <?php
 $_smarty_tpl->tpl_vars['page'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['page']->step = 1;$_smarty_tpl->tpl_vars['page']->total = (int) ceil(($_smarty_tpl->tpl_vars['page']->step > 0 ? $_smarty_tpl->tpl_vars['pageCount']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['pageCount']->value)+1)/abs($_smarty_tpl->tpl_vars['page']->step));
 if ($_smarty_tpl->tpl_vars['page']->total > 0) {
@@ -109,7 +114,6 @@ $_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteratio
 </a></li>
                     <?php } else { ?>
                     <li><a href="/Store/Controller/member/order/showUserOrder.php?page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
-&userOrderSearch=<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
 " role="button" id="page" name="page"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 </a></li>
                     <?php }?>
@@ -127,6 +131,7 @@ $_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteratio
 </a></li>
                     <?php } else { ?>
                     <li><a href="/Store/Controller/member/order/showUserOrder.php?page=<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+&orderSearch=<?php echo $_smarty_tpl->tpl_vars['orderSearch']->value;?>
 " role="button" id="page" name="page"><?php echo $_smarty_tpl->tpl_vars['page']->value;?>
 </a></li>
                     <?php }?>
@@ -136,7 +141,6 @@ $_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteratio
             <?php }?>
         </ul>
     </div>
-
 </body>
 
 <?php echo '<script'; ?>

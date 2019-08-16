@@ -23,31 +23,38 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $bookData = $useCommonMethod->useBookTable->getAll($bookId);
             $buyCount = $bookCountArray[$key];
             $bookTotalPrice = $buyCount * $bookData['bookPrice'];
-            ## 存入訂單資料庫
-            $arrayBuyBook = [
-                'userAccount' => $memberData['account'],
-                'bookName' => $bookData['bookName'],
-                'bookPrice' => $bookData['bookPrice'],
-                'buyCount' => $buyCount,
-                'totalPrice' => $bookTotalPrice                
-            ];
-            $checkBuyBook = $useCommonMethod->useOrderBookTable->insert($arrayBuyBook);
-            if ($checkBuyBook === true) {
-                $tips = "購買成功 ! ";
-                ## 扣除庫存
-                $newInStock = $bookData['bookInStock'] - $buyCount;
+            ## 扣除庫存，順便做庫存量檢查
+            $newInStock = $bookData['bookInStock'] - $buyCount;
+            if ($newInStock >= 0 && is_numeric($buyCount)) {
                 $arraySubInStock = [
                     'bookId' => $bookId,
                     'bookInStock' => $newInStock
                 ];
                 $checkUpdate = $useCommonMethod->useBookTable->updateInStock($arraySubInStock);
                 if ($checkUpdate === true) {
-                    $isBuy = true;
+                    $checkDelete = $useCommonMethod->useCartTable->deleteAll($memberData['userId']);
+                }
+                if ($checkDelete === true) {
+                    ## 存入訂單資料庫
+                    $arrayBuyBook = [
+                        'userAccount' => $memberData['account'],
+                        'bookName' => $bookData['bookName'],
+                        'bookPrice' => $bookData['bookPrice'],
+                        'buyCount' => $buyCount,
+                        'totalPrice' => $bookTotalPrice                
+                    ];
+                    $checkBuyBook = $useCommonMethod->useOrderBookTable->insert($arrayBuyBook);
+                    if ($checkBuyBook === true) {
+                        $isBuy = true;
+                        $tips = "購買成功 ! ";
+                    } else {
+                        $tips = "購買失敗，請重新操作";
+                    }
                 } else {
-                    $tips = "庫存扣除失敗";
+                    $tips = "庫存扣除失敗，請重新操作";
                 }
             } else {
-                $tips = "購買失敗，請重新操作";
+                $tips = "庫存量不足，請重新選購";
             }
         }
     } else {

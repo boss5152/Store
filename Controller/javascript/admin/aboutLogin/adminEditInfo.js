@@ -64,7 +64,7 @@ $(document).ready(function () {
         var oldPassword = $("#oldPassword").val();
         $.ajax({
             type: "POST",
-            url: "http://localhost/Store/Controller/admin/home/actionEditAdminInfo.php",
+            url: "http://localhost/Store/Controller/admin/aboutLogin/actionEditAdminInfo.php",
             dataType: "json",
             data: {
                 'password': password,
@@ -73,6 +73,7 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.isEdit === true) {
                     alert(data.tips);
+                    location = location;
                 } else {
                     alert(data.tips);
                     if (data.isLogin === false) {

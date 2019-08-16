@@ -9,16 +9,18 @@ $isDelete = false;
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($useCommonMethod->identity === "admin") {
         $orderId = $_POST["orderId"];
-        $checkDelete = $useCommonMethod->useOrderTable->delete($orderId);
+        $checkDelete = $useCommonMethod->useOrderBookTable->logout($orderId);
         if ($checkDelete === true) {
-            $tips = "刪除成功";
+            $tips = "註銷成功";
             $isDelete = true;
         } else {
-            $tips = "刪除失敗，請重新操作";
+            $tips = "註銷失敗，請重新操作";
         }
+    } else {
+        $tips = "登入逾時，請重新登入";
     }
     echo json_encode(array(
-        'isDelete' => false,
+        'isDelete' => $isDelete,
         'tips' => $tips,
         'isLogin' => $useCommonMethod->check['isLogin']
     ));

@@ -24,19 +24,23 @@
         <table class="table">
             <thead style="background-color: #AAAAAA">
                 <tr>
+                    <th style="text-align: center" class="col-md-1">訂單編號</th>
                     <th style="text-align: center" class="col-md-1">用戶帳號</th>
                     <th style="text-align: center" class="col-md-1">書名</th>
                     <th style="text-align: center" class="col-md-1">單價</th>
                     <th style="text-align: center" class="col-md-1">數量</th>
                     <th style="text-align: center" class="col-md-1">總價</th>
                     <th style="text-align: center" class="col-md-1">下單日期</th>
-                    <th style="text-align: center" class="col-md-1">結單</th>
-                    <th style="text-align: center" class="col-md-1">刪除</th>
+                    <th style="text-align: center" class="col-md-1">出貨</th>
+                    <th style="text-align: center" class="col-md-1">註銷</th>
                 </tr>
             </thead>
             <tbody class="List">
                 {{foreach $orderBookArrays as $orderBookArray}}
                 <tr>
+                    <td>
+                        {{$orderBookArray['orderId']}}
+                    </td>
                     <td>
                         {{$orderBookArray['userAccount']}}
                     </td>
@@ -55,22 +59,40 @@
                     <td>
                         {{$orderBookArray['orderDate']}}
                     </td>
+                    {{if $orderBookArray['orderStatus'] == "已出貨"}}
                     <td style="text-align: center">
-                        {{if $orderBookArray['orderStatus'] == "已出貨"}}
                         <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
-                            name="btnCompleteOrder" id="btnCompleteOrder" disabled="true">已結單
+                            name="btnCompleteOrder" id="btnCompleteOrder" disabled="true">已出貨
                         </button>
-                        {{else}}
-                        <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
-                            name="btnCompleteOrder" id="btnCompleteOrder">結單
-                        </button>
-                        {{/if}}
                     </td>
                     <td style="text-align: center">
                         <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
-                            name="btnDeleteOrder" id="btnDeleteOrder">刪除
+                            name="btnDeleteOrder" id="btnDeleteOrder" disabled="true">註銷
                         </button>
                     </td>
+                    {{elseif $orderBookArray['orderStatus'] == "已註銷"}}
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
+                            name="btnCompleteOrder" id="btnCompleteOrder" disabled="true">出貨
+                        </button>
+                    </td>
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
+                            name="btnDeleteOrder" id="btnDeleteOrder" disabled="true">已註銷
+                        </button>
+                    </td>
+                    {{elseif $orderBookArray['orderStatus'] == "未出貨"}}
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
+                            name="btnCompleteOrder" id="btnCompleteOrder">出貨
+                        </button>
+                    </td>
+                    <td style="text-align: center">
+                        <button type="button" class="btn btn-default" value="{{$orderBookArray['orderId']}}"
+                            name="btnDeleteOrder" id="btnDeleteOrder">註銷
+                        </button>
+                    </td>
+                    {{/if}}
                 </tr>
                 {{/foreach}}
             </tbody>
@@ -79,12 +101,12 @@
     <hr>
     <div class="text-center text-center">
         <ul class="pagination">
-            {{if isset($keyword)}}
+            {{if $orderSearch == ""}}
                 {{for $page = 1 to $pageCount }}
                     {{if $page == $nowPage}}
                     <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
                     {{else}}
-                    <li><a href="/Store/Controller/admin/order/showOrder.php?page={{$page}}&orderSearch={{$keyword}}" role="button" id="page" name="page">{{$page}}</a></li>
+                    <li><a href="/Store/Controller/admin/order/showOrder.php?page={{$page}}" role="button" id="page" name="page">{{$page}}</a></li>
                     {{/if}}
                 {{/for}}
             {{else}}
@@ -92,7 +114,7 @@
                     {{if $page == $nowPage}}
                     <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
                     {{else}}
-                    <li><a href="/Store/Controller/admin/order/showOrder.php?page={{$page}}" role="button" id="page" name="page">{{$page}}</a></li>
+                    <li><a href="/Store/Controller/admin/order/showOrder.php?page={{$page}}&orderSearch={{$orderSearch}}" role="button" id="page" name="page">{{$page}}</a></li>
                     {{/if}}
                 {{/for}}
             {{/if}}
@@ -103,6 +125,5 @@
 <script src="http://localhost/Store/Controller/javascript/admin/order/deleteOrder.js"></script>
 <script src="http://localhost/Store/Controller/javascript/admin/order/completeOrder.js"></script>
 <script src="http://localhost/Store/Controller/javascript/tool.js"></script>
-
 
 </html>

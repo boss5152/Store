@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (!empty($_POST["updateBookName"]) && (!empty($_POST["updateBookAuthor"]))
             && (!empty($_POST["updateBookInfo"])) && (!empty($_POST["updateBookPrice"]))
             && (!empty($_POST["updateBookInStock"]))) {
+
             ## 檢查長度
             $bookId = $_POST["bookId"];
             $bookName = $_POST["updateBookName"];
@@ -19,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $bookInfo = $_POST["updateBookInfo"];
             $bookPrice = $_POST["updateBookPrice"];
             $bookInStock = $_POST["updateBookInStock"];
+
             # 檔名
             $bookPhoto =  $_FILES["updateBookPhoto"]["name"];
             if (mb_strlen($bookName, "utf-8") > 30) {
@@ -32,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             } elseif (mb_strlen($bookPhoto, "utf-8") > 100) {
                 $tips .= "圖檔名稱不可超過100字，您的檔名為" . mb_strlen($bookPhoto, "utf-8") . "字";
             } elseif ($tips === '') {
+
                 ## 如果有改圖片則進行圖片格式驗證，沒有更改bookPhoto會為空字串
                 if ($_FILES["updateBookPhoto"]["type"] === "image/jpeg" || $_FILES["updateBookPhoto"]["type"] === "image/png" || $bookPhoto === "" ) {
                     ## 防注入
@@ -41,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     $bookPrice = htmlentities($bookPrice, ENT_NOQUOTES, "UTF-8");
                     $bookInStock = htmlentities($bookInStock, ENT_NOQUOTES, "UTF-8");
                     $bookPhoto = htmlentities($bookPhoto, ENT_NOQUOTES, "UTF-8");
+
                     if ($bookPhoto === "") {
                         $updateArray = [
                             'bookName' => $bookName, 
@@ -59,25 +63,30 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                             'bookPhoto' => $bookPhoto
                         ];
                     }
+
                     $isUpdate = $useCommonMethod->useBookTable->update($updateArray, $bookId);
-                    ## 回傳
+
                     if ($isUpdate === true) {
                         $tips = "編輯成功";
                         $isUpdate = true;
                     } else {
                         $tips = "失敗，請重新操作一次";
                     }
+
                 } else {
                     $tips = "圖片格式只可為jpg/png";
                 }
+
             }
+
         } else {
             $tips .= "任一欄位皆不得為空";
         }
+
     } else {
         $tips = "登入逾時，請重新登入";
     }
-    ## 最後回傳請求
+
     echo json_encode(array(
         'isUpdate' => $isUpdate,
         'tips' => $tips,

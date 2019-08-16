@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-15 11:06:36
+/* Smarty version 3.1.33, created on 2019-08-16 09:00:29
   from 'C:\xampp\htdocs\Store\Controller\View\header\indexHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d55209c2cc875_31814959',
+  'unifunc' => 'content_5d56548da4e513_05992371',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a8b0ae749a493ddf89d25956e6d1dbd4098a01fa' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\indexHeader.html',
-      1 => 1565859310,
+      1 => 1565937000,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d55209c2cc875_31814959 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d56548da4e513_05992371 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -37,13 +37,13 @@ function content_5d55209c2cc875_31814959 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="navbar-form">
                     <div class="form-group input-group">
                         <form action="/Store/Controller/index/index.php" method="GET">
-                            <?php if (isset($_smarty_tpl->tpl_vars['keyword']->value)) {?>
+                            <?php if ('bookNameSearch' == '') {?>
                                 <input type="text" class="form-control" placeholder="找書名.." 
-                                    id="keyword" name="indexSearch" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-">
+                                    id="keyword" name="bookNameSearch">
                             <?php } else { ?>
                                 <input type="text" class="form-control" placeholder="找書名.." 
-                                    id="keyword" name="indexSearch">
+                                    id="keyword" name="bookNameSearch" value="<?php echo $_smarty_tpl->tpl_vars['bookNameSearch']->value;?>
+">
                             <?php }?>
                             <span class="input-group-btn">
                                 <button class="btn btn-default">

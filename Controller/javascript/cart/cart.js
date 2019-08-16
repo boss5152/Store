@@ -53,9 +53,7 @@ $(document).ready(function () {
                         location = "http://localhost/Store/Controller/member/order/showUserOrder.php";
                     } else {
                         alert(data.tips);
-                        if (data.isLogin === false) {
-                            location = location;
-                        }
+                        location = location;
                     }
                 },
                 error: function () {

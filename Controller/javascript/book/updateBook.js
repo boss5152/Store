@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     var updateBookNameOk = true;
     var updateBookAuthorOk = true;
     var updateBookInfoOk = true;
@@ -15,13 +14,27 @@ $(document).ready(function () {
         reader.readAsDataURL(this.files[0]);
     });
 
+    $(':file').change(function () {
+        var file = this.files[0];
+        name = file.name;
+        size = file.size;
+        type = file.type;
+        if (file.type != 'image/png' && file.type != 'image/jpg' && file.type != 'image/jpeg') { 
+            alert("檔案格式不符合: png, jpg");
+            $(this).val('');
+        } else if (file.size > 10240000) {
+            alert("圖片上限10MB!!");
+            $(this).val('');
+        }
+    });
+
     // 書名
     $("#updateBookName").keyup(function () {
         var stringBookName = $("#updateBookName").val();
         ((stringBookName.length > 0) && (stringBookName.length < 31))
             ? (updateBookNameOk = checkUpdateBookName(true))
             : (updateBookNameOk = checkUpdateBookName(false));
-        checkAddBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
+        checkUpdateBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
     });
 
     // 作者
@@ -30,8 +43,7 @@ $(document).ready(function () {
         ((stringBookAuthor.length > 0) && (stringBookAuthor.length < 21))
             ? (updateBookAuthorOk = checkUpdateBookAuthor(true))
             : (updateBookAuthorOk = checkUpdateBookAuthor(false));
-        checkAddBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
-
+        checkUpdateBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
     });
 
     // 書本介紹
@@ -40,17 +52,15 @@ $(document).ready(function () {
         ((stringBookInfo.length > 0) && (stringBookInfo.length < 101))
             ? (updateBookInfoOk = checkUpdateBookInfo(true))
             : (updateBookInfoOk = checkUpdateBookInfo(false, stringBookInfo.length));
-        checkAddBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
-
+        checkUpdateBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
     });
 
     // 價格
     $("#updateBookPrice").keyup(function () {
         var stringBookPrice = $("#updateBookPrice").val();
-        ((stringBookPrice.length > 0) && (stringBookPrice.length < 11) && (/[0-9]/.test(stringBookPrice)))
+        ((stringBookPrice.length > 0) && (stringBookPrice.length < 11) && (/^[0-9]*$/.test(stringBookPrice)))
             ? (updateBookPriceOk = checkUpdateBookPrice(true))
             : (updateBookPriceOk = checkUpdateBookPrice(false));
-        checkAddBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
         checkUpdateBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
     });
 
@@ -58,10 +68,9 @@ $(document).ready(function () {
     $("#updateBookInStock").keyup(function () {
         console.log(123);
         var stringBookInStock = $("#updateBookInStock").val();
-        ((/[0-9]/.test(stringBookInStock)))
+        ((stringBookInStock.length >= 0) && (stringBookInStock.length < 3) && (/^[0-9]*$/.test(stringBookInStock)))
             ? (updateBookInStockOk = checkUpdateBookInStock(true))
             : (updateBookInStockOk = checkUpdateBookInStock(false));
-        checkAddBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
         checkUpdateBookBtn(updateBookNameOk, updateBookAuthorOk, updateBookInfoOk, updateBookPriceOk, updateBookInStockOk);
     });
 
@@ -118,7 +127,7 @@ function checkUpdateBookPrice(bool) {
 // 庫存驗證
 function checkUpdateBookInStock(bool) {
     if (bool === false) {
-        $("#tipsUpdateBookInStock").html("此欄位必填，且只可為0或正整數");
+        $("#tipsUpdateBookInStock").html("此欄位必填，且只可為0或不大於99之正整數");
         $("#btnActionBookUpdate").attr('disabled', true);
         return false;
     } else {

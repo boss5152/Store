@@ -5,6 +5,7 @@ $(document).ready(function () {
     var addBookInfoOk = "";
     var addBookPriceOk = "";
     var addBookInStockOk = "";
+    var addPhotoOk = "";
     //圖片預覽
     $("#addBookPhoto").change(function () {
         var reader = new FileReader();
@@ -14,13 +15,31 @@ $(document).ready(function () {
         reader.readAsDataURL(this.files[0]);
     });
 
+    $(':file').change(function () {
+        var file = this.files[0];
+        name = file.name;
+        size = file.size;
+        type = file.type;
+        addPhotoOk = true;
+        if (file.type != 'image/png' && file.type != 'image/jpg' && file.type != 'image/jpeg') { 
+            alert("檔案格式不符合: png, jpg");
+            $(this).val('');
+            addPhotoOk = false;
+        } else if (file.size > 10240000) {
+            alert("圖片上限10MB!!");
+            $(this).val('');
+            addPhotoOk = false;
+        }
+        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk, addPhotoOk);
+    });
+
     // 書名
     $("#addBookName").keyup(function () {
         var stringBookName = $("#addBookName").val();
         ((stringBookName.length > 0) && (stringBookName.length < 31))
             ? (addBookNameOk = checkAddBookName(true))
             : (addBookNameOk = checkAddBookName(false));
-        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk);
+        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk, addPhotoOk);
     });
 
     // 作者
@@ -29,7 +48,7 @@ $(document).ready(function () {
         ((stringBookAuthor.length > 0) && (stringBookAuthor.length < 21))
             ? (addBookAuthorOk = checkAddBookAuthor(true))
             : (addBookAuthorOk = checkAddBookAuthor(false));
-        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk);
+        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk, addPhotoOk);
 
     });
 
@@ -39,26 +58,26 @@ $(document).ready(function () {
         ((stringBookInfo.length > 0) && (stringBookInfo.length < 101))
             ? (addBookInfoOk = checkAddBookInfo(true))
             : (addBookInfoOk = checkAddBookInfo(false, stringBookInfo.length));
-        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk);
+        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk, addPhotoOk);
 
     });
 
     // 價格
     $("#addBookPrice").keyup(function () {
         var stringBookPrice = $("#addBookPrice").val();
-        ((stringBookPrice.length > 0) && (stringBookPrice.length < 11) && (/[0-9]/.test(stringBookPrice)))
+        ((stringBookPrice.length > 0) && (stringBookPrice.length < 11) && (/^[0-9]*$/.test(stringBookPrice)))
             ? (addBookPriceOk = checkAddBookPrice(true))
             : (addBookPriceOk = checkAddBookPrice(false));
-        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk);
+        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk, addPhotoOk);
     });
 
     // 庫存
     $("#addBookInStock").keyup(function () {
         var stringBookInStock = $("#addBookInStock").val();
-        ((stringBookInStock.length > 0) && (stringBookInStock.length < 3) && (/[0-9]/.test(stringBookInStock)))
+        ((stringBookInStock.length > 0) && (stringBookInStock.length < 3) && (/^[0-9]*$/.test(stringBookInStock)))
             ? (addBookInStockOk = checkAddBookInStock(true))
             : (addBookInStockOk = checkAddBookInStock(false));
-        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk);
+        checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk, addPhotoOk);
     });
 
 });
@@ -114,7 +133,7 @@ function checkAddBookPrice(bool) {
 // 庫存驗證
 function checkAddBookInStock(bool) {
     if (bool === false) {
-        $("#tipsAddBookInStock").html("此欄位必填，且只可為不大於100之正整數");
+        $("#tipsAddBookInStock").html("此欄位必填，且只可為不大於99之正整數");
         $("#btnBookAdd").attr('disabled', true);
         return false;
     } else {
@@ -124,8 +143,10 @@ function checkAddBookInStock(bool) {
 }
 
 //新增商品可不可以按
-function checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk) {
-    if ((addBookNameOk === true) && (addBookAuthorOk === true) && (addBookInfoOk === true) && (addBookPriceOk === true) && (addBookInStockOk === true)) {
+function checkAddBookBtn(addBookNameOk, addBookAuthorOk, addBookInfoOk, addBookPriceOk, addBookInStockOk, addPhotoOk) {
+    if ((addBookNameOk === true) && (addBookAuthorOk === true) &&
+        (addBookInfoOk === true) && (addBookPriceOk === true) && 
+        (addBookInStockOk === true) && (addPhotoOk === true)) {
         $("#btnBookAdd").attr('disabled', false);
     } else {
         $("#btnBookAdd").attr('disabled', true);

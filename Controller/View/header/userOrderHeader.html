@@ -12,12 +12,12 @@
                 <div class="navbar-form">
                     <div class="form-group input-group">
                         <form action="/Store/Controller/member/order/showUserOrder.php" method="GET">
-                            {{if isset($keyword)}}
+                            {{if orderSearch == ""}}
                                 <input type="text" class="form-control" placeholder="找書名.." 
-                                    id="keyword" name="userOrderSearch" value="{{$keyword}}">
+                                    id="keyword" name="orderSearch">
                             {{else}}
                                 <input type="text" class="form-control" placeholder="找書名.." 
-                                    id="keyword" name="userOrderSearch">
+                                    id="keyword" name="orderSearch" value="{{$orderSearch}}">
                             {{/if}}
                             <span class="input-group-btn">
                                 <button class="btn btn-default">

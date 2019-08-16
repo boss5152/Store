@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-15 10:55:14
+/* Smarty version 3.1.33, created on 2019-08-16 08:42:27
   from 'C:\xampp\htdocs\Store\Controller\View\header\orderHeader.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d551df29ded58_32125818',
+  'unifunc' => 'content_5d5650535c8212_81279847',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '649fd7e8cd3117f6129cc04712108ac08ddee3d9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\header\\orderHeader.html',
-      1 => 1565859263,
+      1 => 1565936977,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d551df29ded58_32125818 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d5650535c8212_81279847 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <?php echo '<script'; ?>
  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><?php echo '</script'; ?>
@@ -37,13 +37,13 @@ function content_5d551df29ded58_32125818 (Smarty_Internal_Template $_smarty_tpl)
                 <div class="navbar-form">
                     <div class="form-group input-group">
                         <form action="/Store/Controller/admin/order/showOrder.php" method="GET">
-                            <?php if (isset($_smarty_tpl->tpl_vars['keyword']->value)) {?>
-                                <input type="text" class="form-control" placeholder="找用戶.." 
-                                    id="keyword" name="orderSearch" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-">
-                            <?php } else { ?>
+                            <?php if ('orderSearch' == '') {?>
                                 <input type="text" class="form-control" placeholder="找用戶.." 
                                     id="keyword" name="orderSearch">
+                            <?php } else { ?>
+                                <input type="text" class="form-control" placeholder="找用戶.." 
+                                    id="keyword" name="orderSearch" value="<?php echo $_smarty_tpl->tpl_vars['orderSearch']->value;?>
+">
                             <?php }?>
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit">

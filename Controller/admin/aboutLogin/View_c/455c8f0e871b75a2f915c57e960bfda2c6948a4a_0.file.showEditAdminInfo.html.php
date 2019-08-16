@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-15 11:31:19
+/* Smarty version 3.1.33, created on 2019-08-16 04:02:29
   from 'C:\xampp\htdocs\Store\Controller\View\admin\aboutLogin\showEditAdminInfo.html' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5526674adb32_94317895',
+  'unifunc' => 'content_5d560eb59c8ad4_88736405',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '455c8f0e871b75a2f915c57e960bfda2c6948a4a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Store\\Controller\\View\\admin\\aboutLogin\\showEditAdminInfo.html',
-      1 => 1565861460,
+      1 => 1565862224,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5526674adb32_94317895 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d560eb59c8ad4_88736405 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html>
 <title>修改資料</title>
@@ -43,7 +43,6 @@ function content_5d5526674adb32_94317895 (Smarty_Internal_Template $_smarty_tpl)
         color: red;
     }
 </style>
-
 <body>
     <div class="row">
         <div class="container col-md-3 col-md-offset-4">

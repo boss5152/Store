@@ -10,49 +10,35 @@ $isEdit = false;
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($useCommonMethod->identity === "admin") {
         if ((!empty($_POST["password"])) && 
-            (!empty($_POST["oldPassword"])) &&
-            (!empty($_POST["adminKey"]))) {
+            (!empty($_POST["oldPassword"]))) {
             $password = $_POST["password"];
             $oldPassword = $_POST["oldPassword"];
-            $adminKey = $_POST["adminKey"];
             $password = md5($password);
             $oldPassword = md5($oldPassword);
             ## 檢查舊密碼是否正確
             $token = $_COOKIE['token'];
-            $checkOldPassword = $useAdminTable->checkOldPassword($oldPassword, $token);
+            $checkOldPassword = $useCommonMethod->useMemberTable->checkOldPassword($oldPassword, $token);
             if ($checkOldPassword === true) {
-                ## 檢查Email有無重複
-                $checkAdminKey = $useAdminTable->checkAdminKey($adminKey);
-                if ($checkAdminKey === false) {
-                    $tips = "管理者金鑰錯誤";
+                $array_UserData = [
+                    'password' => $password
+                ];
+                $editUserInfo = $useCommonMethod->useMemberTable->editUserInfo($array_UserData, $token);
+                if ($editUserInfo === false) {
+                    $tips = "修改失敗，請重新操作一次";
                 } else {
-                    ## 列入修改資訊
-                    $array_UserData = [
-                        'password' => $password,
-                        'adminKey' => $adminKey
-                    ];
-                    $editUserInfo = $useAdminTable->editUserInfo($array_UserData, $token);
-                    ## 錯誤會回傳0
-                    if ($editUserInfo === false) {
-                        $tips = "修改失敗，請重新操作一次";
-                    } else {
-                        $tips = "修改成功";
-                        $isEdit = true;
-                    }
+                    $tips = "修改成功";
+                    $isEdit = true;
                 }
             } else {
                 $tips = "舊密碼錯誤";
             }
-        } else {
-            $tips = "密碼金鑰不得為空";
         }
+    } else {
+        $tips = "登入逾時，請重新登入";
     }
+    echo json_encode(array(
+        'isEdit' => $isEdit,
+        'tips' => $tips,
+        'isLogin' => $useCommonMethod->check['isLogin']
+    ));
 }
-
-## 最後回傳請求
-echo json_encode(array(
-    'isEdit' => $isEdit,
-    'tips' => $tips,
-    'isLogin' => $useCommonMethod->check['isLogin']
-));
-

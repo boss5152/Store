@@ -39,11 +39,11 @@ class OrderBook extends ConnectDb
     }
 
     /*
-     * 刪除
+     * 註銷
      */ 
-    public function delete($orderId)
+    public function logout($orderId)
     {
-        $sql = "DELETE FROM OrderBook WHERE orderId = $orderId";
+        $sql = "UPDATE OrderBook set orderStatus = '已註銷' WHERE orderId = $orderId";
         $result = $this->executeSql($sql);
         return ($result === true) ? true : false;
     }
@@ -61,36 +61,11 @@ class OrderBook extends ConnectDb
         return $this->resultArray;
     }
 
-    /*
-     * 顯示對應使用者訂單總筆數
-     */
-    public function allUserOrderCount($userAccount)
-    {
-        $sql = "SELECT * FROM OrderBook WHERE userAccount = '" . $userAccount . "'";
-        $result = $this->executeSql($sql);
-        $row_result = mysqli_num_rows($result);
-        return $row_result;
-    }
-
-    /*
-     * 顯示對應使用者訂單
-     * 與他的筆數
-     */
-    public function showUserOrderLimit($userAccount, $page, $count)
-    {
-        $sql = "SELECT * FROM OrderBook WHERE userAccount = '" . $userAccount . "' LIMIT $page, $count";
-        $result = $this->executeSql($sql);
-        foreach ($result as $key => $value) {
-            array_push($this->resultArray, $value);
-        }     
-        return $this->resultArray;
-    }
-
     /**
      * 關鍵字搜尋到的使用者訂單總比數
      */
     public function searchUserOrderCount($userAccount, $keyword){
-        $sql = "SELECT * FROM orderBook WHERE userAccount = $userAccount AND bookName LIKE '%$keyword%'";
+        $sql = "SELECT * FROM orderBook WHERE userAccount = '" . $userAccount . "' AND bookName LIKE '%$keyword%'";
         $result = $this->executeSql($sql);
         $row_result = mysqli_num_rows($result);
         return $row_result;
@@ -99,8 +74,8 @@ class OrderBook extends ConnectDb
     /**
      * 搜尋後每頁固定顯示count筆使用者訂單
      */
-    public function searchUserOrderLimitCount($keyword, $userAccount, $page){
-        $sql = "SELECT * FROM orderBook WHERE userAccount = $userAccount AND bookName LIKE '%$keyword%' LIMIT $page, 10";
+    public function searchUserOrderLimit($keyword, $userAccount, $page, $count){
+        $sql = "SELECT * FROM orderBook WHERE userAccount = '" . $userAccount . "' AND bookName LIKE '%$keyword%' ORDER BY orderId DESC LIMIT $page, $count";
         $result = $this->executeSql($sql);
         foreach ($result as $key => $value) {
             array_push($this->resultArray, $value);
@@ -130,10 +105,10 @@ class OrderBook extends ConnectDb
     }
 
     /**
-     * 搜尋後每頁固定顯示八筆
+     * 搜尋後每頁固定顯示count筆
      */
-    public function searchOrderLimitCount($keyword, $page, $count){
-        $sql = "SELECT * FROM orderBook WHERE userAccount LIKE '%$keyword%' LIMIT $page, $count";
+    public function searchOrderLimit($keyword, $page, $count){
+        $sql = "SELECT * FROM orderBook WHERE userAccount LIKE '%$keyword%' ORDER BY orderId DESC LIMIT $page, $count";
         $result = $this->executeSql($sql);
         foreach ($result as $key => $value) {
             array_push($this->resultArray, $value);

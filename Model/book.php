@@ -133,8 +133,8 @@ class Book extends ConnectDb
     /**
      * 搜尋後每頁固定顯示八筆
      */
-    public function searchBookNameLimitCount($keyword, $page, $count){
-        $sql = "SELECT * FROM Book WHERE bookName LIKE '%$keyword%' LIMIT $page, $count";
+    public function searchBookNameLimit($keyword, $page, $count){
+        $sql = "SELECT * FROM Book WHERE bookName LIKE '%$keyword%' ORDER BY bookId DESC LIMIT $page, $count";
         $result = $this->executeSql($sql);
         foreach ($result as $key => $value) {
             array_push($this->resultArray, $value);

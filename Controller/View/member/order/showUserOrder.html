@@ -22,9 +22,10 @@
         <table class="table">
             <thead style="background-color: #AAAAAA">
                 <tr>
+                    <th style="text-align: center" class="col-md-1">訂單編號</th>
                     <th style="text-align: center" class="col-md-2">書名</th>
-                    <th style="text-align: center" class="col-md-2">單價</th>
-                    <th style="text-align: center" class="col-md-2">數量</th>
+                    <th style="text-align: center" class="col-md-1">單價</th>
+                    <th style="text-align: center" class="col-md-1">數量</th>
                     <th style="text-align: center" class="col-md-2">總價</th>
                     <th style="text-align: center" class="col-md-2">下單日期</th>
                     <th style="text-align: center" class="col-md-2">訂單狀態</th>
@@ -33,6 +34,9 @@
             <tbody class="List">
                 {{foreach $orderBookArrays as $orderBookArray}}
                 <tr>
+                    <td>
+                        {{$orderBookArray['orderId']}}
+                    </td>
                     <td>
                         {{$orderBookArray['bookName']}}
                     </td>
@@ -58,15 +62,7 @@
     </div>
     <div class="text-center text-center">
         <ul class="pagination">
-            {{if isset($keyword)}}
-                {{for $page = 1 to $pageCount }}
-                    {{if $page == $nowPage}}
-                    <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
-                    {{else}}
-                    <li><a href="/Store/Controller/member/order/showUserOrder.php?page={{$page}}&userOrderSearch={{$keyword}}" role="button" id="page" name="page">{{$page}}</a></li>
-                    {{/if}}
-                {{/for}}
-            {{else}}
+            {{if $orderSearch == ""}}
                 {{for $page = 1 to $pageCount }}
                     {{if $page == $nowPage}}
                     <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
@@ -74,10 +70,17 @@
                     <li><a href="/Store/Controller/member/order/showUserOrder.php?page={{$page}}" role="button" id="page" name="page">{{$page}}</a></li>
                     {{/if}}
                 {{/for}}
+            {{else}}
+                {{for $page = 1 to $pageCount }}
+                    {{if $page == $nowPage}}
+                    <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
+                    {{else}}
+                    <li><a href="/Store/Controller/member/order/showUserOrder.php?page={{$page}}&orderSearch={{$orderSearch}}" role="button" id="page" name="page">{{$page}}</a></li>
+                    {{/if}}
+                {{/for}}
             {{/if}}
         </ul>
     </div>
-
 </body>
 
 <script src="http://localhost/Store/Controller/javascript/tool.js"></script>

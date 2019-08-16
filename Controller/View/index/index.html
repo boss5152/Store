@@ -48,15 +48,15 @@
                 <!-- 已加入關掉不給按 -->
                 <!-- 沒登入就不顯示了 -->
                 {{if isset($newBookArray['isAddCart'])}}
-                    {{if $newBookArray['isAddCart'] === true}}
-                        <button type="button" class="btn btn-success" disabled="true">
-                            已納入購物車
-                        </button>
+                    {{if $newBookArray['isAddCart'] === "加入購物車"}}
+                    <button type="button" class="btn btn-success" value="{{$newBookArray['bookId']}}" id="btnAddCart"
+                        name="btnAddCart">
+                        {{$newBookArray['isAddCart']}}
+                    </button>
                     {{else}}
-                        <button type="button" class="btn btn-success" value="{{$newBookArray['bookId']}}" id="btnAddCart"
-                            name="btnAddCart">
-                            加入購物車
-                        </button>
+                    <button type="button" class="btn btn-success" disabled="true">
+                        {{$newBookArray['isAddCart']}}
+                    </button>
                     {{/if}}
                 {{/if}}
                 <!-- 加入購物車按鈕 -->
@@ -66,15 +66,7 @@
         </div>
         <div>
             <ul class="pagination">
-                {{if isset($keyword)}}
-                    {{for $page = 1 to $pageCount }}
-                        {{if $page == $nowPage}}
-                        <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
-                        {{else}}
-                        <li><a href="/Store/Controller/index/index.php?page={{$page}}&indexSearch={{$keyword}}" role="button" id="page" name="page">{{$page}}</a></li>
-                        {{/if}}
-                    {{/for}}
-                {{else}}
+                {{if bookNameSearch == ""}}
                     {{for $page = 1 to $pageCount }}
                         {{if $page == $nowPage}}
                         <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
@@ -82,11 +74,18 @@
                         <li><a href="/Store/Controller/index/index.php?page={{$page}}" role="button" id="page" name="page">{{$page}}</a></li>
                         {{/if}}
                     {{/for}}
+                {{else}}
+                    {{for $page = 1 to $pageCount }}
+                        {{if $page == $nowPage}}
+                        <li class="active"><a role="button" id="nowPage" name="page">{{$page}}</a></li>
+                        {{else}}
+                        <li><a href="/Store/Controller/index/index.php?page={{$page}}&bookNameSearch={{$bookNameSearch}}" role="button" id="page" name="page">{{$page}}</a></li>
+                        {{/if}}
+                    {{/for}}
                 {{/if}}
             </ul>
         </div>
     </div>
-
 </body>
 
 <script src="http://localhost/Store/Controller/javascript/tool.js"></script>
